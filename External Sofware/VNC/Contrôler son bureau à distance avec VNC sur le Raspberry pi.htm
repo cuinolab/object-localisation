@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<!--[if IE 9]><html
+class="no-js ie9" lang="fr-FR" prefix="og: http://ogp.me/ns#"><![endif]-->
+<!--[if gt IE 9]><!-->
+<html style="" class="js supports no-pointerevents no-touchevents cssanimations preserve3d csstransforms csstransforms3d csstransitions" prefix="og: http://ogp.me/ns#" lang="fr-FR"><!--<![endif]--><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><!--[if IE]><![endif]--><link rel="stylesheet" href="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/css.css"><link rel="stylesheet" href="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/f7718a9c02e9ae8ec626caf8a4621f6f.css" data-minify="1"><link rel="stylesheet" href="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/472119bf8539a73c0bbbbf9455ae68b9.css" data-minify="1"><script src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/ba5e277ad2cd3ce77578beda5f797447.js" data-minify="1"></script><script src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/bf5c62781b4c489c245e8e9afb8ab081.js" data-minify="1"></script><script src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/39df69a0f6523ef9a8b66df45894f128.js" data-minify="1"></script><script src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/4990986400519931c572e856d4b23dbd.js" data-minify="1"></script> <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Contrôler son bureau à distance avec VNC sur le Raspberry pi</title><link rel="pingback" href="http://the-raspberry.com/xmlrpc.php"><link rel="shortcut icon" href="http://the-raspberry.com/wp-content/uploads/2015/04/apple-touch-icon-76x76.png"><link rel="apple-touch-icon-precomposed" href="http://the-raspberry.com/wp-content/uploads/2015/04/apple-touch-icon-76x76.png"><meta name="description" content="Apprenez à télécommander votre Raspberry pi depuis un PC ou un Mac avec VNC, vous contrôler le bureau du Raspberry pi sur votre ordinateur comme si vous l'aviez branché à un écran."><meta name="robots" content="noodp"><link rel="canonical" href="http://the-raspberry.com/vnc"><link rel="publisher" href="https://plus.google.com/b/104808356312283522336/The-raspberry/"><meta property="og:locale" content="fr_FR"><meta property="og:type" content="article"><meta property="og:title" content="Contrôler son bureau à distance avec VNC sur le Raspberry pi"><meta property="og:description" content="Apprenez à télécommander votre Raspberry pi depuis un PC ou un Mac avec VNC, vous contrôler le bureau du Raspberry pi sur votre ordinateur comme si vous l'aviez branché à un écran."><meta property="og:url" content="http://the-raspberry.com/vnc"><meta property="og:site_name" content="The Raspberry"><meta property="article:publisher" content="https://www.facebook.com/theraspberrypi"><meta property="article:tag" content="bureau à distance"><meta property="article:tag" content="ssh"><meta property="article:tag" content="télécommander raspberry pi"><meta property="article:tag" content="vnc"><meta property="article:section" content="Raspbian"><meta property="article:published_time" content="2013-07-10T06:00:57+02:00"><meta property="article:modified_time" content="2014-07-05T19:23:54+02:00"><meta property="og:updated_time" content="2014-07-05T19:23:54+02:00"><meta property="og:image" content="http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit.png"><meta property="og:image:width" content="642"><meta property="og:image:height" content="600"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:description" content="Apprenez à télécommander votre Raspberry pi depuis un PC ou un Mac avec VNC, vous contrôler le bureau du Raspberry pi sur votre ordinateur comme si vous l'aviez branché à un écran."><meta name="twitter:title" content="Contrôler son bureau à distance avec VNC sur le Raspberry pi"><meta name="twitter:site" content="@Proraspberry"><meta name="twitter:image" content="http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit.png"><meta name="twitter:creator" content="@Proraspberry"><link rel="alternate" type="application/rss+xml" title="The Raspberry » Flux" href="http://the-raspberry.com/feed/"><link rel="alternate" type="application/rss+xml" title="The Raspberry » Flux des commentaires" href="http://the-raspberry.com/comments/feed/"><link rel="alternate" type="application/rss+xml" title="The Raspberry » Contrôler son bureau à distance avec VNC sur le Raspberry pi Flux des commentaires" href="http://the-raspberry.com/vnc/feed/"> <script type="text/javascript">window._wpemojiSettings={"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/72x72\/","ext":".png","source":{"concatemoji":"http:\/\/the-raspberry.com\/wp-includes\/js\/wp-emoji-release.min.js"}};!function(a,b,c){function d(a){var c,d,e,f=b.createElement("canvas"),g=f.getContext&&f.getContext("2d"),h=String.fromCharCode;if(!g||!g.fillText)return!1;switch(g.textBaseline="top",g.font="600 32px Arial",a){case"flag":return g.fillText(h(55356,56806,55356,56826),0,0),f.toDataURL().length>3e3;case"diversity":return g.fillText(h(55356,57221),0,0),c=g.getImageData(16,16,1,1).data,d=c[0]+","+c[1]+","+c[2]+","+c[3],g.fillText(h(55356,57221,55356,57343),0,0),c=g.getImageData(16,16,1,1).data,e=c[0]+","+c[1]+","+c[2]+","+c[3],d!==e;case"simple":return g.fillText(h(55357,56835),0,0),0!==g.getImageData(16,16,1,1).data[0];case"unicode8":return g.fillText(h(55356,57135),0,0),0!==g.getImageData(16,16,1,1).data[0]}return!1}function e(a){var c=b.createElement("script");c.src=a,c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i;for(i=Array("simple","flag","unicode8","diversity"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);</script><script type="text/javascript" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/wp-emoji-release.js"></script> <style type="text/css">img.wp-smiley,img.emoji{display:inline!important;border:none!important;box-shadow:none!important;height:1em!important;width:1em!important;margin:0 .07em!important;vertical-align:-0.1em!important;background:none!important;padding:0!important}</style><link rel="https://api.w.org/" href="http://the-raspberry.com/wp-json/"><link rel="shortlink" href="http://wp.me/s4335e-vnc"><link rel="alternate" type="application/json+oembed" href="http://the-raspberry.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fthe-raspberry.com%2Fvnc"><link rel="alternate" type="text/xml+oembed" href="http://the-raspberry.com/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fthe-raspberry.com%2Fvnc&amp;format=xml"><style type="text/css">img#wpstats{display:none}</style><!--[if lte IE 9]><link
+rel="stylesheet" type="text/css" href="http://the-raspberry.com/wp-content/plugins/js_composer/assets/css/vc_lte_ie9.min.css" media="screen"><![endif]--><!--[if IE  8]><link
+rel="stylesheet" type="text/css" href="http://the-raspberry.com/wp-content/plugins/js_composer/assets/css/vc-ie8.min.css" media="screen"><![endif]--><noscript><style type="text/css">.wpb_animate_when_almost_visible{opacity:1}</style></noscript><style id="x-generated-css" type="text/css">a,h1 a:hover,h2 a:hover,h3 a:hover,h4 a:hover,h5 a:hover,h6 a:hover,.x-comment-time:hover,#reply-title small a,.comment-reply-link:hover,.x-comment-author a:hover,.x-recent-posts a:hover .h-recent-posts{color:#ff433f}a:hover,#reply-title small a:hover{color:#c93732}.entry-title:before{color:#ddd}a.x-img-thumbnail:hover,li.bypostauthor>article.comment{border-color:#ff433f}.flex-direction-nav a,.flex-control-nav a:hover,.flex-control-nav a.flex-active,.x-dropcap,.x-skill-bar .bar,.x-pricing-column.featured h2,.h-comments-title small,.x-pagination a:hover,.x-entry-share .x-share:hover,.entry-thumb,.widget_tag_cloud .tagcloud a:hover,.widget_product_tag_cloud .tagcloud a:hover,.x-highlight,.x-recent-posts .x-recent-posts-img:after,.x-portfolio-filters{background-color:#ff433f}.x-portfolio-filters:hover{background-color:#c93732}.x-main{width:69.79803%}.x-sidebar{width:23.79803%}.x-topbar .p-info,.x-topbar .p-info a,.x-topbar .x-social-global a{color:#fff}.x-topbar .p-info a:hover{color:#dae6ea}.x-topbar{background-color:#70787c}.x-navbar .desktop .x-nav>li:before{padding-top:43px}.x-navbar .desktop .x-nav>li>a,.x-navbar .desktop .sub-menu li>a,.x-navbar .mobile .x-nav li a{color:#c6c6c6}.x-navbar .desktop .x-nav>li>a:hover,.x-navbar .desktop .x-nav>.x-active>a,.x-navbar .desktop .x-nav>.current-menu-item>a,.x-navbar .desktop .sub-menu li>a:hover,.x-navbar .desktop .sub-menu li.x-active>a,.x-navbar .desktop .sub-menu li.current-menu-item>a,.x-navbar .desktop .x-nav .x-megamenu>.sub-menu>li>a,.x-navbar .mobile .x-nav li>a:hover,.x-navbar .mobile .x-nav li.x-active>a,.x-navbar .mobile .x-nav li.current-menu-item>a{color:#fff}.x-btn-navbar,.x-btn-navbar:hover{color:#e0e0e0}.x-navbar .desktop .sub-menu li:before,.x-navbar .desktop .sub-menu li:after{background-color:#c6c6c6}.x-navbar,.x-navbar .sub-menu{background-color:#2c3e50!important}.x-btn-navbar,.x-btn-navbar.collapsed:hover{background-color:#ce4e4e}.x-btn-navbar.collapsed{background-color:#ef2d2d}.x-navbar .desktop .x-nav>li>a:hover>span,.x-navbar .desktop .x-nav>li.x-active>a>span,.x-navbar .desktop .x-nav>li.current-menu-item>a>span{box-shadow:0 2px 0 0 #fff}.x-navbar .desktop .x-nav>li>a{height:120px;padding-top:43px}.x-navbar .desktop .x-nav>li ul{top:120px}.x-colophon.bottom{background-color:#2c3e50}.x-colophon.bottom,.x-colophon.bottom a,.x-colophon.bottom .x-social-global a{color:#fff}.h-landmark{font-weight:400}.x-comment-author a{color:#7a7a7a}.x-comment-author a,.comment-form-author label,.comment-form-email label,.comment-form-url label,.comment-form-rating label,.comment-form-comment label,.widget_calendar #wp-calendar caption,.widget_calendar #wp-calendar th,.x-accordion-heading .x-accordion-toggle,.x-nav-tabs>li>a:hover,.x-nav-tabs>.active>a,.x-nav-tabs>.active>a:hover{color:#2a2a2a}.widget_calendar #wp-calendar th{border-bottom-color:#2a2a2a}.x-pagination span.current,.x-portfolio-filters-menu,.widget_tag_cloud .tagcloud a,.h-feature-headline span i,.widget_price_filter .ui-slider .ui-slider-handle{background-color:#2a2a2a}@media (max-width:979px){}body{font-size:18px;font-style:normal;font-weight:400;color:#7a7a7a;background-color:#2c3e50}a:focus,select:focus,input[type="file"]:focus,input[type="radio"]:focus,input[type="submit"]:focus,input[type="checkbox"]:focus{outline:thin dotted #333;outline:5px auto #ff433f;outline-offset:-1px}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{font-family:"Lato",sans-serif;font-style:normal;font-weight:900}h1,.h1{letter-spacing:-0.014em}h2,.h2{letter-spacing:-0.019em}h3,.h3{letter-spacing:-0.024em}h4,.h4{letter-spacing:-0.032em}h5,.h5{letter-spacing:-0.037em}h6,.h6{letter-spacing:-0.056em}.w-h{font-weight:900!important}.x-container.width{width:90%}.x-container.max{max-width:1300px}.site,.x-navbar.x-navbar-fixed-top.x-container.max.width{width:90%;max-width:1300px}.x-main.full{float:none;display:block;width:auto}@media (max-width:979px){.x-main.full,.x-main.left,.x-main.right,.x-sidebar.left,.x-sidebar.right{float:none;display:block;width:auto!important}}.entry-header,.entry-content{font-size:18px}body,input,button,select,textarea{font-family:"Lato",sans-serif}h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6,h1 a,h2 a,h3 a,h4 a,h5 a,h6 a,.h1 a,.h2 a,.h3 a,.h4 a,.h5 a,.h6 a,blockquote{color:#2a2a2a}.cfc-h-tx{color:#2a2a2a!important}.cfc-h-bd{border-color:#2a2a2a!important}.cfc-h-bg{background-color:#2a2a2a!important}.cfc-b-tx{color:#7a7a7a!important}.cfc-b-bd{border-color:#7a7a7a!important}.cfc-b-bg{background-color:#7a7a7a!important}.x-btn-widgetbar{border-top-color:#2a2a2a;border-right-color:#2a2a2a}.x-btn-widgetbar:hover{border-top-color:#2a2a2a;border-right-color:#2a2a2a}.x-navbar-inner{min-height:120px}.x-brand{margin-top:19px;font-family:"Pacifico",cursive;font-size:54px;font-style:normal;font-weight:400;letter-spacing:0em;color:#fff}.x-brand:hover,.x-brand:focus{color:#fff}.x-brand img{width:265px}.x-navbar .x-nav-wrap .x-nav>li>a{font-family:"Lato",sans-serif;font-style:normal;font-weight:900;letter-spacing:0.048em;text-transform:uppercase}.x-navbar .desktop .x-nav>li>a{font-size:21px}.x-navbar .desktop .x-nav>li>a:not(.x-btn-navbar-woocommerce){padding-left:21px;padding-right:21px}.x-navbar .desktop .x-nav>li>a>span{margin-right:-0.048em}.x-btn-navbar{margin-top:31px}.x-btn-navbar,.x-btn-navbar.collapsed{font-size:24px}@media (max-width:979px){.x-widgetbar{left:0;right:0}}.x-btn,.button,[type="submit"]{color:#fff;border-color:#dd3936;background-color:#d10e0e;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.5)}.x-btn:hover,.button:hover,[type="submit"]:hover{color:#fff;border-color:#bf2d2d;background-color:#bf2d2d;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.5)}.x-btn.x-btn-real,.x-btn.x-btn-real:hover{margin-bottom:0.25em;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65)}.x-btn.x-btn-real{box-shadow:0 0.25em 0 0 #496b21,0 4px 9px rgba(0,0,0,0.75)}.x-btn.x-btn-real:hover{box-shadow:0 0.25em 0 0 #446b21,0 4px 9px rgba(0,0,0,0.75)}.x-btn.x-btn-flat,.x-btn.x-btn-flat:hover{margin-bottom:0;text-shadow:0 0.075em 0.075em rgba(0,0,0,0.65);box-shadow:none}.x-btn.x-btn-transparent,.x-btn.x-btn-transparent:hover{margin-bottom:0;border-width:3px;text-shadow:none;text-transform:uppercase;background-color:transparent;box-shadow:none}</style><script type="text/javascript">!function(t,e){function o(){var o=0;return e.body&&e.body.offsetWidth&&(o=e.body.offsetHeight),"CSS1Compat"==e.compatMode&&e.documentElement&&e.documentElement.offsetWidth&&(o=e.documentElement.offsetHeight),t.innerWidth&&t.innerHeight&&(o=t.innerHeight),o}function n(t){var e=ot=0;if(t.offsetParent)do e+=t.offsetLeft,ot+=t.offsetTop;while(t=t.offsetParent);return{left:e,top:ot}}function a(){for(var a=e.querySelectorAll("[data-lazy-src],[data-lazy-original]"),r=t.pageYOffset||e.documentElement.scrollTop||e.body.scrollTop,i=o(),d=0;d<a.length;d++){var f=a[d];if("img"==f.tagName.toLowerCase()){var l=n(f).top;if(i+r>l){var c=f.getAttribute("data-lazy-original")?"data-lazy-original":"data-lazy-src",s=f.getAttribute(c);f.src=s,f.removeAttribute(c)}}}}t.addEventListener?(t.addEventListener("DOMContentLoaded",a,!1),t.addEventListener("scroll",a,!1)):(t.attachEvent("onload",a),t.attachEvent("onscroll",a))}(window,document);</script><link href="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/content.css" type="text/css" rel="stylesheet"><link href="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/search.css" type="text/css" rel="stylesheet"></head><body class="single single-post postid-502 single-format-standard x-renew x-navbar-static-active x-boxed-layout-active x-content-sidebar-active x-post-meta-disabled wpb-js-composer js-comp-ver-4.9.2 vc_responsive x-v4_4_1 cornerstone-v1_2_4"><script type="text/javascript">
+//<![CDATA[
+try{(function(a){var b="http://",c="the-raspberry.com",d="/cdn-cgi/cl/",e="img.gif",f=new a;f.src=[b,c,d,e].join("")})(Image)}catch(e){}
+//]]>
+</script><div id="top" class="site">
+<header class="masthead masthead-inline" role="banner"><div class="x-navbar-wrap"><div class="x-navbar"><div class="x-navbar-inner"><div class="x-container max width"><a href="http://the-raspberry.com/" class="x-brand img" title="Profiter un maximum de votre Raspberry pi">
+<img scale="0" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/logorpiparis.png" alt="Profiter un maximum de votre Raspberry pi"></a>
+<a href="#" class="x-btn-navbar collapsed" data-toggle="collapse" data-target=".x-nav-wrap.mobile">
+<i class="x-icon-bars" data-x-icon=""></i>
+<span class="visually-hidden">Navigation</span>
+</a><nav class="x-nav-wrap desktop" role="navigation"><ul id="menu-x-demo-menu" class="x-nav"><li id="menu-item-13175" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13175"><a href="http://the-raspberry.com/"><span><i class="x-icon-home" data-icon=""></i>Accueil</span></a></li><li id="menu-item-13180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13180"><a href="http://the-raspberry.com/blog/"><span><i class="x-icon-pencil" data-icon=""></i>Blog</span></a></li></ul></nav><div class="x-nav-wrap mobile collapse"><ul id="menu-x-demo-menu-1" class="x-nav"><li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-13175"><a href="http://the-raspberry.com/"><span><i class="x-icon-home" data-icon=""></i>Accueil</span></a></li><li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-13180"><a href="http://the-raspberry.com/blog/"><span><i class="x-icon-pencil" data-icon=""></i>Blog</span></a></li></ul></div></div></div></div></div></header>
+<header class="x-header-landmark"><div class="x-container max width"><div class="x-landmark-breadcrumbs-wrap"><div class="x-landmark"><h1 class="h-landmark"><span>Le Blog</span></h1></div><div class="x-breadcrumbs-wrap"><div class="x-breadcrumbs"><a href="http://the-raspberry.com/"><span class="home"><i class="x-icon-home" data-x-icon=""></i></span></a> <span class="delimiter"><i class="x-icon-angle-right" data-x-icon=""></i></span> <a href="http://the-raspberry.com/blog/">Blog</a> <span class="delimiter"><i class="x-icon-angle-right" data-x-icon=""></i></span> <span class="current">Contrôler son bureau à distance avec VNC sur le Raspberry pi</span></div></div></div></div>
+</header><div class="x-container max width offset"><div class="x-main left" role="main">
+<article id="post-502" class="post-502 post type-post status-publish format-standard has-post-thumbnail hentry category-raspbian tag-bureau-a-distance tag-ssh tag-telecommander-raspberry-pi tag-vnc"><div class="entry-wrap">
+<header class="entry-header"><h1 class="entry-title">Contrôler son bureau à distance avec VNC sur le Raspberry pi</h1>
+</header><div class="entry-featured"><div class="entry-thumb"><img scale="0" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/Real-VNC-gratuit.png" class="attachment-entry size-entry wp-post-image" alt="vnc raspberry pi" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit.png 642w, http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit-300x280.png 300w" sizes="(max-width: 642px) 100vw, 642px" height="600" width="642"><noscript><img width="642" height="600" src="http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit.png" class="attachment-entry size-entry wp-post-image" alt="vnc raspberry pi" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit.png 642w, http://the-raspberry.com/wp-content/uploads/2013/07/Real-VNC-gratuit-300x280.png 300w" sizes="(max-width: 642px) 100vw, 642px"/></noscript></div></div><div class="entry-content content"><p>Dans cet article nous allons voir comment <strong>télécommander son Raspberry pi à distance grâce à VNC</strong> (Virtual Network Connection), pour que cela fonctionne il faut que vous ayez suivi <a href="http://the-raspberry.com/ssh-raspberry-pi">le tutoriel sur SSH </a>et donc que vous puissiez vous connecter en SSH à votre Raspberry pi.</p><p>La
+ différence entre SSH et VNC est que SSH ne gère pas d’interface 
+graphique il ne vous permet que&nbsp;d’exécuter&nbsp;des commandes dans 
+le terminal, contrairement à&nbsp;VNC qui va vous donner la possibilité 
+de&nbsp;c<strong>ontrôler&nbsp;votre Raspberry pi de manière graphique avec la souris et le clavier</strong>.</p><p>Nous allons donc commencer par installer un serveur <strong>VNC</strong>, il en existe plusieurs, mais celui que je vous propose est tightvnc.</p><p>Pour l’installer <a href="http://the-raspberry.com/ssh-raspberry-pi">connecter vous en SSH au Raspberry pi</a> et faites ces deux commandes</p><pre>sudo apt-get update</pre><pre>sudo apt-get install tightvncserver</pre><p><a href="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor.jpg"><img scale="0" class="alignnone size-full wp-image-505" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/Sans-titre_Fotor.jpg" alt="tightvncserver" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor.jpg 560w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor-300x9.jpg 300w" sizes="(max-width: 560px) 100vw, 560px" height="18" width="560"><noscript><img class="alignnone size-full wp-image-505" src="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor.jpg" alt="tightvncserver" width="560" height="18" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor.jpg 560w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor-300x9.jpg 300w" sizes="(max-width: 560px) 100vw, 560px"/></noscript></a></p><p>Une fois que tightvnc est installé il faudra faire la commande</p><pre>vncserver :1</pre><p><a href="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor.jpg"><img scale="0" class="alignnone size-full wp-image-504" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/Sans-titre1_Fotor.jpg" alt="vncserver " srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor.jpg 564w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor-300x61.jpg 300w" sizes="(max-width: 564px) 100vw, 564px" height="116" width="564"><noscript><img class="alignnone size-full wp-image-504" src="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor.jpg" alt="vncserver " width="564" height="116" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor.jpg 564w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre1_Fotor-300x61.jpg 300w" sizes="(max-width: 564px) 100vw, 564px"/></noscript></a></p><p>Cette
+ commande&nbsp;démarrera&nbsp;le serveur VNC, la première fois que 
+vous&nbsp;exécuterez&nbsp;cette commande on 
+vous&nbsp;demandera&nbsp;votre mot de passe, si vous avez gardé le mot 
+de passe par défaut qui est «&nbsp;raspberry&nbsp;» vous remarquer que 
+le mot de passe n’est pas accepté, c’est parce qu’il faut entrer un mot 
+de passe à 8 caractères donc il faudra donc écrire 
+«&nbsp;raspberr&nbsp;»</p><h1>Le client VNC</h1><p>Pour accéder à votre 
+bureau en VNC, il faut télécharger un logiciel (un client VNC) qui vous 
+permettra de prendre le contrôle de votre Raspberry pi.</p><p>Il existe beaucoup de clients, mais je vous conseille <a href="http://the-raspberry.com/vnc-viewer">VNC Viewer</a> (qui est aussi disponible&nbsp;sur <a href="http://the-raspberry.com/vnc-viewer" target="_blank">Android </a>, <a href="https://play.google.com/store/apps/details?id=com.realvnc.viewer.android&amp;hl=fr" target="_blank">voir sur le Play Store</a>,&nbsp;et sur<a href="http://the-raspberry.com/vnc-viewer" target="_blank"> iOS</a>), vous pouvez le télécharger <a href="http://the-raspberry.com/vnc-viewer">ici</a>,&nbsp;une fois installé sur votre ordinateur exécuter le vous devriez&nbsp;voir ça.</p><p><a href="http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor.jpg"><img scale="0" class="alignnone size-full wp-image-508" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/ss_Fotor.jpg" alt="vnc viewer" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor.jpg 400w, http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor-300x156.jpg 300w" sizes="(max-width: 400px) 100vw, 400px" height="208" width="400"><noscript><img class="alignnone size-full wp-image-508" src="http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor.jpg" alt="vnc viewer" width="400" height="208" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor.jpg 400w, http://the-raspberry.com/wp-content/uploads/2013/07/ss_Fotor-300x156.jpg 300w" sizes="(max-width: 400px) 100vw, 400px"/></noscript></a></p><p>Dans
+ le champ VNC Server &nbsp;entrer l’adresse ip de votre Raspberry pi (on
+ peut la trouver en tapant la commande ifconfig dans le terminal) suivi 
+de&nbsp;:1 cliquer ensuite sur Connect.</p><p>Si vous recevez un message d’avertissement cliquer sur continuer.</p><p>La fenêtre suivante vous demandera votre mot de passe (limité à 8 caractères) par défaut se sera «&nbsp;raspberr&nbsp;»</p><p><a href="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor.jpg"><img scale="0" class="alignnone size-full wp-image-510" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/Sans-titre-2_Fotor.jpg" alt="vnc viewer 1" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor.jpg 400w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor-300x150.jpg 300w" sizes="(max-width: 400px) 100vw, 400px" height="201" width="400"><noscript><img class="alignnone size-full wp-image-510" src="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor.jpg" alt="vnc viewer 1" width="400" height="201" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor.jpg 400w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre-2_Fotor-300x150.jpg 300w" sizes="(max-width: 400px) 100vw, 400px"/></noscript></a></p><p>Le
+ bureau de votre Raspberry pi devrait apparaitre.&nbsp;Vous êtes 
+maintenant en mesure d’utiliser la souris et le clavier pour contrôler 
+votre Raspberry pi à distance.</p><p><a href="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1.jpg"><img scale="0" class="alignnone  wp-image-514" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/Sans-titre_Fotor1.jpg" alt="vnc raspberry pi" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1.jpg 1024w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1-300x231.jpg 300w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1-600x462.jpg 600w" sizes="(max-width: 789px) 100vw, 789px" height="608" width="789"><noscript><img class="alignnone  wp-image-514" src="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1.jpg" alt="vnc raspberry pi" width="789" height="608" srcset="http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1.jpg 1024w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1-300x231.jpg 300w, http://the-raspberry.com/wp-content/uploads/2013/07/Sans-titre_Fotor1-600x462.jpg 600w" sizes="(max-width: 789px) 100vw, 789px"/></noscript></a></p><h1>Démarrer VNC directement au démarrage</h1><p>Pour démarrer un&nbsp;<a href="http://the-raspberry.com/vnc">serveur VNC</a>&nbsp;au démarrage automatiquement, faites ces toutes ces commandes séparément dans l’ordre :</p><pre>cd /home/pi</pre><pre>cd .config</pre><pre>mkdir autostart</pre><pre>cd autostart</pre><pre>sudo nano tightvnc.desktop</pre><p>Un fichier vide va s’ouvrir, copier coller ceci :</p><pre>#!/bin/sh
+[Desktop Entry]
+Type=Application
+Name=tightVNC
+Exec=vncserver :1
+StartupNotify=false</pre><p>Sauvegarder et quitter puis redémarrer ensuite votre Raspberry pi.</p><pre>sudo reboot</pre><hr class="symple-divider solid " style="margin-top: 20;margin-bottom: 20;">
+<a href="http://forms.aweber.com/form/26/851786926.htm"><img scale="0" class="alignnone size-full wp-image-13139" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/cadeau147582.png" alt="cadeau147582" height="388" width="896"><noscript><img class="alignnone size-full wp-image-13139" src="http://the-raspberry.com/wp-content/uploads/2013/06/cadeau147582.png" alt="cadeau147582" width="896" height="388"/></noscript></a><div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon sd-sharing"><h3 class="sd-title">Partager&nbsp;:</h3><div class="sd-content"><ul><li class="share-twitter"><a rel="nofollow" data-shared="sharing-twitter-502" class="share-twitter sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=twitter&amp;nb=1" target="_blank" title="Cliquez pour partager sur Twitter"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Twitter(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-facebook"><a rel="nofollow" data-shared="sharing-facebook-502" class="share-facebook sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=facebook&amp;nb=1" target="_blank" title="Cliquez pour partager sur Facebook"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Facebook(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-google-plus-1"><a rel="nofollow" data-shared="sharing-google-502" class="share-google-plus-1 sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=google-plus-1&amp;nb=1" target="_blank" title="Cliquez pour partager sur Google+"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Google+(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-email share-service-visible"><a rel="nofollow" data-shared="" class="share-email sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=email&amp;nb=1" target="_blank" title="Cliquez pour envoyer par e-mail à un ami"><span></span><span class="sharing-screen-reader-text">Cliquez pour envoyer par e-mail à un ami(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-print"><a rel="nofollow" data-shared="" class="share-print sd-button share-icon no-text" href="http://the-raspberry.com/vnc#print" target="_blank" title="Cliquer pour imprimer"><span></span><span class="sharing-screen-reader-text">Cliquer pour imprimer(ouvre dans une nouvelle fenêtre)</span></a></li><li><a href="#" class="sharing-anchor sd-button share-more"><span>Plus</span></a></li><li class="share-end"></li></ul><div class="sharing-hidden"><div class="inner" style="display: none;"><ul><li class="share-tumblr"><a rel="nofollow" data-shared="" class="share-tumblr sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=tumblr&amp;nb=1" target="_blank" title="Cliquez pour partager sur Tumblr"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Tumblr(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-pinterest"><a rel="nofollow" data-shared="sharing-pinterest-502" class="share-pinterest sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=pinterest&amp;nb=1" target="_blank" title="Cliquez pour partager sur Pinterest"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Pinterest(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-end"></li><li class="share-linkedin"><a rel="nofollow" data-shared="sharing-linkedin-502" class="share-linkedin sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=linkedin&amp;nb=1" target="_blank" title="Cliquez pour partager sur LinkedIn"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur LinkedIn(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-pocket"><a rel="nofollow" data-shared="" class="share-pocket sd-button share-icon no-text" href="http://the-raspberry.com/vnc?share=pocket&amp;nb=1" target="_blank" title="Cliquez pour partager sur Pocket"><span></span><span class="sharing-screen-reader-text">Cliquez pour partager sur Pocket(ouvre dans une nouvelle fenêtre)</span></a></li><li class="share-end"></li><li class="share-end"></li></ul></div></div></div></div></div></div><footer class="entry-footer cf"><p><i class="x-icon-tags" data-x-icon=""></i> Tags: <a href="http://the-raspberry.com/tag/bureau-a-distance/" rel="tag">bureau à distance</a>, <a href="http://the-raspberry.com/tag/ssh/" rel="tag">ssh</a>, <a href="http://the-raspberry.com/tag/telecommander-raspberry-pi/" rel="tag">télécommander raspberry pi</a>, <a href="http://the-raspberry.com/tag/vnc/" rel="tag">vnc</a></p> </footer></div>
+</article><div id="comments" class="x-comments-area"><h2 class="h-comments-title">
+76 Comments on <span>“Contrôler son bureau à distance avec VNC sur le Raspberry pi”</span></h2><ol class="x-comments-list"><li id="li-comment-46" class="comment even thread-even depth-1">
+<article id="comment-46" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/54f0114699606966e05ffe985106ab69.jpg" srcset="http://2.gravatar.com/avatar/54f0114699606966e05ffe985106ab69?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/54f0114699606966e05ffe985106ab69?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/54f0114699606966e05ffe985106ab69?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-46" onclick='return addComment.moveForm( "comment-46", "46", "respond", "502" )' aria-label="Répondre à Jean">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Jean</cite><div><a href="http://the-raspberry.com/vnc/#comment-46" class="x-comment-time"><time datetime="2013-08-05T00:44:26+00:00">08.05.2013 at 0 h 44 min</time></a></div> </header>
+<section class="x-comment-content"><p>Sa marche ! Merci</p>
+</section></div>
+</article></li><li id="li-comment-80" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-80" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/5740f68a5f6603fe82c6d215ecc3752c.jpg" srcset="http://2.gravatar.com/avatar/5740f68a5f6603fe82c6d215ecc3752c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/5740f68a5f6603fe82c6d215ecc3752c?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/5740f68a5f6603fe82c6d215ecc3752c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-80" onclick='return addComment.moveForm( "comment-80", "80", "respond", "502" )' aria-label="Répondre à Paul (@Paul__71)">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://twitter.com/Paul__71" rel="external nofollow" class="url">Paul (@Paul__71)</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-80" class="x-comment-time"><time datetime="2013-09-16T20:02:58+00:00">09.16.2013 at 20 h 02 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour, j’ai beau metre le mot de passe «&nbsp;raspberr&nbsp;» cela ne fonctionne pas que faire ? Merci</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-81" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-81" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/0c0a13d5b724cdddc14a6883482c5e53.png" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-81" onclick='return addComment.moveForm( "comment-81", "81", "respond", "502" )' aria-label="Répondre à admin">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">admin</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-81" class="x-comment-time"><time datetime="2013-09-16T20:45:40+00:00">09.16.2013 at 20 h 45 min</time></a></div> </header>
+<section class="x-comment-content"><p>Tu as peut-être dû changer le mot de passe, raspberr est le mot de passe par défaut.</p><p>Fait un raspi-config dans le terminal et change ton mot de passe en «&nbsp;raspberry&nbsp;», ensuite ça devrait marcher.</p>
+</section></div>
+</article></li><li id="li-comment-1542" class="comment odd alt depth-2">
+<article id="comment-1542" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/e6589a982656980bdd975749c8234c72.jpg" srcset="http://2.gravatar.com/avatar/e6589a982656980bdd975749c8234c72?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/e6589a982656980bdd975749c8234c72?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/e6589a982656980bdd975749c8234c72?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-1542" onclick='return addComment.moveForm( "comment-1542", "1542", "respond", "502" )' aria-label="Répondre à Pierre">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Pierre</cite><div><a href="http://the-raspberry.com/vnc/#comment-1542" class="x-comment-time"><time datetime="2014-06-01T10:27:11+00:00">06.01.2014 at 10 h 27 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’avais le même problème et j’ai changé de port (j’utilise maintenant le 5900)<br>
+Il se trouve que ma box bloquait certains ports, dont le :1</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-24375" class="comment even depth-3">
+<article id="comment-24375" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/69b742a49b66e48d94dee5a73da4946f.jpg" srcset="http://0.gravatar.com/avatar/69b742a49b66e48d94dee5a73da4946f?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/69b742a49b66e48d94dee5a73da4946f?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/69b742a49b66e48d94dee5a73da4946f?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24375" onclick='return addComment.moveForm( "comment-24375", "24375", "respond", "502" )' aria-label="Répondre à Jerome">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Jerome</cite><div><a href="http://the-raspberry.com/vnc/#comment-24375" class="x-comment-time"><time datetime="2015-06-09T11:25:32+00:00">06.09.2015 at 11 h 25 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,<br>
+J’ai le même problème que Paul (@Paul__71)<br>
+J’ai modifié le mot de passe que j’ai remplacé par raspberr<br>
+Ca ne marche toujours pas<br>
+Pierre tu dis de changer de port. Pouvez-vous me dire ce que ça veut dire et comment faire cela?</p><p>Merci de votre retour<br>
+Jérome</p>
+</section></div>
+</article></li></ol></li></ol></li><li id="li-comment-100" class="comment odd alt thread-even depth-1">
+<article id="comment-100" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/3d0df1168674945e0f07bfa6b1c12857.jpg" srcset="http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-100" onclick='return addComment.moveForm( "comment-100", "100", "respond", "502" )' aria-label="Répondre à Snork">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Snork</cite><div><a href="http://the-raspberry.com/vnc/#comment-100" class="x-comment-time"><time datetime="2013-09-27T17:37:13+00:00">09.27.2013 at 17 h 37 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour à tous.</p><p>Est il possible que vnc serveur se lance à chaque démarrage du Raspberry sans avoir à retaper la commande à chaque fois?</p><p>Merci par avance pour vos réponses, et surtout grand merci pour ce tuto clair et précis à la portée de tous.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-103" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-103" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/0c0a13d5b724cdddc14a6883482c5e53.png" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-103" onclick='return addComment.moveForm( "comment-103", "103", "respond", "502" )' aria-label="Répondre à admin">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">admin</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-103" class="x-comment-time"><time datetime="2013-09-27T18:24:10+00:00">09.27.2013 at 18 h 24 min</time></a></div> </header>
+<section class="x-comment-content"><p>Je viens d’en faire un tutoriel <img scale="0" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/a.htm" alt=":)" class="wp-smiley"><br>
+<a href="http://the-raspberry.com/vnc-demarrage" title="Démarrer un serveur VNC directement au démarrage" target="_blank" rel="nofollow"></a></p>
+</section></div>
+</article><ol class="children"><li id="li-comment-104" class="comment odd alt depth-3">
+<article id="comment-104" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/3d0df1168674945e0f07bfa6b1c12857.jpg" srcset="http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/3d0df1168674945e0f07bfa6b1c12857?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-104" onclick='return addComment.moveForm( "comment-104", "104", "respond", "502" )' aria-label="Répondre à Snork">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Snork</cite><div><a href="http://the-raspberry.com/vnc/#comment-104" class="x-comment-time"><time datetime="2013-09-27T18:43:44+00:00">09.27.2013 at 18 h 43 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci beaucoup <img scale="0" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/a.htm" alt=":-)" class="wp-smiley"><br>
+Et désolé du dérangement :p</p>
+</section></div>
+</article></li><li id="li-comment-246" class="comment even depth-3">
+<article id="comment-246" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/6d0ebbb462f6e5075af228af2d1fb9e4.jpg" srcset="http://0.gravatar.com/avatar/6d0ebbb462f6e5075af228af2d1fb9e4?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/6d0ebbb462f6e5075af228af2d1fb9e4?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/6d0ebbb462f6e5075af228af2d1fb9e4?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-246" onclick='return addComment.moveForm( "comment-246", "246", "respond", "502" )' aria-label="Répondre à pernowel">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">pernowel</cite><div><a href="http://the-raspberry.com/vnc/#comment-246" class="x-comment-time"><time datetime="2013-11-17T19:46:30+00:00">11.17.2013 at 19 h 46 min</time></a></div> </header>
+<section class="x-comment-content"><p>C’est normal que je ne trouve pas ce tuto? Ou est il?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-247" class="comment byuser comment-author-admin bypostauthor odd alt depth-4">
+<article id="comment-247" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/0c0a13d5b724cdddc14a6883482c5e53.png" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-247" onclick='return addComment.moveForm( "comment-247", "247", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-247" class="x-comment-time"><time datetime="2013-11-17T20:12:37+00:00">11.17.2013 at 20 h 12 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’ai rajouté une partie à la fin de ce tutoriel</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-748" class="comment even depth-3">
+<article id="comment-748" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/0e27001eda3cafa94aa0185ab74e0c4e.jpg" srcset="http://0.gravatar.com/avatar/0e27001eda3cafa94aa0185ab74e0c4e?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0e27001eda3cafa94aa0185ab74e0c4e?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0e27001eda3cafa94aa0185ab74e0c4e?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-748" onclick='return addComment.moveForm( "comment-748", "748", "respond", "502" )' aria-label="Répondre à Casio">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://wda-fr.org/" rel="external nofollow" class="url">Casio</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-748" class="x-comment-time"><time datetime="2014-03-27T02:06:11+00:00">03.27.2014 at 2 h 06 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci pour le tutoriel. Parfait.<br>
+Néanmoins, le service ne démarre pas au reboot, je suis obligé de le relancer, même en suivant la modif du dossier autostart.</p>
+</section></div>
+</article></li></ol></li></ol></li><li id="li-comment-135" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-135" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img scale="1.5" originals="120" alt="" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/8f48639d787f126deacb8e918cea2ce4.jpg" srcset="http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-135" onclick='return addComment.moveForm( "comment-135", "135", "respond", "502" )' aria-label="Répondre à Nathann">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Nathann</cite><div><a href="http://the-raspberry.com/vnc/#comment-135" class="x-comment-time"><time datetime="2013-10-06T08:29:41+00:00">10.06.2013 at 8 h 29 min</time></a></div> </header>
+<section class="x-comment-content"><p>est il possible de faire ça dans l’autre sens ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-136" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-136" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-136" onclick='return addComment.moveForm( "comment-136", "136", "respond", "502" )' aria-label="Répondre à admin">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">admin</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-136" class="x-comment-time"><time datetime="2013-10-06T08:33:42+00:00">10.06.2013 at 8 h 33 min</time></a></div> </header>
+<section class="x-comment-content"><p>Non, je ne pense pas.</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-137" class="comment odd alt thread-even depth-1">
+<article id="comment-137" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-137" onclick='return addComment.moveForm( "comment-137", "137", "respond", "502" )' aria-label="Répondre à Nathann">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Nathann</cite><div><a href="http://the-raspberry.com/vnc/#comment-137" class="x-comment-time"><time datetime="2013-10-06T11:22:21+00:00">10.06.2013 at 11 h 22 min</time></a></div> </header>
+<section class="x-comment-content"><p>et de voir son écrans de pc et dutiliser son rasberry comme relai pour ragarder sur ma télé ?<br>
+car j’aimerais pouvoirs regarde des film sur ma télé avec mon rasberry 
+pi et jai deja essayer de le faire a xbmc mais ça marche mal</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-138" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-138" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-138" onclick='return addComment.moveForm( "comment-138", "138", "respond", "502" )' aria-label="Répondre à admin">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">admin</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-138" class="x-comment-time"><time datetime="2013-10-06T11:40:26+00:00">10.06.2013 at 11 h 40 min</time></a></div> </header>
+<section class="x-comment-content"><p>Même ci c’était possible, sa serait instable et très lent.</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-139" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-139" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/8f48639d787f126deacb8e918cea2ce4?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-139" onclick='return addComment.moveForm( "comment-139", "139", "respond", "502" )' aria-label="Répondre à Nathann">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Nathann</cite><div><a href="http://the-raspberry.com/vnc/#comment-139" class="x-comment-time"><time datetime="2013-10-06T15:18:26+00:00">10.06.2013 at 15 h 18 min</time></a></div> </header>
+<section class="x-comment-content"><p>ok merci beaucoup bonne fin de weekend</p>
+</section></div>
+</article></li><li id="li-comment-275" class="comment even thread-even depth-1">
+<article id="comment-275" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-275" onclick='return addComment.moveForm( "comment-275", "275", "respond", "502" )' aria-label="Répondre à Cédric">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Cédric</cite><div><a href="http://the-raspberry.com/vnc/#comment-275" class="x-comment-time"><time datetime="2014-01-01T22:49:16+00:00">01.01.2014 at 22 h 49 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour!</p><p>Je n’arrive pas à voir en direct les action que je fait de mon mac sur mon raspberry.<br>
+En gros quand je contrôle mon raspberry, je ne voit pas les raccourcis, 
+mon curseur n’est pas en mouvement sur l’écran auquel est branché le 
+raspberry.<br>
+C’est un petit peu comme si je pouvais ouvrir deus sessions autonome d’un coup.</p><p>Merci <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/🙂" alt=":)" class="wp-smiley"></p>
+</section></div>
+</article></li><li id="li-comment-276" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-276" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-276" onclick='return addComment.moveForm( "comment-276", "276", "respond", "502" )' aria-label="Répondre à Cédric">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Cédric</cite><div><a href="http://the-raspberry.com/vnc/#comment-276" class="x-comment-time"><time datetime="2014-01-01T22:50:27+00:00">01.01.2014 at 22 h 50 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour!</p><p>Je n’arrive pas à voir en direct les actions que je fais de mon mac sur mon raspberry.<br>
+En gros quand je contrôle mon raspberry, je ne vois pas les raccourcis, 
+mon curseur n’est pas en mouvement sur l’écran auquel est branché le 
+raspberry.<br>
+C’est un petit peu comme si je pouvais ouvrir deux sessions autonome d’un coup.</p><p>Merci <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/🙂" alt=":)" class="wp-smiley"></p>
+</section></div>
+</article><ol class="children"><li id="li-comment-277" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-277" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-277" onclick='return addComment.moveForm( "comment-277", "277", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-277" class="x-comment-time"><time datetime="2014-01-02T01:13:05+00:00">01.02.2014 at 1 h 13 min</time></a></div> </header>
+<section class="x-comment-content"><p>C’est parfaitement normal, ne t’inquiète pas <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/🙂" alt=":)" class="wp-smiley"></p>
+</section></div>
+</article></li><li id="li-comment-285" class="comment odd alt depth-2">
+<article id="comment-285" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-285" onclick='return addComment.moveForm( "comment-285", "285", "respond", "502" )' aria-label="Répondre à Cédric">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Cédric</cite><div><a href="http://the-raspberry.com/vnc/#comment-285" class="x-comment-time"><time datetime="2014-01-02T18:11:00+00:00">01.02.2014 at 18 h 11 min</time></a></div> </header>
+<section class="x-comment-content"><p>Ummm.<br>
+Bon, et bien ce n’est pas ce que je cherchais à faire alors :-/<br>
+Pas grave, Merci quand même!</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-537" class="comment even thread-even depth-1">
+<article id="comment-537" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/43cf1fe8c4c5de825b1d60a088e983da?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-537" onclick='return addComment.moveForm( "comment-537", "537", "respond", "502" )' aria-label="Répondre à Cédric">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Cédric</cite><div><a href="http://the-raspberry.com/vnc/#comment-537" class="x-comment-time"><time datetime="2014-02-02T21:50:04+00:00">02.02.2014 at 21 h 50 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’ai trouvé la solution au problème:<br>
+<a href="http://www.informatique-astuces.com/controle-a-distance-raspbian-raspberry-pi/" rel="nofollow">http://www.informatique-astuces.com/controle-a-distance-raspbian-raspberry-pi/</a></p>
+</section></div>
+</article></li><li id="li-comment-605" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-605" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-605" onclick='return addComment.moveForm( "comment-605", "605", "respond", "502" )' aria-label="Répondre à lebreton22">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">lebreton22</cite><div><a href="http://the-raspberry.com/vnc/#comment-605" class="x-comment-time"><time datetime="2014-02-24T11:14:40+00:00">02.24.2014 at 11 h 14 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour<br>
+J’ai bien suivi les procédures décrites ci-dessus pour lancer 
+directement vnc serveur. J’ai «&nbsp;copié collé&nbsp;» le texte pour 
+être certain qu’il n’y ait pas d’erreur.<br>
+Côté client (un mac et un ubuntu) j’ai installé vnc viewer.<br>
+Le problème : je dois relancer manuellement la commande vncserveur :1 sur le raspberry à chaque fois, donc je n’ai rien gagné.<br>
+Le mode ssh par contre fonctionne bien.<br>
+Des idées ,<br>
+merci<br>
+lebreton22</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-606" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-606" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-606" onclick='return addComment.moveForm( "comment-606", "606", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-606" class="x-comment-time"><time datetime="2014-02-24T12:17:06+00:00">02.24.2014 at 12 h 17 min</time></a></div> </header>
+<section class="x-comment-content"><p>Honnêtement je ne sais pas, il y a des personnes chez qui ça marche et d’autres non.<br>
+Je ferai des tests dans la journée.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-608" class="comment byuser comment-author-admin bypostauthor odd alt depth-3">
+<article id="comment-608" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-608" onclick='return addComment.moveForm( "comment-608", "608", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-608" class="x-comment-time"><time datetime="2014-02-24T14:26:30+00:00">02.24.2014 at 14 h 26 min</time></a></div> </header>
+<section class="x-comment-content"><p>Je viens d’essayer et ça fonctionne très bien chez moi, as tu bien suivi toutes les étapes ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-609" class="comment even depth-4">
+<article id="comment-609" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-609" onclick='return addComment.moveForm( "comment-609", "609", "respond", "502" )' aria-label="Répondre à lebreton22">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">lebreton22</cite><div><a href="http://the-raspberry.com/vnc/#comment-609" class="x-comment-time"><time datetime="2014-02-24T15:30:40+00:00">02.24.2014 at 15 h 30 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’ai bien suivi toutes les étapes<br>
+J’ai réinstallé la raspdian wheezy et maintenant c’est bizzare.<br>
+Filezilla fonctionne bien en ssh<br>
+Lorsque je tente de me connecter depuis un terminal (pi@192.168.0.17) j’ai le message suivant :<br>
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+@ WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED! @<br>
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@<br>
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!<br>
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!<br>
+It is also possible that a host key has just been changed.<br>
+The fingerprint for the RSA key sent by the remote host is<br>
+ef:f7:2d:e9:ae:77:86:95:d1:5e:1e:92:73:b1:78:8e.<br>
+Please contact your system administrator.<br>
+Add correct host key in /Users/ymayeux/.ssh/known_hosts to get rid of this message.<br>
+Offending RSA key in /Users/ymayeux/.ssh/known_hosts:4<br>
+RSA host key for 192.168.0.17 has changed and you have requested strict checking.<br>
+Host key verification failed<br>
+En mode sudo, ça passe<br>
+donc<br>
+1 premier problème : si j’ai bien compris c’est une histoire de clé<br>
+2 reste la question de relancer à chaque fois vncserver :1 pour que ça fonctionne</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-610" class="comment byuser comment-author-admin bypostauthor odd alt depth-5">
+<article id="comment-610" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply"></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-610" class="x-comment-time"><time datetime="2014-02-24T15:33:31+00:00">02.24.2014 at 15 h 33 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’explique comment résoudre ce problème dans le tutoriel d’SSH <a href="http://the-raspberry.com/ssh" rel="nofollow">http://the-raspberry.com/ssh</a></p>
+</section></div>
+</article></li><li id="li-comment-611" class="comment even depth-5">
+<article id="comment-611" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/647dbce4862148b0760fb937424bd232?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply"></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">lebreton22</cite><div><a href="http://the-raspberry.com/vnc/#comment-611" class="x-comment-time"><time datetime="2014-02-24T16:01:19+00:00">02.24.2014 at 16 h 01 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci, Il fallait lire le tuto jusqu’au bout.<br>
+Du coup tout fonctionne maintenant.<br>
+J’ai modifié les paramètres de raspi-config afin de passer directement 
+en mode graphique. Plus besoin d’écran, de clavier ni de souris.<br>
+lebreton22</p>
+</section></div>
+</article></li></ol></li></ol></li></ol></li></ol></li><li id="li-comment-643" class="comment odd alt thread-even depth-1">
+<article id="comment-643" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-643" onclick='return addComment.moveForm( "comment-643", "643", "respond", "502" )' aria-label="Répondre à Mke">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-643" class="x-comment-time"><time datetime="2014-03-02T02:41:59+00:00">03.02.2014 at 2 h 41 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour à tous,</p><p>Après avoir suivi le tutoriel…au moment de la connexion avec TightVnc, j’ai le droit à un message d’erreur :<br>
+Xsession: unable to start X session — no «&nbsp;/home/pi/.xsession&nbsp;» file, no<br>
+«&nbsp;/home/pi/.Xsession&nbsp;» file, no session managers, no window managers, and no<br>
+terminal emulators found; aborting.</p><p>A priori il ne trouve pas 
+le/les fichiers nécessaires afin d’afficher le bureau si j’ai bien 
+compris ?! Comment corriger ça si c’est bien le cas?<br>
+Merci d’avance.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-644" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-644" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-644" onclick='return addComment.moveForm( "comment-644", "644", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-644" class="x-comment-time"><time datetime="2014-03-02T10:39:47+00:00">03.02.2014 at 10 h 39 min</time></a></div> </header>
+<section class="x-comment-content"><p>Créer un fichier .xsession dans le dossier pi et tu écrit dedans :</p><p>#!/bin/sh<br>
+xterm &amp;<br>
+exec twm</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-647" class="comment odd alt depth-3">
+<article id="comment-647" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-647" onclick='return addComment.moveForm( "comment-647", "647", "respond", "502" )' aria-label="Répondre à Mke">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-647" class="x-comment-time"><time datetime="2014-03-02T16:00:36+00:00">03.02.2014 at 16 h 00 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci Victor pour ta réponse.</p><p>Je suis novice dans le domaine du raspberry et linux en générale, je vais donc poser une question un peu bête mais bon tanpis.</p><p>– Comment créer un fichier .xsession ?<br>
+– Où le placer exactement ? J’insère ma carte SD, sur mon ordinateur, et
+ je le colle à la racine ? Là je ne vois pas, je suis désolé.</p><p>Merci de ton aide en tout cas.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-648" class="comment byuser comment-author-admin bypostauthor even depth-4">
+<article id="comment-648" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-648" onclick='return addComment.moveForm( "comment-648", "648", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-648" class="x-comment-time"><time datetime="2014-03-02T18:39:30+00:00">03.02.2014 at 18 h 39 min</time></a></div> </header>
+<section class="x-comment-content"><p>Tu commences par te connecter en SSH à ton Raspberry pi.</p><p>Ensuite tu va dans le dossier pi</p><pre>cd pi/</pre><p>Tu crées le fichier</p><pre>nano .xsession</pre><p>Tu insères ceci :<br>
+#!/bin/sh<br>
+xterm &amp;<br>
+exec twm</p><p>Tu sauvegardes, tu quittes le fichier et tu reboot <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/😉" alt=";)" class="wp-smiley"></p>
+</section></div>
+</article><ol class="children"><li id="li-comment-649" class="comment odd alt depth-5">
+<article id="comment-649" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply"></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-649" class="x-comment-time"><time datetime="2014-03-02T19:44:59+00:00">03.02.2014 at 19 h 44 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci.</p><p>Dur dur de suivre de 
+simples petites manœuvres pour moi sur ce coup. Courage à toi là :). 
+Aller pour m’enfoncer un peu plus mais dans l’avenir je serais au point 
+grâce à toi.</p><p>1. Ok je me connecte en SSH à mon raspberry. vncserver est lancé.<br>
+2. Je vais dans le dossier pi, ok mais comment ? Toujours en ligne de commande j’y accède ?<br>
+3. Je créer ce fichier mais à l’aide quoi ? Donc il est placé sur ma carte SD nan ?</p><p>Merci Victor sincèrement pour ton aide.</p>
+</section></div>
+</article></li></ol></li></ol></li></ol></li></ol></li><li id="li-comment-650" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-650" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-650" onclick='return addComment.moveForm( "comment-650", "650", "respond", "502" )' aria-label="Répondre à Mke">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-650" class="x-comment-time"><time datetime="2014-03-02T20:26:15+00:00">03.02.2014 at 20 h 26 min</time></a></div> </header>
+<section class="x-comment-content"><p>…petite précision peut être importante mais c’est dans le but de me connecter à Raspbmc.</p><p>Merci.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-651" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+<article id="comment-651" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-651" onclick='return addComment.moveForm( "comment-651", "651", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-651" class="x-comment-time"><time datetime="2014-03-02T22:51:17+00:00">03.02.2014 at 22 h 51 min</time></a></div> </header>
+<section class="x-comment-content"><p>Ah ben désolé je ne sais pas comment faire pour Raspbmc, je t’ai ici donné les étapes pour le faire avec Raspbian.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-652" class="comment even depth-3">
+<article id="comment-652" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-652" onclick='return addComment.moveForm( "comment-652", "652", "respond", "502" )' aria-label="Répondre à Mke">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-652" class="x-comment-time"><time datetime="2014-03-02T22:54:41+00:00">03.02.2014 at 22 h 54 min</time></a></div> </header>
+<section class="x-comment-content"><p>Ah, j’ai eu le doute d’où le fait 
+que j’ai précisé ! Mais sinan pour mes connaissances perso et dans le 
+cas où je m’y mettrais à Raspbian.<br>
+Pourrais-tu répondre et donc m’expliquer à ce que j’ai mis précédemment ?</p><p>En tout cas merci pour ta patience, c’est simpa.</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-656" class="comment byuser comment-author-admin bypostauthor odd alt depth-4">
+<article id="comment-656" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-656" onclick='return addComment.moveForm( "comment-656", "656", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-656" class="x-comment-time"><time datetime="2014-03-03T13:24:57+00:00">03.03.2014 at 13 h 24 min</time></a></div> </header>
+<section class="x-comment-content"><p>1. Oui tu te connecte en SSH<br>
+2. Tu va dans le dossier pi avec la commande que je t’ai indiqué (cd pi/) , tu y accède en ligne de commande, oui.<br>
+3. Tu crée le fichier toujours avec la commande que je t’ai indiqué (nano .xsession)</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-657" class="comment even depth-5">
+<article id="comment-657" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d70741ad9b5074fd98d0c9b4edf9373c?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply"></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Mke</cite><div><a href="http://the-raspberry.com/vnc/#comment-657" class="x-comment-time"><time datetime="2014-03-03T14:11:05+00:00">03.03.2014 at 14 h 11 min</time></a></div> </header>
+<section class="x-comment-content"><p>Excellent. Ça confirme les actions
+ que j’allais entreprendre donc. Je vais essayer du coup cette 
+distribution. Merci Victor en tout cas.</p><p>Bonne continuation.</p>
+</section></div>
+</article></li></ol></li></ol></li></ol></li></ol></li><li id="li-comment-697" class="comment odd alt thread-even depth-1">
+<article id="comment-697" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/a2fbf2d8e61b951f703069624cbe1252?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/a2fbf2d8e61b951f703069624cbe1252?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/a2fbf2d8e61b951f703069624cbe1252?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/a2fbf2d8e61b951f703069624cbe1252?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-697" onclick='return addComment.moveForm( "comment-697", "697", "respond", "502" )' aria-label="Répondre à Djimondev">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Djimondev</cite><div><a href="http://the-raspberry.com/vnc/#comment-697" class="x-comment-time"><time datetime="2014-03-10T14:08:21+00:00">03.10.2014 at 14 h 08 min</time></a></div> </header>
+<section class="x-comment-content"><p>Perfect! merci !</p>
+</section></div>
+</article></li><li id="li-comment-766" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-766" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-766" onclick='return addComment.moveForm( "comment-766", "766", "respond", "502" )' aria-label="Répondre à BLS">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">BLS</cite><div><a href="http://the-raspberry.com/vnc/#comment-766" class="x-comment-time"><time datetime="2014-04-02T02:58:33+00:00">04.02.2014 at 2 h 58 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bien moi non plus le serveur vnc 
+ne démarre pas au démarrage … mais pas grâve j’ai pas envie qu’il tourne
+ tout le temps pour rien …<br>
+sinon comment fait-on pour arreter le serveur VNC ? «&nbsp;vncserver -terminate&nbsp;» ?<br>
+Et comment règle-t-on la résolution de l’écran émulé ? car par défaut on est en 4/3 du coup c’est pas agréable…<br>
+Aussi pourquoi ne voit-on pas le même bureau que le serveurX sur l’hdmi/rca ? ça ne me dérange pas mais je cherche a comprendre…<br>
+j’ai trouvé ceci mais … ça ne me parle pas trop :</p><p>use: X [:] [option]<br>
+-a # mouse acceleration (pixels)<br>
+-ac disable access control restrictions<br>
+-audit int set audit trail level<br>
+-auth file select authorization file<br>
+bc enable bug compatibility<br>
+-bs disable any backing store support<br>
+-c turns off key-click<br>
+c # key-click volume (0-100)<br>
+-cc int default color visual class<br>
+-co file color database file<br>
+-core generate core dump on fatal error<br>
+-dpi int screen resolution in dots per inch<br>
+-deferglyphs [none|all|16] defer loading of [no|all|16-bit] glyphs<br>
+-f # bell base (0-100)<br>
+-fc string cursor font<br>
+-fn string default font name<br>
+-fp string default font path<br>
+-help prints message with these options<br>
+-I ignore all remaining arguments<br>
+-ld int limit data space to N Kb<br>
+-lf int limit number of open files to N<br>
+-ls int limit stack space to N Kb<br>
+-nolock disable the locking mechanism<br>
+-logo enable logo in screen saver<br>
+nologo disable logo in screen saver<br>
+-nolisten string don’t listen on protocol<br>
+-p # screen-saver pattern duration (minutes)<br>
+-pn accept failure to listen on all ports<br>
+-nopn reject failure to listen on all ports<br>
+-r turns off auto-repeat<br>
+r turns on auto-repeat<br>
+-s # screen-saver timeout (minutes)<br>
+-su disable any save under support<br>
+-t # mouse threshold (pixels)<br>
+-terminate terminate at server reset<br>
+-to # connection time out<br>
+-tst disable testing extensions<br>
+ttyxx server started from init on /dev/ttyxx<br>
+v video blanking for screen-saver<br>
+-v screen-saver without video blanking<br>
+-wm WhenMapped default backing-store<br>
+-x string loads named extension at init time<br>
+-query host-name contact named host for XDMCP<br>
+-broadcast broadcast for XDMCP<br>
+-indirect host-name contact named host for indirect XDMCP<br>
+-port port-num UDP port number to send messages to<br>
+-once Terminate server after one session<br>
+-class display-class specify display class to send in manage<br>
+-cookie xdm-auth-bits specify the magic cookie for XDMCP<br>
+-displayID display-id manufacturer display ID for request<br>
+-geometry WxH set framebuffer width &amp; height<br>
+-depth D set framebuffer depth<br>
+-pixelformat format set pixel format (BGRnnn or RGBnnn)<br>
+-udpinputport port UDP port for keyboard/pointer data<br>
+-rfbport port TCP port for RFB protocol<br>
+-rfbwait time max time in ms to wait for RFB client<br>
+-nocursor don’t put up a cursor<br>
+-rfbauth passwd-file use authentication on RFB protocol<br>
+-httpd dir serve files via HTTP from here<br>
+-httpport port port for HTTP<br>
+-deferupdate time time in ms to defer updates (default 40)<br>
+-economictranslate less memory-hungry translation<br>
+-lazytight disable «&nbsp;gradient&nbsp;» filter in tight encoding<br>
+-desktop name VNC desktop name (default x11)<br>
+-alwaysshared always treat new clients as shared<br>
+-nevershared never treat new clients as shared<br>
+-dontdisconnect don’t disconnect existing clients when a new non-shared connection comes in (refuse new connection instead)<br>
+-viewonly let clients only to view the desktop<br>
+-localhost only allow connections from localhost<br>
+-interface ipaddr only bind to specified interface address<br>
+-inetd Xvnc is launched by inetd<br>
+-compatiblekbd set META key = ALT key as in the original VNC<br>
+-version report Xvnc version on stderr</p>
+</section></div>
+</article></li><li id="li-comment-767" class="comment odd alt thread-even depth-1">
+<article id="comment-767" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-767" onclick='return addComment.moveForm( "comment-767", "767", "respond", "502" )' aria-label="Répondre à BLS">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">BLS</cite><div><a href="http://the-raspberry.com/vnc/#comment-767" class="x-comment-time"><time datetime="2014-04-02T03:15:30+00:00">04.02.2014 at 3 h 15 min</time></a></div> </header>
+<section class="x-comment-content"><p>je me répond tout seul… pour 
+terminer un «&nbsp;serveur&nbsp;» VNC … c’est pas 
+«&nbsp;-terminate&nbsp;» qu’il faut faire, ça aurait été trop simple … 
+il faut faire «&nbsp;vncserver -kill :1&nbsp;» ou 2, 3, etc…</p><p>mais pour la résolution je trouve pas help please !!</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-786" class="comment byuser comment-author-admin bypostauthor even depth-2">
+<article id="comment-786" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-786" onclick='return addComment.moveForm( "comment-786", "786", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-786" class="x-comment-time"><time datetime="2014-04-09T14:59:45+00:00">04.09.2014 at 14 h 59 min</time></a></div> </header>
+<section class="x-comment-content"><p>Il faut ajouter l’option -geometry<br>
+Exemple : vncserver :1 -geometry 800×600</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-822" class="comment odd alt depth-3">
+<article id="comment-822" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-822" onclick='return addComment.moveForm( "comment-822", "822", "respond", "502" )' aria-label="Répondre à BLS">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">BLS</cite><div><a href="http://the-raspberry.com/vnc/#comment-822" class="x-comment-time"><time datetime="2014-04-17T02:57:00+00:00">04.17.2014 at 2 h 57 min</time></a></div> </header>
+<section class="x-comment-content"><p>merci Victor j’ai fini par trouver
+ pour le &nbsp;» -geometry&nbsp;» mais c’est casse bonbons de devoir le 
+taper systématiquement. Je cherchais un moyen de changer la résolution 
+«&nbsp;par défaut&nbsp;» mais après de nombreuses recherches c’est 
+impossible…</p><p>par contre pour le démarrage auto de VNC il est idiot 
+de le démarrer en même temps que le serveurX … puisque c’est pas du VNC 
+comme sous windows… (on ne voit pas le même «&nbsp;bureau&nbsp;» sous 
+VNC que sur l’écran connecté en hdmi) et puis dans mon cas je n’ai pas 
+d’écran branché sur mon pi donc pas besoin du serveurX… inutile de 
+pomper des ressources pour des poils de …<br>
+voilà ce que ça donne:</p><p>Lancer Tight VNC Server au démarrage du Raspi</p><p>La
+ bonne méthode résulte au lancement de VNC Server au démarrage de 
+Raspbian et non après le démarrage du serveur X, inutile de gaspiller 
+des ressources pour faire fonctionner le serveur X si on a pas d’écran 
+branché sur le Pi en HDMI ou en RCA…</p><p>Créons donc un fichier texte :<br>
+sudo nano /etc/init.d/vncautostart</p><p>dans lequel on copiera ceci :<br>
+### BEGIN INIT INFO<br>
+# Provides: vncserver<br>
+# Required-Start: networking<br>
+# Required-stop:<br>
+# Default-Start: 2 3 4 5<br>
+# Default-Stop: 0 1 6<br>
+# Description:<br>
+### END INIT INFO</p><p>#!/bin/sh<br>
+# /etc/init.d/vncautostart<br>
+VNCUSER=’pi’<br>
+case «&nbsp;$1&nbsp;» in<br>
+start)<br>
+su $VNCUSER -c ‘/usr/bin/tightvncserver :1 -geometry 1920×1080 -depth 24’<br>
+echo «&nbsp;Starting Tight VNC Server for $VNCUSER &nbsp;»<br>
+;;<br>
+stop)<br>
+pkill Xtightvnc<br>
+echo «&nbsp;Tight VNC Server stopped&nbsp;»<br>
+;;<br>
+*)<br>
+echo «&nbsp;Usage: /etc/init.d/vncautostart {start|stop}&nbsp;»<br>
+exit 1<br>
+;;<br>
+esac<br>
+exit 0</p><p>Changeons les droits d’accès de notre fichier texte :<br>
+sudo chmod 755 /etc/init.d/vncautostart</p><p>Et enfin mettons à jour le script de démarrage de Raspbian :<br>
+sudo update-rc.d vncautostart defaults</p>
+</section></div>
+</article></li></ol></li></ol></li><li id="li-comment-784" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-784" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-784" onclick='return addComment.moveForm( "comment-784", "784", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-784" class="x-comment-time"><time datetime="2014-04-09T10:12:04+00:00">04.09.2014 at 10 h 12 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour à tous,<br>
+merci pour ce tutoriel, qui me permet de tout contrôler à distance sur mon Raspberry Pi à partir de mon PC portable.<br>
+J’ai installé Apache2, Pure-FTP, WordPress, l’objectif étant d’héberger 
+mon propre blog à domicile. Seulement, je débute avec Linux, et je ne 
+suis pas certain d’avoir correctement configuré les permissions, d’où 
+ces incohérences :<br>
+– avec FileZillaPortable, je peux uploader de nouveaux fichiers sur mon 
+blog, mais seulement à la racine (/var/www), et pas dans les 
+sous-répertoires<br>
+– pour la moindre modification de fichier sur mon Raspberry Pi, je dois 
+systématiquement lancer sous VNC le terminal administrateur, sinon je 
+n’ai pas les permissions nécessaires<br>
+– idem à partir de l’interface d’administration de WordPress : je ne 
+peux pas installer de nouveaux thèmes, seulement supprimer ceux qui sont
+ déjà installés ; je peux charger des images, mais pas des pluggins.<br>
+Avez-vous une idée de ce qui se passe dans mon cas ? Pourquoi je n’ai 
+pas tous les droits en écriture sur mon Raspberry Pi autrement qu’avec 
+le terminal administrateur ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-785" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+<article id="comment-785" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-785" onclick='return addComment.moveForm( "comment-785", "785", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-785" class="x-comment-time"><time datetime="2014-04-09T14:58:11+00:00">04.09.2014 at 14 h 58 min</time></a></div> </header>
+<section class="x-comment-content"><p>Essaye la commande chmod 75 /var/www/<br>
+Elle va changer les permissions du dossier</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-787" class="comment even depth-3">
+<article id="comment-787" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-787" onclick='return addComment.moveForm( "comment-787", "787", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-787" class="x-comment-time"><time datetime="2014-04-09T22:02:24+00:00">04.09.2014 at 22 h 02 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonsoir,<br>
+je ne comprends plus rien : j’ai changé les permissions, mais maintenant :<br>
+– mon blog fonctionne parfaitement<br>
+– j’ai perdu sous VNC mon terminal administrateur (la ligne est toujours
+ là, mais rien ne se lance) et mon gestionnaire de paquets Synaptic 
+(idem)<br>
+– sous LXTerminal la commande su apt-get update répond :<br>
+Pas de mot de passe pour l’utilisateur &nbsp;» apt-get &nbsp;»<br>
+Tout se passe comme si Raspbian s’était mis en sécurité après un chmod 777. Comment puis-je revenir en arrière ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-788" class="comment odd alt depth-4">
+<article id="comment-788" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/?s=240&amp;r=g 2x" class="avatar avatar-120 photo avatar-default" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/?s=240&amp;r=g 2x' class='avatar avatar-120 photo avatar-default' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-788" onclick='return addComment.moveForm( "comment-788", "788", "respond", "502" )' aria-label="Répondre à ">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Anonyme</cite><div><a href="http://the-raspberry.com/vnc/#comment-788" class="x-comment-time"><time datetime="2014-04-09T22:19:01+00:00">04.09.2014 at 22 h 19 min</time></a></div> </header>
+<section class="x-comment-content"><p>J’ajoute que j’ai aussi perdu l’accès à phpmyadmin :<br>
+Wrong permissions on configuration file, should not be world writable!</p>
+</section></div>
+</article></li></ol></li></ol></li></ol></li><li id="li-comment-797" class="comment even thread-even depth-1">
+<article id="comment-797" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-797" onclick='return addComment.moveForm( "comment-797", "797", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-797" class="x-comment-time"><time datetime="2014-04-12T19:06:02+00:00">04.12.2014 at 19 h 06 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonsoir à tous,</p><p>je reviens 
+vers vous après avoir dû tout réinstaller par suite du plantage de 
+Raspbian, ce qui prend du temps pour tout refaire correctement en 
+contrôlant chaque étape lorsqu’on n’est pas spécialiste de Linux.<br>
+Je me trouve actuellement exactement au même point que lors de mon 
+précédent message (9.04 à 10h 12). Je comptais trouver de l’aide ici. Où
+ puis-je m’adresser ? La solution de Victor, essayée à plusieurs 
+reprises, ne fonctionne pas. J’en suis maintenant convaincu. J’ai suivi 
+scrupuleusement ce tutoriel : <a href="http://webadonf.net/2011/02/installer-wordpress-sur-un-serveur-debian-lenny/" rel="nofollow">http://webadonf.net/2011/02/installer-wordpress-sur-un-serveur-debian-lenny/</a>
+ ; excepté sur le point de l’installation de WordPress lui-même, plus 
+simple avec Synaptic Package Manager, mais suis bloqué à la toute 
+dernière étape : «&nbsp;donnez les droits&nbsp;». Dans mon cas, la 
+commande chmod ne fonctionne pas sur /upgrade /plugins et /uploads, 
+uniquement sur /themes. Que puis-je faire d’autre ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-800" class="comment byuser comment-author-admin bypostauthor odd alt depth-2">
+<article id="comment-800" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-800" onclick='return addComment.moveForm( "comment-800", "800", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-800" class="x-comment-time"><time datetime="2014-04-12T19:34:49+00:00">04.12.2014 at 19 h 34 min</time></a></div> </header>
+<section class="x-comment-content"><p>Quand la commande ne fonctionne pas, qu’avez vous à l’écran ? Un message d’erreur ? Si oui lequel ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-802" class="comment even depth-3">
+<article id="comment-802" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-802" onclick='return addComment.moveForm( "comment-802", "802", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-802" class="x-comment-time"><time datetime="2014-04-12T21:11:40+00:00">04.12.2014 at 21 h 11 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonsoir Victor,</p><p>merci de me répondre.</p><p>Lorque je fais root@raspberrypi:/home/pi chgrp -R <a href="http://www.data/" rel="nofollow">http://www.data</a> j’obtiens chgrp: missing operand after ‘www.data’<br>
+Try ‘chgrp — help’ for more information.</p><p>En revanche, lorsque je 
+fais chmod g+wx wp-content/upgrade, puis /themes puis /plugins puis 
+/uploads, je n’ai aucun message d’erreur. Les commandes sont prises, 
+mais sans changement.</p><p>Merci encore de me répondre !</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-803" class="comment byuser comment-author-admin bypostauthor odd alt depth-4">
+<article id="comment-803" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0c0a13d5b724cdddc14a6883482c5e53?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-803" onclick='return addComment.moveForm( "comment-803", "803", "respond", "502" )' aria-label="Répondre à Victor">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://the-raspberry.com/" rel="external nofollow" class="url">Victor</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-803" class="x-comment-time"><time datetime="2014-04-12T23:05:08+00:00">04.12.2014 at 23 h 05 min</time></a></div> </header>
+<section class="x-comment-content"><p>Je comprend pas trop là ^^<br>
+Pourquoi tu fait «&nbsp;root@raspberrypi:/home/pi chgrp -R <a href="http://www.data/" rel="nofollow">http://www.data</a>&nbsp;» ??<br>
+Tu le sors d’où le <a href="http://www.data/" rel="nofollow">http://www.data</a> ? L’erreur viens de la <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/😉" alt=";)" class="wp-smiley"></p><p>Au lieu de «&nbsp;chmod g+wx wp-content/upgrade&nbsp;» essaye de faire «&nbsp;chmod -R g+wx wp-content/upgrade&nbsp;»</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-806" class="comment even depth-5">
+<article id="comment-806" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply"></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-806" class="x-comment-time"><time datetime="2014-04-13T14:15:30+00:00">04.13.2014 at 14 h 15 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour à tous,<br>
+voilà : tout fonctionne. Quelques remarques cependant :<br>
+– sous le Root Terminal, la commande chgrp -R <a href="http://www.data/" rel="nofollow">http://www.data</a>
+ donne toujours le même message d’erreur (et http:// s’est ajouté de 
+lui-même ici dans mon précédent message, vous l’avez compris…)<br>
+– la commande chmod -R g+wx wp-content/upgrade etc. fonctionne à merveille ; merci Victor !<br>
+– en revanche, je crois avoir identifié la cause réelle de l’erreur 
+précédemment rencontrée : sous /var/www j’ai deux dossiers WordPress au 
+lieu d’un, avec un wp-config.php identique dans chacun ; celui dont 
+j’avais supprimé le contenu à la main avant de réinstaller WordPress 
+(/var/www/myblog) s’est, j’ignore comment, reconstitué de lui-même lors 
+de la réinstallation de WordPress<br>
+– lorsque je passe par mon navigateur pour visiter mon blog, à l’URL <a href="http://adresse-de-mon-blog-sous-noip/myblog" rel="nofollow">http://adresse-de-mon-blog-sous-noip/myblog</a> se substitue automatiquement <a href="http://adresse-de-mon-blog-sous-noip/wordpress" rel="nofollow">http://adresse-de-mon-blog-sous-noip/wordpress</a><br>
+– j’ai toujours des déconnexions intempestives de l’interface 
+administrateur, qui s’expliquent certainement par un conflit entre les 
+deux installations de WordPress : je verrai à l’usage laquelle prend en 
+compte les modifications de mon blog, et supprimerai l’autre.</p>
+</section></div>
+</article></li></ol></li></ol></li></ol></li></ol></li><li id="li-comment-807" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-807" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-807" onclick='return addComment.moveForm( "comment-807", "807", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-807" class="x-comment-time"><time datetime="2014-04-13T14:27:13+00:00">04.13.2014 at 14 h 27 min</time></a></div> </header>
+<section class="x-comment-content"><p>– les modifications se font sur les deux installations de WordPress en même temps<br>
+– http:// s’ajoute ici automatiquement dans mes messages sans que je le veuille, bien entendu</p>
+</section></div>
+</article></li><li id="li-comment-813" class="comment even thread-even depth-1">
+<article id="comment-813" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/ebc1dc81c92521585433630bd29b8188?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/ebc1dc81c92521585433630bd29b8188?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/ebc1dc81c92521585433630bd29b8188?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/ebc1dc81c92521585433630bd29b8188?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-813" onclick='return addComment.moveForm( "comment-813", "813", "respond", "502" )' aria-label="Répondre à maitoti">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">maitoti</cite><div><a href="http://the-raspberry.com/vnc/#comment-813" class="x-comment-time"><time datetime="2014-04-15T17:54:23+00:00">04.15.2014 at 17 h 54 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour à tous,<br>
+est ce qu’il y a une solution pour tous les systèmes d’exploitation ?</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-821" class="comment odd alt depth-2">
+<article id="comment-821" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/b490b0ea1c3b4e5f86ea5fd89b42945d?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-821" onclick='return addComment.moveForm( "comment-821", "821", "respond", "502" )' aria-label="Répondre à BLS">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">BLS</cite><div><a href="http://the-raspberry.com/vnc/#comment-821" class="x-comment-time"><time datetime="2014-04-17T02:37:45+00:00">04.17.2014 at 2 h 37 min</time></a></div> </header>
+<section class="x-comment-content"><p>oui sous Linux<br>
+oui sous Windows<br>
+oui sous Mac<br>
+oui sous Android … (vu qu’ Android c’est linux)<br>
+pour le reste j’en sais rien…</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-1121" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-1121" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/69647e385613241b6d8842dd0c7a04e5?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/69647e385613241b6d8842dd0c7a04e5?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/69647e385613241b6d8842dd0c7a04e5?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/69647e385613241b6d8842dd0c7a04e5?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-1121" onclick='return addComment.moveForm( "comment-1121", "1121", "respond", "502" )' aria-label="Répondre à Pierre Ballinger">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Pierre Ballinger</cite><div><a href="http://the-raspberry.com/vnc/#comment-1121" class="x-comment-time"><time datetime="2014-05-18T08:15:03+00:00">05.18.2014 at 8 h 15 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,<br>
+J’ai au lancement : «&nbsp;vncserver :1&nbsp;» le message :</p><p>sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+Couldn’t start Xtightvnc; trying default font path.<br>
+Please set correct fontPath in the vncserver script.<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+Couldn’t start Xtightvnc process.</p><p>Une idée ?<br>
+Cordialement,<br>
+Pierre</p>
+</section></div>
+</article></li><li id="li-comment-9578" class="comment odd alt thread-even depth-1">
+<article id="comment-9578" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/f7d1fd3d7af18af354d1bd4c0162f883?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/f7d1fd3d7af18af354d1bd4c0162f883?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/f7d1fd3d7af18af354d1bd4c0162f883?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/f7d1fd3d7af18af354d1bd4c0162f883?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-9578" onclick='return addComment.moveForm( "comment-9578", "9578", "respond", "502" )' aria-label="Répondre à serie S">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">serie S</cite><div><a href="http://the-raspberry.com/vnc/#comment-9578" class="x-comment-time"><time datetime="2014-09-14T00:48:08+00:00">09.14.2014 at 0 h 48 min</time></a></div> </header>
+<section class="x-comment-content"><p>j’ai suivi votre tuto qui est parfait !!!<br>
+MERCI !!</p><p>Or , j’ai testé nickel malgré le fait que je ne voyais pas les icones ni les mouvements de la souris …<br>
+bon, controle de session au lieu du RDC c’est pas mal quand même…</p><p>Mais gros bug en rallumant le raspberry pour essayer d’installer un client vnc afin d’avoir le RDC et suivre ce magnifique tuto,<br>
+Au demarrage du raspberry, J’ai une fenêtre d’authentification qui me demande login et mot de passe<br>
+je mets les mots de passe par defaut et la fenêtre disparaît puis 
+réapparaît comme si l’authentification tournait en boucle…. que faire ?</p><p>Je souhaite savoir comment enlever tightvncserveur malgré tout…! ou revenir à une config stable<br>
+sans avoir à tout reformater ….</p><p>Merci encore pour votre aide…</p>
+</section></div>
+</article></li><li id="li-comment-13093" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-13093" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/997cef23606a41fdc8662cdce84159bd?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/997cef23606a41fdc8662cdce84159bd?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/997cef23606a41fdc8662cdce84159bd?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/997cef23606a41fdc8662cdce84159bd?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-13093" onclick='return addComment.moveForm( "comment-13093", "13093", "respond", "502" )' aria-label="Répondre à Arkham">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author"><a href="http://arkham.lebonforum.com/" rel="external nofollow" class="url">Arkham</a></cite><div><a href="http://the-raspberry.com/vnc/#comment-13093" class="x-comment-time"><time datetime="2014-10-27T20:40:49+00:00">10.27.2014 at 20 h 40 min</time></a></div> </header>
+<section class="x-comment-content"><p>Sa fonctionne très bien avec Putty, mais avec VNC dalle, sa m’ouvre une fenêtre me disant :<br>
+«&nbsp;Too many authentication failures «&nbsp;</p>
+</section></div>
+</article></li><li id="li-comment-13238" class="comment odd alt thread-even depth-1">
+<article id="comment-13238" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/bd74eacf47ba154ab3cda6f27af3f42d?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/bd74eacf47ba154ab3cda6f27af3f42d?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/bd74eacf47ba154ab3cda6f27af3f42d?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/bd74eacf47ba154ab3cda6f27af3f42d?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-13238" onclick='return addComment.moveForm( "comment-13238", "13238", "respond", "502" )' aria-label="Répondre à francko59">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">francko59</cite><div><a href="http://the-raspberry.com/vnc/#comment-13238" class="x-comment-time"><time datetime="2014-10-29T13:35:03+00:00">10.29.2014 at 13 h 35 min</time></a></div> </header>
+<section class="x-comment-content"><p>bonjour<br>
+merci pour toutes ces infos mon soucis vient que j’ai changer le MDP 
+raspberry mais quand je me connecte en VNC il ne prend pas mon nouveau 
+MDP mais raspberr<br>
+avez-vous une solution<br>
+merci</p>
+</section></div>
+</article></li><li id="li-comment-15281" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-15281" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/8e88d9988c1eb1d78140337ae7245afc?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/8e88d9988c1eb1d78140337ae7245afc?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/8e88d9988c1eb1d78140337ae7245afc?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/8e88d9988c1eb1d78140337ae7245afc?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-15281" onclick='return addComment.moveForm( "comment-15281", "15281", "respond", "502" )' aria-label="Répondre à Daniel ROTGER">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Daniel ROTGER</cite><div><a href="http://the-raspberry.com/vnc/#comment-15281" class="x-comment-time"><time datetime="2014-11-19T23:39:32+00:00">11.19.2014 at 23 h 39 min</time></a></div> </header>
+<section class="x-comment-content"><p>bonsoir,<br>
+Lors de l’installation de vnc serveur et suite à la commande vncserver 
+:1, j’indique donc le mot de passe raspberr mais j’ai le message 
+d’erreur suivant: Passwords do not match. Please try again.<br>
+En modifiant mon mot de passe via raspi-config (mot de passe:raspberry),
+ j’ai toujours le même message: Passwords do not match. Please try 
+again. Auriez vous une piste concernant ce probleme ?</p><p>Merci d’avance et encore bravo pour les tutos raspberry particulièrement bien faits.</p>
+</section></div>
+</article></li><li id="li-comment-17994" class="comment odd alt thread-even depth-1">
+<article id="comment-17994" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/?s=240&amp;r=g 2x" class="avatar avatar-120 photo avatar-default" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/?s=240&amp;r=g 2x' class='avatar avatar-120 photo avatar-default' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-17994" onclick='return addComment.moveForm( "comment-17994", "17994", "respond", "502" )' aria-label="Répondre à saturnain">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">saturnain</cite><div><a href="http://the-raspberry.com/vnc/#comment-17994" class="x-comment-time"><time datetime="2014-12-04T21:56:12+00:00">12.04.2014 at 21 h 56 min</time></a></div> </header>
+<section class="x-comment-content"><p>j’en ai baver mais … ça fonctionne <img src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://the-raspberry.com/wp-includes/images/smilies/😀" alt=":D" class="wp-smiley"> j’ai un peu tricoter avec le licence key mais c’est ok maintenant.<br>
+P.S. j’essayais entre mon Mac et mon Mint<br>
+Maintenant, reste plus qu’à refaire les manip sur le raspberry &gt;_&lt;</p>
+</section></div>
+</article></li><li id="li-comment-21062" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-21062" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/d8470d8bb48811aaafd04bc9c4805316?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/d8470d8bb48811aaafd04bc9c4805316?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/d8470d8bb48811aaafd04bc9c4805316?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/d8470d8bb48811aaafd04bc9c4805316?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-21062" onclick='return addComment.moveForm( "comment-21062", "21062", "respond", "502" )' aria-label="Répondre à fred">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">fred</cite><div><a href="http://the-raspberry.com/vnc/#comment-21062" class="x-comment-time"><time datetime="2014-12-29T10:57:44+00:00">12.29.2014 at 10 h 57 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,<br>
+J’ai réussi une première fois à me connecter à mon raspberry pi à l’aide de ssh et vnc en laissant le mot de passe par défaut.<br>
+Depuis que j’ai changé le mot de passe de mon raspberry pi, je n’arrive 
+plus à m’y connecter via vnc à moins d’utiliser encore l’ancien mot de 
+passe : raspberr</p><p>Merci de votre aide.</p>
+</section></div>
+</article></li><li id="li-comment-23985" class="comment odd alt thread-even depth-1">
+<article id="comment-23985" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4d225afa4980d034b1fcffb7a9d74f84?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-23985" onclick='return addComment.moveForm( "comment-23985", "23985", "respond", "502" )' aria-label="Répondre à Serge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Serge</cite><div><a href="http://the-raspberry.com/vnc/#comment-23985" class="x-comment-time"><time datetime="2015-04-28T17:00:00+00:00">04.28.2015 at 17 h 00 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,</p><p>souhaitant coupler 
+mon nouveau Raspberry avec mon téléphone portable, je rencontre une 
+difficulté. En suivant pas à pas ce tutoriel : <a href="http://framboisepi.fr/connexion-bluetooth/" rel="nofollow">http://framboisepi.fr/connexion-bluetooth/</a> , tout fonctionne, mais en root. Je me demande comment faire pour<br>
+– soit me connecter sur mon Raspberry en root via VNC<br>
+– soit pouvoir lancer le gestionnaire bluetooth (= blueman) via VNC<br>
+Si quelqu’un avait une idée…<br>
+Merci d’avance !</p>
+</section></div>
+</article></li><li id="li-comment-24121" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-24121" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/b3ed09b64e2ac2338a3c2db23e320ac5?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/b3ed09b64e2ac2338a3c2db23e320ac5?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/b3ed09b64e2ac2338a3c2db23e320ac5?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/b3ed09b64e2ac2338a3c2db23e320ac5?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24121" onclick='return addComment.moveForm( "comment-24121", "24121", "respond", "502" )' aria-label="Répondre à laurent">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">laurent</cite><div><a href="http://the-raspberry.com/vnc/#comment-24121" class="x-comment-time"><time datetime="2015-05-12T08:48:22+00:00">05.12.2015 at 8 h 48 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour ,<br>
+je n arrive pas avoir les permissions sous l interface pour delplacer / creer / copier des fichiers ou dossiers comment faire ?<br>
+sous le terminal ça fonctionne pourtant<br>
+Merci</p>
+</section></div>
+</article></li><li id="li-comment-24571" class="comment odd alt thread-even depth-1">
+<article id="comment-24571" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/?s=240&amp;r=g 2x" class="avatar avatar-120 photo avatar-default" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/?s=240&amp;r=g 2x' class='avatar avatar-120 photo avatar-default' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24571" onclick='return addComment.moveForm( "comment-24571", "24571", "respond", "502" )' aria-label="Répondre à gads">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">gads</cite><div><a href="http://the-raspberry.com/vnc/#comment-24571" class="x-comment-time"><time datetime="2015-07-02T07:47:02+00:00">07.02.2015 at 7 h 47 min</time></a></div> </header>
+<section class="x-comment-content"><p>bonjour,<br>
+Je vais ajouter ma 1erre contribution pour la raspberry pi<br>
+j’ai tenté de suivre ce tuto fort bien construit mais je me suis 
+retrouvé avec un vnc qui marchais mais ne se lancait pas au démarrage.<br>
+Après avoir tenter de trouver le pourquoi j’ai réussi à le faire démarrer avec le paramétrage du fichier tightvnc.desktop :</p><p>[Desktop Entry]<br>
+Encoding=UTF-8<br>
+Type=Application<br>
+Name=tightVNC<br>
+Comment=<br>
+Exec=sudo /usr/bin/vncserver :1<br>
+StartupNotify=false</p><p>Tout le reste à été fait à l’identique<br>
+ce qui bloquait c’était la ligne «&nbsp;Exec=&nbsp;» ou il fallait se 
+donner le droit de lancer vnc et aussi l’emplacement ou lancer 
+vncserver.</p><p>En espérant que cela va aider ceux qui ont eu le même problème sur un raspberry Pi 2 sous raspbian.</p>
+</section></div>
+</article></li><li id="li-comment-24646" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-24646" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/548b854ea1f7d97f2df5ec0f5488a05a?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/548b854ea1f7d97f2df5ec0f5488a05a?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/548b854ea1f7d97f2df5ec0f5488a05a?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/548b854ea1f7d97f2df5ec0f5488a05a?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24646" onclick='return addComment.moveForm( "comment-24646", "24646", "respond", "502" )' aria-label="Répondre à Em1l">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Em1l</cite><div><a href="http://the-raspberry.com/vnc/#comment-24646" class="x-comment-time"><time datetime="2015-07-16T00:39:40+00:00">07.16.2015 at 0 h 39 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour, J’ai un problème ça me dit : «&nbsp;Connexion refusée par l’ordinateur hôte&nbsp;»<br>
+ça veut dire quoi ça ? je n’ai même pas taper un seul mot de passe.<br>
+j’ai essayé de de faire vncserver :1 pour voir et sa me dit :<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+Couldn’t start Xtightvnc; trying default font path.<br>
+Please set correct fontPath in the vncserver script.<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+sh: 1: Syntax error: «&nbsp;(&nbsp;» unexpected<br>
+Couldn’t start Xtightvnc process.<br>
+j’ai aussi essayer de le désinstaller et sa me dit :<br>
+sudo: unable to resolve host (none)<br>
+Reading package lists… Done<br>
+Building dependency tree<br>
+Reading state information… Done<br>
+Package ‘vncserver’ is not installed, so not removed<br>
+The following packages were automatically installed and are no longer required:<br>
+bluez-alsa bluez-cups bluez-gstreamer libgail-3-0<br>
+Use ‘apt-get autoremove’ to remove them.<br>
+0 upgraded, 0 newly installed, 0 to remove and 130 not upgraded.<br>
+sudo: unable to resolve host (none)<br>
+Reading package lists… Done<br>
+Building dependency tree<br>
+Reading state information… Done<br>
+Package ‘vncserver’ is not installed, so not removed<br>
+The following packages were automatically installed and are no longer required:<br>
+bluez-alsa bluez-cups bluez-gstreamer libgail-3-0<br>
+Use ‘apt-get autoremove’ to remove them.<br>
+0 upgraded, 0 newly installed, 0 to remove and 130 not upgraded.</p><p>Merci d’avence !</p>
+</section></div>
+</article></li><li id="li-comment-24678" class="comment odd alt thread-even depth-1">
+<article id="comment-24678" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/1906320333195e9b1997517bd773d771?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/1906320333195e9b1997517bd773d771?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/1906320333195e9b1997517bd773d771?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/1906320333195e9b1997517bd773d771?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24678" onclick='return addComment.moveForm( "comment-24678", "24678", "respond", "502" )' aria-label="Répondre à zogzog">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">zogzog</cite><div><a href="http://the-raspberry.com/vnc/#comment-24678" class="x-comment-time"><time datetime="2015-08-07T11:47:34+00:00">08.07.2015 at 11 h 47 min</time></a></div> </header>
+<section class="x-comment-content"><p>je pense que c’est stupide de 
+vouloir controle le pi , le mieux c’est au contraire controlé un pc a 
+distance avec le pi ! donc un clien vnc qui se connecte a un pc ! 
+réfléchissez le pi et suffisement puissant pour faire tourné un client .
+ vous collé votre pi sur un grand écran , il se connect a votre pc ou 
+votre téléphone et boum , on lance un film ou autre ! plus de probléme 
+de lanteur ! le pi devient un terminal distant ! avec une clé wifi ou un
+ clable réseaux ! sa marche nikel ! et là l’intéré du pi en cast c’est 
+100x mieux qu’un bureau tout pourri on peu par la suite rendre le pi 
+plus domotique avec les petite proche mais en cast c’est la premier 
+fonction efficace et puissante que j’ai trouvé .</p>
+</section></div>
+</article></li><li id="li-comment-24826" class="comment even thread-odd thread-alt depth-1">
+<article id="comment-24826" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/0219235b0b1c84809fe2ea484449a533?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/0219235b0b1c84809fe2ea484449a533?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/0219235b0b1c84809fe2ea484449a533?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/0219235b0b1c84809fe2ea484449a533?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24826" onclick='return addComment.moveForm( "comment-24826", "24826", "respond", "502" )' aria-label="Répondre à dacalain">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">dacalain</cite><div><a href="http://the-raspberry.com/vnc/#comment-24826" class="x-comment-time"><time datetime="2015-09-23T10:33:30+00:00">09.23.2015 at 10 h 33 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour j’ai bien suivi ton tuto, très clair.<br>
+je bloque bêtement, car novice au moment ou tu dis de sauvegarder:<br>
+#!/bin/sh<br>
+[Desktop Entry]<br>
+Type=Application<br>
+Name=tightVNC<br>
+Exec=vncserver :1<br>
+StartupNotify=false</p><p>Sauvegarder et quitter puis redémarrer ensuite votre Raspberry pi.</p><p>je ne vois pas du tout où on peut sauvegarder.<br>
+merci</p>
+</section></div>
+</article><ol class="children"><li id="li-comment-25529" class="comment odd alt depth-2">
+<article id="comment-25529" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25529" onclick='return addComment.moveForm( "comment-25529", "25529", "respond", "502" )' aria-label="Répondre à mamat">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">mamat</cite><div><a href="http://the-raspberry.com/vnc/#comment-25529" class="x-comment-time"><time datetime="2016-03-20T19:28:49+00:00">03.20.2016 at 19 h 28 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonsoir<br>
+as tu trouve reponse a ta question? car je seche aussi !<br>
+merci</p>
+</section></div>
+</article></li></ol></li><li id="li-comment-24862" class="comment even thread-even depth-1">
+<article id="comment-24862" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/4a35ce59bf948b0ec6c26b5b5ad02cc2?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/4a35ce59bf948b0ec6c26b5b5ad02cc2?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/4a35ce59bf948b0ec6c26b5b5ad02cc2?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/4a35ce59bf948b0ec6c26b5b5ad02cc2?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-24862" onclick='return addComment.moveForm( "comment-24862", "24862", "respond", "502" )' aria-label="Répondre à ZeFattea">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">ZeFattea</cite><div><a href="http://the-raspberry.com/vnc/#comment-24862" class="x-comment-time"><time datetime="2015-10-07T21:39:00+00:00">10.07.2015 at 21 h 39 min</time></a></div> </header>
+<section class="x-comment-content"><p>Impeccable ! Merci pour l’astuce, super utile en déplacement avec un pc portable.</p>
+</section></div>
+</article></li><li id="li-comment-25063" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-25063" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/e2123c414bc4c4f39177ef2a05f3cbd6?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/e2123c414bc4c4f39177ef2a05f3cbd6?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/e2123c414bc4c4f39177ef2a05f3cbd6?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/e2123c414bc4c4f39177ef2a05f3cbd6?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25063" onclick='return addComment.moveForm( "comment-25063", "25063", "respond", "502" )' aria-label="Répondre à Alexis">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Alexis</cite><div><a href="http://the-raspberry.com/vnc/#comment-25063" class="x-comment-time"><time datetime="2015-11-10T20:08:19+00:00">11.10.2015 at 20 h 08 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,</p><p>J’ai un souci après
+ l’installation de tightvncserver : tout se passe correctement, j’arrive
+ à me connecter dessus, mais lorsque je reboot le pi, celui-ci m’ouvre 
+une page d’authentification, j’entre donc le login «&nbsp;pi&nbsp;» et 
+le mot de passe, l’écran devient noir et je retombe sur la page 
+d’authentification.</p><p>J’ai essayé de mettre les même mots de passe (vnc et pi), ça ne change rien.</p><p>Merci d’avance !</p>
+</section></div>
+</article></li><li id="li-comment-25065" class="comment even thread-even depth-1">
+<article id="comment-25065" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://2.gravatar.com/avatar/205ac2f8d5c5e2d27a7adcb28e9177ee?s=120&amp;r=g" srcset="http://2.gravatar.com/avatar/205ac2f8d5c5e2d27a7adcb28e9177ee?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://2.gravatar.com/avatar/205ac2f8d5c5e2d27a7adcb28e9177ee?s=120&#038;r=g' srcset='http://2.gravatar.com/avatar/205ac2f8d5c5e2d27a7adcb28e9177ee?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25065" onclick='return addComment.moveForm( "comment-25065", "25065", "respond", "502" )' aria-label="Répondre à Un autreSerge">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Un autreSerge</cite><div><a href="http://the-raspberry.com/vnc/#comment-25065" class="x-comment-time"><time datetime="2015-11-11T07:21:38+00:00">11.11.2015 at 7 h 21 min</time></a></div> </header>
+<section class="x-comment-content"><p>Merci pour ce tuto. Bien que novice tout à bien fontionné de la première fois.</p>
+</section></div>
+</article></li><li id="li-comment-25088" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-25088" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://1.gravatar.com/avatar/7669ea1462ff530371e79fef06aa7288?s=120&amp;r=g" srcset="http://1.gravatar.com/avatar/7669ea1462ff530371e79fef06aa7288?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://1.gravatar.com/avatar/7669ea1462ff530371e79fef06aa7288?s=120&#038;r=g' srcset='http://1.gravatar.com/avatar/7669ea1462ff530371e79fef06aa7288?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25088" onclick='return addComment.moveForm( "comment-25088", "25088", "respond", "502" )' aria-label="Répondre à Brice">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">Brice</cite><div><a href="http://the-raspberry.com/vnc/#comment-25088" class="x-comment-time"><time datetime="2015-11-16T22:03:40+00:00">11.16.2015 at 22 h 03 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,</p><p>Merci beaucoup pour ce super tuto. Ca a fonctionné directement.<br>
+Je cherche maintenant à pouvoir accéder à ma RPI via un mobile sous 4 G (donc hors réseau local).<br>
+Là, je ne sais pas trop comment m’y prendre. Est-ce qu’il existe un tuto fiable à ce sujet ?</p><p>Bonne soirée</p>
+</section></div>
+</article></li><li id="li-comment-25114" class="comment even thread-even depth-1">
+<article id="comment-25114" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/97b5c2b5e1ae78c766877dff9d840a51?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/97b5c2b5e1ae78c766877dff9d840a51?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/97b5c2b5e1ae78c766877dff9d840a51?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/97b5c2b5e1ae78c766877dff9d840a51?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25114" onclick='return addComment.moveForm( "comment-25114", "25114", "respond", "502" )' aria-label="Répondre à yann">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">yann</cite><div><a href="http://the-raspberry.com/vnc/#comment-25114" class="x-comment-time"><time datetime="2015-11-17T17:54:13+00:00">11.17.2015 at 17 h 54 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonjour,</p><p>Merci pour ce tuto, Tout marche nickel pour moi.</p><p>Seul
+ problème, j’aimerais voir le même écran (display) que la sortie hdmi 
+car je veux utiliser le raspberry pi pour projecter un diaporama sur une
+ TV, ceci à distance!<br>
+Est-il possible de voir le même display??</p><p>Merci d’avance.<br>
+Yann</p>
+</section></div>
+</article></li><li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-25350"><p>Pingback: <a href="http://enzomd.xyz/2015/acheter-un-raspberry-sans-accessoires-cest-possible/" rel="external nofollow" class="url">Acheter un Raspberry sans accessoires, c’est possible ! | Nyzo</a></p></li><li class="pingback even thread-even depth-1" id="comment-25490"><p>Pingback: <a href="http://tredifab.com/rendre-votre-reprap-autonome-avec-le-raspberry-pi/" rel="external nofollow" class="url">Rendre votre reprap autonome avec le raspberry pi - tredifab</a></p></li><li id="li-comment-25528" class="comment odd alt thread-odd thread-alt depth-1">
+<article id="comment-25528" class="comment"><div class="x-comment-img"><span class="avatar-wrap cf"><img alt="" src="data:image/gif;base64,R0lGODdhAQABAPAAAP///wAAACwAAAAAAQABAEACAkQBADs=" data-lazy-src="http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=120&amp;r=g" srcset="http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=240&amp;r=g 2x" class="avatar avatar-120 photo" height="120" width="120"><noscript><img alt='' src='http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=120&#038;r=g' srcset='http://0.gravatar.com/avatar/f36dab362333ed391e6baefcbc7045d3?s=240&amp;r=g 2x' class='avatar avatar-120 photo' height='120' width='120'/></noscript></span></div><div class="x-reply">
+<a rel="nofollow" class="comment-reply-link" href="#comment-25528" onclick='return addComment.moveForm( "comment-25528", "25528", "respond", "502" )' aria-label="Répondre à sabarros">Reply <span class="comment-reply-link-after"><i class="x-icon-reply" data-x-icon=""></i></span></a></div><div class="x-comment-wrap">
+<header class="x-comment-header"><cite class="x-comment-author">sabarros</cite><div><a href="http://the-raspberry.com/vnc/#comment-25528" class="x-comment-time"><time datetime="2016-03-20T19:24:07+00:00">03.20.2016 at 19 h 24 min</time></a></div> </header>
+<section class="x-comment-content"><p>Bonsoir<br>
+je ne sais pas comment sauvegarde la derniere partie du tuto dans la zone vide ?<br>
+merci</p>
+</section></div>
+</article></li></ol><div id="respond" class="comment-respond"><h3 id="reply-title" class="comment-reply-title">Laisser un commentaire <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://the-raspberry.com/vnc#respond" style="display:none;">Annuler la réponse.</a></small></h3><form action="http://the-raspberry.com/wp-comments-post.php" method="post" id="commentform" class="comment-form"><p class="comment-notes"><span id="email-notes">Votre adresse de messagerie ne sera pas publiée.</span></p><p class="comment-form-comment"><label for="comment">Commentaire</label><textarea id="comment" name="comment" cols="45" rows="8" maxlength="65525" aria-required="true" required="required"></textarea></p><p class="comment-form-author"><label for="author">Nom</label> <input id="author" name="author" size="30" maxlength="245" type="text"></p><p class="comment-form-email"><label for="email">Adresse de contact</label> <input id="email" name="email" size="30" maxlength="100" aria-describedby="email-notes" type="text"></p><p class="comment-form-url"><label for="url">Site web</label> <input id="url" name="url" size="30" maxlength="200" type="text"></p><p class="form-submit"><input name="submit" id="entry-comment-submit" class="submit" value="Submit" type="submit"> <input name="comment_post_ID" value="502" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden"></p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="df2a630186" type="hidden"></p><p class="comment-subscription-form"><input name="subscribe_comments" id="subscribe_comments" value="subscribe" style="width: auto; -moz-appearance: checkbox; -webkit-appearance: checkbox;" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe_comments">Prévenez-moi de tous les nouveaux commentaires par e-mail.</label></p><p style="display: none;"><input id="ak_js" name="ak_js" value="39" type="hidden"></p></form></div></div></div><aside class="x-sidebar right" role="complementary"><div id="text-15" class="widget widget_text"><h4 class="h-widget">A propos de moi</h4><div class="textwidget"><center>
+<br>
+<strong>Je m'appelle Victor</strong>, j'aime le sport et l'informatique, je fais encore parfois des fautes d'orthographe, <strong> je suis passionné du Raspberry pi et de nouvelle technologie</strong> et je publie plusieurs articles par semaines sur ce blog :)
+<br><br>
+<strong>Mon objectif :</strong> Vous partager ma passion pour le Raspberry pi et vous faire découvrir tous ses usages
+<br><br>
+<iframe src="//www.facebook.com/plugins/likebox.php?href=http%3A%2F%2Fwww.facebook.com%2Fthe-raspberrypi&amp;width=320&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=false&amp;appId=218191861573004" scrolling="no" style="border:none; overflow:hidden; width:320px; height:258px;" allowtransparency="true" frameborder="0"></iframe></center></div></div><div id="text-16" class="widget widget_text"><h4 class="h-widget">Produits</h4><div class="textwidget"><a href="http://www.amazon.fr/gp/product/B00T2U7R7I/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00T2U7R7I&amp;linkCode=as2&amp;tag=website0b2-21&amp;linkId=K5OQXQ3J2VMCP4EN" target="_blank" rel="nofollow">Raspberry pi 2</a>
+<br><a href="http://www.amazon.fr/gp/product/B00LPESRUK/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00LPESRUK&amp;linkCode=as2&amp;tag=website0b2-21&amp;linkId=DAJWQZ6GTMDHEQET" target="_blank" rel="nofollow">Raspberry pi B+</a>
+<br><a href="http://www.amazon.fr/gp/product/B00Q8MM4PI/ref=as_li_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00Q8MM4PI&amp;linkCode=as2&amp;tag=website0b2-21&amp;linkId=5CK5IO4TMTFT52XX" target="_blank" rel="nofollow">Raspberry pi A+</a>
+<br><a href="http://www.amazon.fr/s/?_encoding=UTF8&amp;camp=1642&amp;creative=19458&amp;linkCode=ur2&amp;pageMinusResults=1&amp;suo=1399318641317&amp;tag=website0b2-21&amp;url=search-alias%3Dcomputers#/ref=nb_sb_noss_1?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&amp;url=search-alias%3Dcomputers&amp;field-keywords=coque%20raspberry%20pi&amp;sprefix=coque+r%2Ccomputers&amp;rh=i%3Acomputers%2Ck%3Acoque%20raspberry%20pi&amp;sepatfbtf=true&amp;tc=1399318643820%22%3EDonner%20un%20nom%20%C3%A0%20votre%20lien%3C/a%3E%3Cimg%20src=%22https://ir-fr.amazon-adsystem.com/e/ir?t=website0b2-21&amp;l=ur2&amp;o=8" rel="nofollow" target="_blank">Coque</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B00DUUBSVM/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00DUUBSVM&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Boitier Pibow Ninja</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B00EZLBJ32/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00EZLBJ32&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Alimentation</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B00812K4V4/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00812K4V4&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Carte SD</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B008B7PZU4/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B008B7PZU4&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Clé Wifi</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B009A8ATOK/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B009A8ATOK&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Dissipateur thermique</a>
+<br>
+<a href="http://www.amazon.fr/s/?_encoding=UTF8&amp;camp=1642&amp;creative=19458&amp;field-keywords=ecran&amp;linkCode=ur2&amp;tag=website0b2-21&amp;url=search-alias%3Daps" target="_blank" rel="nofollow">Ecran</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B005N80T96/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B005N80T96&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Cable HDMI</a>
+<br>
+<a href="http://www.amazon.fr/gp/product/B00E1GGE40/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00E1GGE40&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Caméra</a>
+<br><a href="http://www.amazon.fr/gp/product/B00H9B1DTA/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00H9B1DTA&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Ecran tactile</a>
+<br><a href="http://the-raspberry.com/livres/" target="_blank">Livres</a>
+<br><a href="http://www.amazon.fr/gp/product/B00EMA09YG/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00EMA09YG&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Refroidissement</a>
+<br><a href="http://www.amazon.fr/gp/product/B00D4DDKDE/ref=as_li_ss_tl?ie=UTF8&amp;camp=1642&amp;creative=19458&amp;creativeASIN=B00D4DDKDE&amp;linkCode=as2&amp;tag=website0b2-21" target="_blank" rel="nofollow">Kit média center</a>
+<br></div></div><div id="text-17" class="widget widget_text"><div class="textwidget"></div></div><div id="text-19" class="widget widget_text"><div class="textwidget"></div></div> </aside></div><div class="x-widgetbar collapse"><div class="x-widgetbar-inner"><div class="x-container max width"><div class="x-column x-md x-1-2"></div><div class="x-column x-md x-1-2 last"></div></div></div></div><a href="#" class="x-btn-widgetbar collapsed" data-toggle="collapse" data-target=".x-widgetbar">
+<i class="x-icon-plus-circle" data-x-icon=""><span class="visually-hidden">Toggle the Widgetbar</span></i>
+</a>
+<footer class="x-colophon bottom" role="contentinfo"><div class="x-container max width"><div class="x-social-global"><a href="https://www.facebook.com/theraspberrypi" class="facebook" title="Facebook" target="_blank"><i class="x-icon-facebook-square" data-x-icon="" aria-hidden="true"></i></a><a href="https://twitter.com/ProRaspberry" class="twitter" title="Twitter" target="_blank"><i class="x-icon-twitter-square" data-x-icon="" aria-hidden="true"></i></a><a href="https://plus.google.com/+The-raspberry/" class="google-plus" title="Google+" target="_blank"><i class="x-icon-google-plus-square" data-x-icon="" aria-hidden="true"></i></a><a href="https://www.youtube.com/channel/UC67w7psu4d1ODhhveyH-O6w" class="youtube" title="YouTube" target="_blank"><i class="x-icon-youtube-square" data-x-icon="" aria-hidden="true"></i></a><a href="http://feeds.feedburner.com/the-raspberry/VzQU" class="rss" title="RSS" target="_blank"><i class="x-icon-rss-square" data-x-icon="" aria-hidden="true"></i></a></div><ul id="menu-main" class="x-nav"><li id="menu-item-13220" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-13220"><a href="http://the-raspberry.com/">Accueil</a></li><li id="menu-item-12855" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12855"><a href="http://the-raspberry.com/panier/">Panier</a></li><li id="menu-item-12856" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-12856"><a href="http://the-raspberry.com/contact/">Contact</a></li></ul><div class="x-colophon-content"><p>COPYRIGHT 2015 ·<a http:="" the-raspberry.com="" "="" title="X – The Raspberry">THE RASPBERRY</a></p></div></div>
+</footer></div>  <script type="text/javascript">window.WPCOM_sharing_counts={"http:\/\/the-raspberry.com\/vnc":502};</script> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-twitter').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcomtwitter','menubar=1,resizable=1,width=600,height=350');return false;});});</script> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-facebook').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcomfacebook','menubar=1,resizable=1,width=600,height=400');return false;});});</script> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-google-plus-1').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcomgoogle-plus-1','menubar=1,resizable=1,width=480,height=550');return false;});});</script> <div id="sharing_email" style="display: none;"><form action="/vnc" method="post">
+<label for="target_email">Envoyer à l'adresse e-mail</label>
+<input name="target_email" id="target_email" type="email">
+<label for="source_name">Votre nom</label>
+<input name="source_name" id="source_name" type="text"><label for="source_email">Votre adresse e-mail</label>
+<input name="source_email" id="source_email" type="email"><input id="jetpack-source_f_name" name="source_f_name" class="input" size="25" autocomplete="off" type="text"> <script>document.getElementById('jetpack-source_f_name').value='';</script> <img scale="0" style="float: right; display: none" class="loading" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/loading.gif" alt="loading" height="16" width="16">
+<input value="Envoyer un e-mail" class="sharing_send" type="submit">
+<a rel="nofollow" href="#cancel" class="sharing_cancel">Annuler</a><div class="errors errors-1" style="display: none;">
+L'article n'a pas été envoyé - Vérifiez vos adresses e-mail&nbsp;!</div><div class="errors errors-2" style="display: none;">
+La vérification e-mail a échoué, veuillez réessayer</div><div class="errors errors-3" style="display: none;">
+Impossible de partager les articles de votre blog par e-mail.</div></form></div> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-tumblr').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcomtumblr','menubar=1,resizable=1,width=450,height=450');return false;});});</script> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-linkedin').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcomlinkedin','menubar=1,resizable=1,width=580,height=450');return false;});});</script> <script type="text/javascript">var windowOpen;jQuery(document).on('ready post-load',function(){jQuery('a.share-pocket').on('click',function(){if('undefined'!==typeof windowOpen){windowOpen.close();}
+windowOpen=window.open(jQuery(this).attr('href'),'wpcompocket','menubar=1,resizable=1,width=450,height=450');return false;});});</script> <script type="text/javascript" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/devicepx-jetpack.js"></script> <script type="text/javascript">var sharing_js_options={"lang":"en","counts":"1"};</script> <script type="text/javascript" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/e-201617.js" async="" defer="defer"></script> <script type="text/javascript">_stq=window._stq||[];_stq.push(['view',{v:'ext',j:'1:4.0.2',blog:'59832184',post:'502',tz:'2',srv:'the-raspberry.com'}]);_stq.push(['clickTrackerInit','59832184','502']);</script> 
+<img scale="0" id="wpstats" alt=":)" src="Contr%C3%B4ler%20son%20bureau%20%C3%A0%20distance%20avec%20VNC%20sur%20le%20Raspberry%20pi_fichiers/g.gif"></body><iframe src="resource://firefox.abs.avira.com/html/top.html?1461930250685#minimized" style="position: fixed ! important; z-index: 2147483647 ! important; overflow: hidden ! important; top: 0px ! important; left: 0px ! important; right: 0px ! important; width: 138px ! important; height: 13px ! important; max-height: none ! important; min-height: 0px ! important; margin: 0px auto ! important; padding: 0px ! important; border: 0px none ! important; background-color: transparent ! important; display: block ! important;" id="abs-top-frame" allowtransparency="true" frameborder="0"></iframe></html>
+<!-- This website is like a Rocket, isn't it ? Performance optimized by WP Rocket. Learn more: http://wp-rocket.me - Debug: cached@1461857634 -->
