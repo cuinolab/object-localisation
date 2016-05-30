@@ -1,0 +1,355 @@
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:st1="urn:schemas-microsoft-com:office:smarttags" xmlns="http://www.w3.org/TR/REC-html40" xmlns:ns0="urn:schemas-microsoft-com:office:smarttags"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="ProgId" content="Word.Document">
+<meta name="Generator" content="Microsoft Word 11">
+<meta name="Originator" content="Microsoft Word 11">
+<link rel="File-List" href="http://web.mit.edu/%7Ekccheung/Public/BTBeaconHack/index_files/filelist.xml">
+<link rel="Edit-Time-Data" href="http://web.mit.edu/%7Ekccheung/Public/BTBeaconHack/index_files/editdata.mso">
+<!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]-->
+<title>An Inexpensive Bluetooth-Based Indoor Positioning Hack</title>
+<link href="An%20Inexpensive%20Bluetooth-Based%20Indoor%20Positioning%20Hack_fichiers/content.css" type="text/css" rel="stylesheet"><link href="An%20Inexpensive%20Bluetooth-Based%20Indoor%20Positioning%20Hack_fichiers/search.css" type="text/css" rel="stylesheet"></head><body style="tab-interval:.5in" lang="EN-US" link="blue" vlink="purple"><o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="country-region">
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="PostalCode">
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="State">
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="City">
+<o:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="place">
+<!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>kccheung</o:Author>
+  <o:LastAuthor>kccheung</o:LastAuthor>
+  <o:Revision>3</o:Revision>
+  <o:TotalTime>5</o:TotalTime>
+  <o:Created>2006-09-19T17:37:00Z</o:Created>
+  <o:LastSaved>2006-09-19T17:41:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>647</o:Words>
+  <o:Characters>3689</o:Characters>
+  <o:Company>MIT</o:Company>
+  <o:Lines>30</o:Lines>
+  <o:Paragraphs>8</o:Paragraphs>
+  <o:CharactersWithSpaces>4328</o:CharactersWithSpaces>
+  <o:Version>11.5606</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>BestFit</w:Zoom>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" LatentStyleCount="156">
+ </w:LatentStyles>
+</xml><![endif]--><!--[if !mso]><object
+ classid="clsid:38481807-CA0E-42D2-BF39-B33AF135CC4D" id=ieooui></object>
+<style>
+st1\:*{behavior:url(#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";
+	mso-ansi-language:#0400;
+	mso-fareast-language:#0400;
+	mso-bidi-language:#0400;}
+</style>
+<![endif]--><u1:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="country-region"><u1:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="PostalCode"><u1:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="State"><u1:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="City"><u1:smarttagtype namespaceuri="urn:schemas-microsoft-com:office:smarttags" name="place"><!--[if gte mso 9]><xml>
+ <u1:DocumentProperties>
+  <u1:Author>kccheung</u1:Author>
+  <u1:LastAuthor>kccheung</u1:LastAuthor>
+  <u1:Revision>3</u1:Revision>
+  <u1:TotalTime>93</u1:TotalTime>
+  <u1:Created>2006-09-19T15:57:00Z</u1:Created>
+  <u1:LastSaved>2006-09-19T17:30:00Z</u1:LastSaved>
+  <u1:Pages>2</u1:Pages>
+  <u1:Words>628</u1:Words>
+  <u1:Characters>3580</u1:Characters>
+  <u1:Company>MIT</u1:Company>
+  <u1:Lines>29</u1:Lines>
+  <u1:Paragraphs>8</u1:Paragraphs>
+  <u1:CharactersWithSpaces>4200</u1:CharactersWithSpaces>
+  <u1:Version>11.5606</u1:Version>
+ </u1:DocumentProperties>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <u2:WordDocument>
+  <u2:Zoom>BestFit</u2:Zoom>
+  <u2:SpellingState>Clean</u2:SpellingState>
+  <u2:GrammarState>Clean</u2:GrammarState>
+  <u2:PunctuationKerning/>
+  <u2:ValidateAgainstSchemas/>
+  <u2:SaveIfXMLInvalid>false</u2:SaveIfXMLInvalid>
+  <u2:IgnoreMixedContent>false</u2:IgnoreMixedContent>
+  <u2:AlwaysShowPlaceholderText>false</u2:AlwaysShowPlaceholderText>
+  <u2:Compatibility>
+   <u2:BreakWrappedTables/>
+   <u2:SnapToGridInCell/>
+   <u2:WrapTextWithPunct/>
+   <u2:UseAsianBreakRules/>
+   <u2:DontGrowAutofit/>
+  </u2:Compatibility>
+  <u2:BrowserLevel>MicrosoftInternetExplorer4</u2:BrowserLevel>
+ </u2:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <u3:LatentStyles DefLockedState="false" LatentStyleCount="156">  </u3:LatentStyles>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="3074"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]-->
+
+
+
+
+<div class="Section1">
+
+<p class="MsoNormal" style="text-align:center" align="center"><b style="mso-bidi-font-weight:
+normal"><span style="font-size:24.0pt">An Inexpensive Bluetooth-Based Indoor
+Positioning Hack<u1:p></u1:p></span></b></p>
+
+<p class="MsoNormal" style="text-align:center" align="center">Kenneth C. Cheung,
+Stephen S. Intille, and Kent Larson</p>
+
+<p class="MsoNormal" style="text-align:center" align="center">House_n</p>
+
+<p class="MsoNormal" style="text-align:center" align="center">Massachusetts
+Institute of Technology</p>
+
+<p class="MsoNormal" style="text-align:center" align="center">1 <ns0:city><ns0:place><st1:place w:st="on"><st1:city w:st="on">Cambridge</st1:city></st1:place></ns0:place></ns0:city>
+Center, 4th Floor</p>
+
+<p class="MsoNormal" style="text-align:center" align="center"><ns0:place><ns0:city><st1:place w:st="on"><st1:city w:st="on">Cambridge</st1:city></st1:place></ns0:city>, <st1:state w:st="on"><ns0:state><st1:state w:st="on">MA</st1:state></ns0:state></st1:state>
+ <st1:postalcode w:st="on"><ns0:postalcode><st1:postalcode w:st="on">02142-1605</st1:postalcode></ns0:postalcode></st1:postalcode>
+ <ns0:country-region><st1:country-region w:st="on">USA</st1:country-region></ns0:country-region></ns0:place></p>
+
+<p class="MsoNormal" style="text-align:center" align="center"><span style="mso-ansi-language:FI" lang="FI">kccheung | intille | kll @mit.edu<o:p></o:p></span></p>
+
+<p class="MsoNormal"><u1:p><span style="mso-ansi-language:FI" lang="FI">&nbsp;<o:p></o:p></span></u1:p></p>
+
+<p class="MsoNormal"><span style="mso-ansi-language:FI" lang="FI"><u1:p>&nbsp;<o:p></o:p></u1:p></span></p>
+
+<p class="MsoNormal">Paper:<u5:shapetype id="_x0000_t75" coordsize="21600,21600" u1:spt="75" u1:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+<u5:stroke joinstyle="miter"><u5:formulas><u5:f eqn="if lineDrawn pixelLineWidth 0"><u5:f eqn="sum @0 1 0"><u5:f eqn="sum 0 0 @1"><u5:f eqn="prod @2 1 2"><u5:f eqn="prod @3 21600 pixelWidth"><u5:f eqn="prod @3 21600 pixelHeight"><u5:f eqn="sum @0 0 1"><u5:f eqn="prod @6 1 2"><u5:f eqn="prod @7 21600 pixelWidth"><u5:f eqn="sum @8 21600 0"><u5:f eqn="prod @7 21600 pixelHeight"><u5:f eqn="sum @10 21600 0"></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:f></u5:formulas><u5:path u1:extrusionok="f" gradientshapeok="t" u1:connecttype="rect"><u1:lock u5:ext="edit" aspectratio="t"></u1:lock></u5:path></u5:stroke></u5:shapetype><u5:shape id="_x0000_i1026" type="#_x0000_t75" style="width:109.5pt;
+ height:1in" u1:ole=""><u5:imagedata src="An%20Inexpensive%20Bluetooth_files/image001.wmz" u1:title=""></u5:imagedata></u5:shape><span style="mso-ansi-language:FI" lang="FI"><a href="http://web.mit.edu/%7Ekccheung/Public/BTBeaconHack/CheungIntilleLarson2006.pdf"><span style="mso-ansi-language:EN-US" lang="EN-US">CheungIntilleLarson2006.pdf</span></a></span></p>
+
+<p class="MsoNormal">Poster:<u5:shape id="_x0000_i1027" type="#_x0000_t75" style="width:109.5pt;height:1in" u1:ole="">
+<u5:imagedata src="An%20Inexpensive%20Bluetooth_files/image001.wmz" u1:title=""></u5:imagedata></u5:shape><a href="http://web.mit.edu/%7Ekccheung/Public/BTBeaconHack/CheungIntilleLarson2006poster.pdf">CheungIntilleLarson2006poster.pdf</a><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">We needed a low cost indoor-resolution position system for
+ubicomp rapid prototyping that we could use to test context-aware phone
+applications. If you do too, here's a simple hack with step-by-step
+instructions to save you time and get you started. <o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">Introduction <u1:p></u1:p></b><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">We wanted a low-cost indoor positioning system that could be
+rapidly deployed and easily maintained in an office setting. The system needed
+to be capable of providing phones with context information about their
+locations at the scale of rooms and workspaces (i.e., 2-3m). The system needed
+to have these properties: </p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Quick and easy to
+setup</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Affordable, even
+with many beacons in an office</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Not requiring
+maintenance</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Not forcing people
+to put equipment or software on their computers<o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">Options that that were not practical for our rapid
+prototyping were making custom hardware (expensive for research prototyping),
+Satellite Global Position Systems (poor signal reception indoors) and cellular
+tower triangulation (large spatial resolution). Although there are many options
+for indoor tracking (IR, RF, and ultrasound tag systems -- many with higher
+spatial resolution than necessary), none were available (both hardware and
+software, affordable, easy for non-experts to setup, and practical for use a
+building-wide scale and for running on phones. The closest solution we
+discovered recently are [Info and cite to BT tags], however these devices cost
+$X per tag (with charger). Here we provide a recipe for a solution that is easy
+to make and costs X% less than the best commercial beacons we are aware of. <o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">How-To Recipe <u1:p></u1:p></b><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">Step 1: Parts</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- 1: SCALA 500
+Bluetooth Mobile Phone Headset; suggested source: <a href="http://www.froogle.com/">www.froogle.com</a> ($19.00)</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- 1: Cardboard Carton
+2.5”x3”x1”; suggested source: <a href="http://www.mcmaster.com/">www.mcmaster.com</a>
+($0.42; bought in bulk)</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- 1: Foil Tape,
+2”x15’; suggested source: <a href="http://www.homedepot.com/">www.homedepot.com</a>
+($0.65; $6.00 rolls)<o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">Step 2: Assembly</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Remove the plastic cover
+of the Bluetooth headset, by removing the screws and clipping the speaker
+wires.</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Remove the battery
+by clipping the two (red and black) wires connecting it to the PCB.</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Optional: Short the
+power switch by soldering a jumper across the switch plate as shown below. This
+step allows the device to go into discovery mode for the first thirty seconds
+after it initially receives power, so that its address can be confirmed with a
+device search.<o:p></o:p></p>
+
+<p class="MsoNormal"><u5:shape id="_x0000_i1025" type="#_x0000_t75" style="width:112.5pt;height:112.5pt"><u5:imagedata src="An%20Inexpensive%20Bluetooth_files/image003.jpg" u1:title="100_5786"></u5:imagedata></u5:shape><!--[if gte vml 1]><v:shapetype
+ id="_x0000_t75" coordsize="21600,21600" o:spt="75" o:preferrelative="t"
+ path="m@4@5l@4@11@9@11@9@5xe" filled="f" stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="_x0000_i1025" type="#_x0000_t75" style='width:112.5pt;
+ height:112.5pt'>
+ <v:imagedata src="index_files/image001.jpg" o:title="100_5786"/>
+</v:shape><![endif]--><!--[if !vml]--><img src="An%20Inexpensive%20Bluetooth-Based%20Indoor%20Positioning%20Hack_fichiers/image002.jpg" v:shapes="_x0000_i1025" height="150" border="0" width="150"><!--[endif]--><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">Step 3: Software</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Download the
+software tools here: http://web.mit.edu/~kccheung/Public/btExample.zip</p>
+
+<p class="MsoNormal"><span style="mso-spacerun:yes">&nbsp;</span>- Run the utility, as
+shown below. First, click “Find Local Device” to start communicating with the
+Bluetooth hardware on your machine. Then, you can check for a device, as set up
+in the previous description, by device address, using the “Check” function. The
+device search tool allows you to see the addresses of discoverable devices that
+are within range.<o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p><o:p></o:p></p>
+
+<p class="MsoNormal"><u5:shape id="_x0000_i1028" type="#_x0000_t75" style="width:384pt;height:4in"><u5:imagedata src="An%20Inexpensive%20Bluetooth_files/image005.png" u1:title=""></u5:imagedata></u5:shape><!--[if gte vml 1]><v:shape
+ id="_x0000_i1026" type="#_x0000_t75" style='width:384pt;height:4in'>
+ <v:imagedata src="index_files/image003.png" o:title=""/>
+</v:shape><![endif]--><!--[if !vml]--><img src="An%20Inexpensive%20Bluetooth-Based%20Indoor%20Positioning%20Hack_fichiers/image004.jpg" v:shapes="_x0000_i1026" height="384" border="0" width="512"><!--[endif]--><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">Acknowledgements<u1:p></u1:p></b><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">We thank Albert Huang and Larry Rudolph at MIT CSAIL for
+sharing their prior work with Bluetooth positioning, Steelcase, Inc., and the
+MIT Department of Architecture for research support.<o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal"><b style="mso-bidi-font-weight:normal">References<u1:p></u1:p></b><o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+<p class="MsoNormal">1. Bluetooth Special Interest Group. Specification of the Bluetooth
+System. Available at http://www.bluetooth.org/.</p>
+
+<p class="MsoNormal">2. Dhruv Pandya Ravi Jain Lupu, E. Indoor location
+estimation using multiple wireless technologies. Proceedings of PIMRC 2003.
+7-10 Sept. 2003. IEEE. 2208- 2212 vol.3.</p>
+
+<p class="MsoNormal">3. Hallberg, J., Nilsson, M., &amp; Synnes, K. Positioning
+with Bluetooth. Proceedings of ICT 2003. 23 Feb.-1 March 2003. 954- 958 vol.2.</p>
+
+<p class="MsoNormal">4. Huang, A. The Use of Bluetooth in Linux and Location
+Aware Computing. Master's Thesis. MIT CSAIL. 2005.</p>
+
+<p class="MsoNormal">Available at http://csail.mit.edu/~albert/pubs/2005-ashuang-sm-thesis.pdf</p>
+
+<p class="MsoNormal">5. InTheHand .Net libraries for Microsoft Bluetooth Stack.
+Available at http://www.32feet.net<o:p></o:p></p>
+
+<p class="MsoNormal"><u1:p>&nbsp;</u1:p></p>
+
+</div>
+
+
+
+
+</u1:smarttagtype></u1:smarttagtype></u1:smarttagtype></u1:smarttagtype></u1:smarttagtype></o:smarttagtype></o:smarttagtype></o:smarttagtype></o:smarttagtype></o:smarttagtype></body><iframe src="resource://firefox.abs.avira.com/html/top.html?1461066958532#minimized" style="position: fixed ! important; z-index: 2147483647 ! important; overflow: hidden ! important; top: 0px ! important; left: 0px ! important; right: 0px ! important; width: 138px ! important; height: 13px ! important; max-height: none ! important; min-height: 0px ! important; margin: 0px auto ! important; padding: 0px ! important; border: 0px none ! important; background-color: transparent ! important; display: block ! important;" id="abs-top-frame" allowtransparency="true" frameborder="0"></iframe></html>
