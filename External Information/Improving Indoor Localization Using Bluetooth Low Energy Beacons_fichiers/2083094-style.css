@@ -1,0 +1,49 @@
+@media only screen and (min-width:0px) {
+span#M9 {height:45.4571pt; width:113.51pt;}
+span#R9, span#L9 {width:13.45pt;}
+svg#M9-1 {position:absolute;left:0pt;top:0pt;}
+svg#M9-2 {margin-top:16.8pt;position:absolute;}
+}
+@media only screen and (min-width:330px) {
+span#M15 {height:38.1758pt; width:167.15pt;}
+span#R15, span#L15 {width:15.09pt;}
+svg#I15, svg#IL15  {display:none;}
+svg#M15-1 {position:absolute;left:0pt;top:0pt;}
+svg#M15-2 {position:absolute;left:85.45pt;top:0pt;}
+svg#M15-3 {margin-top:13.16pt;position:absolute;}
+}
+@media only screen and (max-width:330px) {
+span#M15 {height:auto; width:auto;}
+svg#I15, svg#IL15  {display:inherit;}
+span#R15, span#L15 {width:auto;}
+svg#M15-1, svg#M15-2, svg#M15-3  {display:none;}
+}
+@media only screen and (min-width:0px) {
+span#M18 {height:14.5707pt; width:153.06pt;}
+span#R18, span#L18 {width:14.92pt;}
+svg#M18-1 {position:absolute;left:0pt;top:0pt;}
+svg#M18-2 {margin-top:1.35pt;position:absolute;}
+}
+@media only screen and (min-width:404px) {
+span#M30 {height:53.0254pt; width:221.48pt;}
+span#R30, span#L30 {width:15.52pt;}
+svg#I30, svg#IL30  {display:none;}
+svg#M30-1 {position:absolute;left:0pt;top:0pt;}
+svg#M30-2 {position:absolute;left:16.59pt;top:0pt;}
+svg#M30-3 {margin-top:20.58pt;position:absolute;}
+}
+@media only screen and (min-width:391px) and (max-width:403px) {
+span#M30 {height:75.0405pt; width:211.59pt;}
+span#R30, span#L30 {width:15.52pt;}
+svg#I30, svg#IL30  {display:none;}
+svg#M30-1 {position:absolute;left:0pt;top:-21.39pt;}
+svg#M30-2 {position:absolute;left:6.65pt;top:22.02pt;}
+svg#M30-3 {margin-top:31.59pt;position:absolute;}
+}
+@media only screen and (max-width:391px) {
+span#M30 {height:auto; width:auto;}
+svg#I30, svg#IL30  {display:inherit;}
+span#R30, span#L30 {width:auto;}
+svg#M30-1, svg#M30-2, svg#M30-3  {display:none;}
+}
+
