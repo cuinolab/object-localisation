@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/6cc1187a-6242-4aee-95d6-8d0c0fccc2c7.css" />
+	<meta charset="UTF-8" />
+		<title>Improving Indoor Localization Using Bluetooth Low Energy Beacons</title>
+	<link href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/master.css" rel="stylesheet" type="text/css" />
+	<link href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/xml_display.css" rel="stylesheet" type="text/css" />
+	<link href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/hindawi.css" rel="stylesheet" type="text/css" />
+    <!--[if lt IE 9]>
+     <link rel="stylesheet" type="text/css" href="/styles/ielte8.css" />
+    <![endif]-->
+   <link rel="apple-touch-icon-precomposed" href="http://www.hindawi.com/images/apple-touch-icon-precomposed.png" />
+   <link rel="apple-touch-icon" sizes="72x72" href="http://www.hindawi.com/images/apple-touch-icon-72x72.png" />
+   <link rel="apple-touch-icon" sizes="114x114" href="http://www.hindawi.com/images/apple-touch-icon-114x114.png" />
+   <link rel="apple-touch-icon" sizes="144x144" href="http://www.hindawi.com/images/apple-touch-icon-144x144.png" />
+
+
+       <meta name="citation_journal_title" content="Mobile Information Systems" />
+       <meta name="citation_publisher" content="Hindawi Publishing Corporation" />
+       <meta name="citation_authors" content="Kriz, Pavel; Maly, Filip; Kozel, Tomas" />
+       <meta name="citation_title" content="Improving Indoor Localization Using Bluetooth Low Energy Beacons" />
+       <meta name="citation_volume" content="2016" />
+       <meta name="citation_date" content="2016/04/18" />
+       <meta name="citation_year" content="2016" />
+       <meta name="dcterms.issued" content="2016/04/18" />
+       <meta name="citation_doi" content="10.1155/2016/2083094" />
+       <meta name="citation_issn" content="1574-017X" />
+       <meta name="citation_abstract" content="The paper describes basic principles of a radio-based indoor localization and focuses on the improvement of its results with the aid of a new Bluetooth Low Energy technology. The advantage of this technology lies in its support by contemporary mobile devices, especially by smartphones and tablets. We have implemented a distributed system for collecting radio fingerprints by mobile devices with the Android operating system. This system enables volunteers to create radio-maps and update them continuously. New Bluetooth Low Energy transmitters (Apple uses its &amp;#x201c;iBeacon&amp;#x201d; brand name for these devices) have been installed on the floor of the building in addition to existing WiFi access points. The localization of stationary objects based on WiFi, Bluetooth Low Energy, and their combination has been evaluated using the data measured during the experiment in the building. Several configurations of the transmitters&amp;#x2019; arrangement, several ways of combination of the data from both technologies, and other parameters influencing the accuracy of the stationary localization have been tested." />
+       <meta name="citation_fulltext_html_url" content="http://www.hindawi.com/journals/misy/2016/2083094/" />
+       <meta name="citation_pdf_url" content="http://downloads.hindawi.com/journals/misy/2016/2083094.pdf" />
+       <meta name="citation_abstract_html_url" content="http://www.hindawi.com/journals/misy/2016/2083094/abs/" />
+       <meta name="dc.title" content="Improving Indoor Localization Using Bluetooth Low Energy Beacons" />
+       <meta name="dc.creator" content="Kriz, Pavel" />
+       <meta name="dc.creator" content="Maly, Filip" />
+       <meta name="dc.creator" content="Kozel, Tomas" />
+       <meta name="dcterms.issued" content="2016/04/18" />
+       <meta name="dc.description" content="The paper describes basic principles of a radio-based indoor localization and focuses on the improvement of its results with the aid of a new Bluetooth Low Energy technology. The advantage of this technology lies in its support by contemporary mobile devices, especially by smartphones and tablets. We have implemented a distributed system for collecting radio fingerprints by mobile devices with the Android operating system. This system enables volunteers to create radio-maps and update them continuously. New Bluetooth Low Energy transmitters (Apple uses its &amp;#x201c;iBeacon&amp;#x201d; brand name for these devices) have been installed on the floor of the building in addition to existing WiFi access points. The localization of stationary objects based on WiFi, Bluetooth Low Energy, and their combination has been evaluated using the data measured during the experiment in the building. Several configurations of the transmitters&amp;#x2019; arrangement, several ways of combination of the data from both technologies, and other parameters influencing the accuracy of the stationary localization have been tested." />
+       <meta name="dc.source" content="Mobile Information Systems" />
+       <meta name="dc.format" content="text/html" />
+       <meta name="dc.publisher" content="Hindawi Publishing Corporation" />
+       <meta name="dc.date" content="2016/04/18" />
+       <meta name="dc.type" content="Research article" />
+       <meta name="dc.identifier" content="doi:10.1155/2016/2083094" />
+       <meta name="dc.language" content="en" />
+       <meta name="prism.issn" content="1574-017X" />
+       <meta name="prism.publicationName" content="Mobile Information Systems" />
+       <meta name="prism.publicationDate" content="2016/04/18" />
+       <meta name="prism.volume" content="2016" />
+       <meta name="prism.number" content="" />
+       <meta name="prism.section" content="Research article" />
+       <meta name="prism.startingPage" content="" />
+       <meta name="prism.doi" content="10.1155/2016/2083094" />
+
+        <link href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094-style.css" rel="stylesheet" type="text/css" />
+    <link href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/print_article.css" rel="stylesheet" type="text/css" media="print" />
+        <meta name="citation_journal_title" content="Mobile Information Systems" />
+        <meta name="citation_publisher" content="Hindawi Publishing Corporation" />
+        <meta name="citation_authors" content="Kriz, Pavel; Maly, Filip; Kozel, Tomas" />
+        <meta name="citation_title" content="Improving Indoor Localization Using Bluetooth Low Energy Beacons" />
+        <meta name="citation_volume" content="2016" />
+        <meta name="citation_date" content="2016/04/18" />
+        <meta name="citation_year" content="2016" />
+        <meta name="dcterms.issued" content="2016/04/18" />
+        <meta name="citation_doi" content="10.1155/2016/2083094" />
+        <meta name="citation_issn" content="1574-017X" />
+        <meta name="citation_abstract" content="The paper describes basic principles of a radio-based indoor localization and focuses on the improvement of its results with the aid of a new Bluetooth Low Energy technology. The advantage of this technology lies in its support by contemporary mobile devices, especially by smartphones and tablets. We have implemented a distributed system for collecting radio fingerprints by mobile devices with the Android operating system. This system enables volunteers to create radio-maps and update them continuously. New Bluetooth Low Energy transmitters (Apple uses its &amp;#x201c;iBeacon&amp;#x201d; brand name for these devices) have been installed on the floor of the building in addition to existing WiFi access points. The localization of stationary objects based on WiFi, Bluetooth Low Energy, and their combination has been evaluated using the data measured during the experiment in the building. Several configurations of the transmitters&amp;#x2019; arrangement, several ways of combination of the data from both technologies, and other parameters influencing the accuracy of the stationary localization have been tested." />
+        <meta name="citation_fulltext_html_url" content="http://www.hindawi.com/journals/misy/2016/2083094/" />
+        <meta name="citation_pdf_url" content="http://downloads.hindawi.com/journals/misy/2016/2083094.pdf" />
+        <meta name="citation_abstract_html_url" content="http://www.hindawi.com/journals/misy/2016/2083094/abs/" />
+        <meta name="dc.title" content="Improving Indoor Localization Using Bluetooth Low Energy Beacons" />
+        <meta name="dc.creator" content="Kriz, Pavel" />
+        <meta name="dc.creator" content="Maly, Filip" />
+        <meta name="dc.creator" content="Kozel, Tomas" />
+        <meta name="dcterms.issued" content="2016/04/18" />
+        <meta name="dc.description" content="The paper describes basic principles of a radio-based indoor localization and focuses on the improvement of its results with the aid of a new Bluetooth Low Energy technology. The advantage of this technology lies in its support by contemporary mobile devices, especially by smartphones and tablets. We have implemented a distributed system for collecting radio fingerprints by mobile devices with the Android operating system. This system enables volunteers to create radio-maps and update them continuously. New Bluetooth Low Energy transmitters (Apple uses its &amp;#x201c;iBeacon&amp;#x201d; brand name for these devices) have been installed on the floor of the building in addition to existing WiFi access points. The localization of stationary objects based on WiFi, Bluetooth Low Energy, and their combination has been evaluated using the data measured during the experiment in the building. Several configurations of the transmitters&amp;#x2019; arrangement, several ways of combination of the data from both technologies, and other parameters influencing the accuracy of the stationary localization have been tested." />
+        <meta name="dc.source" content="Mobile Information Systems" />
+        <meta name="dc.format" content="text/html" />
+        <meta name="dc.publisher" content="Hindawi Publishing Corporation" />
+        <meta name="dc.date" content="2016/04/18" />
+        <meta name="dc.type" content="Research article" />
+        <meta name="dc.identifier" content="doi:10.1155/2016/2083094" />
+        <meta name="dc.language" content="en" />
+        <meta name="prism.issn" content="1574-017X" />
+        <meta name="prism.publicationName" content="Mobile Information Systems" />
+        <meta name="prism.publicationDate" content="2016/04/18" />
+        <meta name="prism.volume" content="2016" />
+        <meta name="prism.number" content="" />
+        <meta name="prism.section" content="Research article" />
+        <meta name="prism.startingPage" content="" />
+        <meta name="prism.doi" content="10.1155/2016/2083094" />
+
+	<link rel="alternate" type="application/rss+xml" title="Mobile Information Systems latest articles" href="http://www.hindawi.com/journals/misy/rss.xml" />
+	<script async="" src="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/analytics.js"></script><script type="text/javascript" src="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/jquery.js"></script>
+	<script type="text/javascript" src="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/menu.js" charset="utf-8"></script>
+    <!--[if lt IE 9]>
+     <script type="text/javascript" src="/scripts/respond.js"></script>
+   <![endif]-->
+	<meta name="Author" content="Hindawi Publishing Corporation" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta name="Description" content="Mobile Information Systems is a peer-reviewed, open access journal that publishes original research articles as well as review articles related to all aspects of mobile information systems." />
+	
+	<link rel="SHORTCUT ICON" href="http://www.hindawi.com/favicon.ico" type="image/x-icon" />
+		<style type="text/css">
+			div.banner_title_bkg div.trangle {
+			border-color: #2D4B80 transparent transparent transparent;
+			opacity:0.8;
+			/*new styles start*/
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+			;filter: alpha(opacity=80);
+			/*new styles end*/
+
+			}
+			div.banner_title_bkg_if div.trangle {
+			border-color: transparent transparent #2D4B80 transparent ; opacity:0.8;
+			/*new styles start*/
+			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=80)"
+			;filter: alpha(opacity=80);
+			/*new styles end*/
+			}
+			div.banner_title_bkg div.trangle {
+			width: 264px;
+			}div.banner_title_bkg_if div.trangle {
+					width: 202px;
+					}
+
+			 #banner {
+			background-image: url('http://images.hindawi.com/journals/misy/misy.banner.jpg');
+		   background-position: 50% 0;}
+			</style>
+<link rel="stylesheet" type="text/css" href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/content.css" /><link rel="stylesheet" type="text/css" href="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/search.css" /></head>
+<body>
+	<div id="container">
+		<div id="site_head">
+				<div class="logo">
+					<a href="http://www.hindawi.com/" id="logourl"></a>
+					<object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/hindawi.svg" name="Hindawi Publishing Corporation Logo">
+					</object>
+				</div>
+			<div id="SearchPanel">
+				<div class="search_container">
+					<div class="search">
+						<form action="/search/" method="post">
+						<input type="text" name="TxtSearchField1" id="TxtSearchField1_g" class="search_field" />
+						<input type="hidden" name="DdlSearchField1" id="DdlSearchField1_g" value="AllFields" />
+						<input type="submit" id="Button1" class="search_button" value="Go" />
+						</form>
+					</div>
+				</div>
+			</div>
+				<div id="dvslogan" class="slogan">Hindawi Publishing Corporation</div>
+		</div>
+		<div id="dvLinks" class="hindawi_links">
+			<ul>
+				<li><a href="http://www.hindawi.com/">Home</a></li>
+				<li><a href="http://www.hindawi.com/journals/">Journals</a></li>
+				<li><a href="http://www.hindawi.com/about/">About Us</a></li>
+			</ul>
+		</div>
+		<div id="banner">
+				<div class="banner_title_bkg">
+					<p class="banner_title">
+						Mobile Information Systems
+					</p>
+					<div class="trangle">
+					</div>
+				</div>
+				<!--Normal title part end-->
+				<img width="1022" height="130" id="ImgTitle" alt="Mobile Information Systems" src="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/misy.jpg" />
+				<!--impact factor part bgn-->
+				<div class="banner_title_bkg_if">
+					<p class="banner_title">Impact Factor 0.949</p>
+					<div class="trangle">
+					</div>
+				</div>
+		</div>
+		<div id="journal_navigation">
+                 <a id="AboutNav" href="http://www.hindawi.com/journals/misy/" class="journal_nav_links"> About this Journal </a>
+                 <a id="MtsNav" href="http://mts.hindawi.com/submit/journals/misy/" class="journal_nav_links"> Submit a Manuscript </a>
+                 <a id="TableofContentsNav" href="http://www.hindawi.com/journals/misy/contents/" class="last_link"> Table of Contents </a>		</div>
+		<div id="content">
+		  
+
+			<!--left column-->
+			<div id="left_column">
+				<!--left column-->
+ <div class="top_strip">
+<div class="journal_icon"> 
+    <object data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/journal_icon.svg" type="image/svg+xml" name="journal_icon"></object>
+    <span>Journal Menu</span>
+</div>     
+ </div>       
+       
+<div class="left_column_list"><ul id="BltJournalInformation">                    <li><a href="http://www.hindawi.com/journals/misy/">About this Journal</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/ai/">Abstracting and Indexing</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/aa/">Advance Access</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/aims/">Aims and Scope</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/apc/">Article Processing Charges</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/aip/">Articles in Press</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/guidelines/">Author Guidelines</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/biblio/">Bibliographic Information</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/citations/">Citations to this Journal</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/contact/">Contact Information</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/editors/">Editorial Board</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/workflow/">Editorial Workflow</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/etoc/">Free eTOC Alerts</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/ethics/">Publication Ethics</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/reviewers/">Reviewers Acknowledgment</a><span> · </span></li>     
+                    <li><a href="http://mts.hindawi.com/submit/journals/misy/">Submit a Manuscript</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/subs/">Subscription Information</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/contents/">Table of Contents</a></li>     
+</ul></div><div id="Div1" class="special_issues"><ul id="Blt1">                    <li><a href="http://www.hindawi.com/journals/misy/osi/">Open Special Issues</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/psi/">Published Special Issues</a><span> · </span></li>     
+                    <li><a href="http://www.hindawi.com/journals/misy/siguidelines/">Special Issue Guidelines</a></li>     
+</ul></div>
+
+				<!--end left column-->
+				<!--middle content-->
+			</div>
+		   
+			  <div class="middle_content">
+             
+				
+
+
+
+
+
+ 
+
+ 
+
+
+    <div class="right_column_actions" id="topnav">
+        <div id="article_list">
+            <ul>
+                    <li>
+                        
+                        <a href="http://www.hindawi.com/journals/misy/2016/2083094/abs/" class="abstract">
+                            Abstract</a> </li>
+                    <li>
+                        
+                        <a href="http://downloads.hindawi.com/journals/misy/2016/2083094.pdf" class="full_text_pdf">
+                            Full-Text PDF</a> </li>
+                    <li>
+                        
+                        <a href="http://www.hindawi.com/journals/misy/2016/2083094/" class="full_text_xhtml">
+                            Full-Text HTML</a></li>
+                    <li>
+                       
+                        <a href="http://downloads.hindawi.com/journals/misy/2016/2083094.epub" class="full_text_epub">
+                            Full-Text ePUB</a> </li>
+                    <li>
+                       
+                        <a href="http://downloads.hindawi.com/journals/misy/2016/2083094.xml" class="full_text_xml">
+                            Full-Text XML</a> </li>
+                    <li>
+                       
+                        <a href="http://www.hindawi.com/journals/misy/2016/2083094/ref/" class="linked_ref">
+                            Linked References</a></li>
+                    <li>
+                       
+                        <a href="http://www.hindawi.com/journals/misy/2016/2083094/cta/" class="how_to_cite">
+                            How to Cite this Article</a></li>
+                    <li>
+                        
+                        <a href="http://www.hindawi.com/journals/misy/si/758403/" class="complete_s_i">Complete Special Issue</a> </li> 
+            </ul>
+
+                <div class="counter">
+                    <ul>
+                      <li class="views">Views <span>56</span></li>
+                      <li class="cite">Citations <span>0</span></li>
+                      <li class="epub">ePub <span>0</span></li>
+                      <li class="pdf">PDF <span>2</span></li>
+                    </ul>
+                </div>
+                
+        </div>
+        <a href="#" id="navbtn"></a>
+        </div>
+
+<div><pre>Mobile Information Systems<br />Volume 2016 (2016), Article ID 2083094, 11 pages<br /><a href="http://dx.doi.org/10.1155/2016/2083094">http://dx.doi.org/10.1155/2016/2083094</a></pre><div class="article_type">Research Article</div><h2>Improving Indoor Localization Using Bluetooth Low Energy Beacons</h2><div class="author_gp"><a href="http://www.hindawi.com/97892641/">Pavel Kriz</a>, <a href="http://www.hindawi.com/41378575/">Filip Maly</a>, and <a href="http://www.hindawi.com/28367670/">Tomas Kozel</a></div><p>Department
+ of Informatics and Quantitative Methods, Faculty of Informatics and 
+Management, University of Hradec Kralove, Rokitanskeho 62, 500 03 Hradec
+ Kralove,  Czech Republic</p><p>Received 7 January 2016; Revised 8 March 2016; Accepted 27 March 2016</p><p>Academic Editor: Ioannis Papapanagiotou</p><div class="xml-content"><p>Copyright © 2016 Pavel Kriz et al. This is an open access article distributed under the <a xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution License</a>, which permits unrestricted use, distribution, and reproduction in any medium, provided the original work is properly cited.</p></div><div class="xml-content"><h4 class="header">Abstract</h4><p>The
+ paper describes basic principles of a radio-based indoor localization 
+and focuses on the improvement of its results with the aid of a new 
+Bluetooth Low Energy technology. The advantage of this technology lies 
+in its support by contemporary mobile devices, especially by smartphones
+ and tablets. We have implemented a distributed system for collecting 
+radio fingerprints by mobile devices with the Android operating system. 
+This system enables volunteers to create radio-maps and update them 
+continuously. New Bluetooth Low Energy transmitters (Apple uses its 
+“iBeacon” brand name for these devices) have been installed on the floor
+ of the building in addition to existing WiFi access points. The 
+localization of stationary objects based on WiFi, Bluetooth Low Energy, 
+and their combination has been evaluated using the data measured during 
+the experiment in the building. Several configurations of the 
+transmitters’ arrangement, several ways of combination of the data from 
+both technologies, and other parameters influencing the accuracy of the 
+stationary localization have been tested. </p><span class="end-abs"></span><h4 id="sec1">1. Introduction</h4><p>Nowadays,
+ when satellite navigation systems such as GPS, GLONASS, or Galileo are 
+available for everyone, it is usually not a problem to locate a person 
+or a mobile device outside. A situation can get more complicated in 
+high-density urban areas with rare line-of-sight to the satellites of 
+the corresponding system. The situation is most complicated inside 
+buildings with no line-of-sight. In such cases, other solutions are 
+employed, usually those based on radio networks (e.g., IEEE 802.11-WiFi)
+ and fingerprints of signal strengths of individual WiFi devices which 
+transmit their signals inside a building [<a href="#B6">1</a>]. 
+Localization accuracy is influenced by a number of circumstances, for 
+example, by characteristics of transmitters and receivers and 
+characteristics of the environment which influence the radio signal 
+propagation. Another factor which can be adjusted quite easily is the 
+number of radio transmitters and their positions. A typical situation is
+ that there already are some WiFi access points in the building which 
+more or less cover the building with the radio signal which can be used 
+for localization. To increase the accuracy of the localization, it is 
+possible to install more transmitters which would enrich the individual 
+fingerprints or cover the places which are poorly covered by the 
+existing WiFi network.</p><p>In this paper, we will deal with the 
+Bluetooth Low Energy (BLE) technology which can be a very good 
+alternative supplementing WiFi access points. Their combination will 
+allow more accurate localization. The key advantage of BLE comprises low
+ energy consumption which allows the transmitters—called beacons—to be 
+powered continuously from batteries from months to years. This also 
+makes it possible to place the beacons in the spots where WiFi access 
+points would be difficult to power.</p><p>The rest of this paper is organized as follows. We discuss related work in Section <a href="#sec2">2</a>. Section <a href="#sec3">3</a>
+ describes the technology of BLE beacons (iBeacons) and deals with 
+support of Bluetooth Low Energy with the Google Android platform. 
+Section <a href="#sec4">4</a> summarizes the use of BLE beacons in indoor navigation. Section <a href="#sec5">5</a> describes the architecture of our indoor localization system based on BLE beacons and the localization method. Section <a href="#sec6">6</a> is focused on the arrangement of BLE beacons inside the building. Section <a href="#sec7">7</a> describes the results of the evaluation. In Section <a href="#sec8">8</a>, we summarize, discuss, and interpret the achieved results. Section <a href="#sec9">9</a> concludes the paper.</p><h4 id="sec2">2. Related Work</h4><p>Methods
+ of indoor localization are usually based on monitoring the radio signal
+ strength, the so-called Received Signal Strength Indicator (RSSI). The 
+radio signals are broadcasted by transmitters (usually WiFi access 
+points, but, e.g., Bluetooth Low Energy beacons are also an option) 
+covering a particular area. With the growing distance from the 
+transmitter, the received signal strength decreases and the travel time 
+from the transmitter to the receiver increases. When we measure these 
+values from more transmitters we are able to estimate a position of the 
+receiver. Two basic approaches are being used—<i>triangulation</i> and<i> fingerprinting</i>.</p><h5 id="sec2.1">2.1. Triangulation</h5><p>Methods based on triangulation can be further divided into<i> lateration</i> and<i> angulation</i> [<a href="#B16">2</a>]. These methods use estimation of the distance from several transmitters based on signal attenuation [<a href="#B11">3</a>], time characteristics of the signal propagation (TOA: Time Of Arrival [<a href="#B20">4</a>]; TDOA: Time Difference of Arrival [<a href="#B15">5</a>]), or the direction of the received signal (AOA: Angle of Arrival [<a href="#B21">6</a>])
+ when using directional antennas or antenna arrays. All these methods 
+achieve good performance in an open space with line-of-sight propagation
+ between the transmitter and the receiver. Unfortunately, they have weak
+ results inside buildings where the measured variables are highly 
+influenced by the environment. The radio signal may be reflected and 
+attenuated by several obstacles such as walls making the estimation of 
+distance more difficult.</p><h5 id="sec2.2">2.2. Fingerprinting</h5><p>Fingerprinting
+ is a localization method comprising two phases. In the first 
+phase—learning—vectors composed of the RSSI values and optional extra 
+features measured by a measuring device in the known locations are 
+collected [<a href="#B1">7</a>]. These reference values—the<i> calibrated dataset</i>—are
+ saved together with the location coordinates into the fingerprint 
+database for the needs of localization. In the second phase—localization
+ itself—the device to be localized measures the RSSI values and compares
+ them with the data in the fingerprint database using a suitable method.
+ The most widely used algorithms or methods of comparison and estimation
+ of the position are [<a href="#B16">2</a>]<span class="list"><span class="list-item"><span class="list-label">(i)</span><span class="list-content">probabilistic methods,</span></span><span class="list-item"><span class="list-label">(ii)</span><span class="list-content"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M1" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-108" d="M480 416C480 431 465 448 438 448C388 448 312 383 252 330C217 299 188 273 155 237H153L257 680C262 700 263 712 253 712C240 712 183 684 97 674L92 648L126 647C166 646 172 645 163 606L23 -6L29 -12C51 -5 77 2 107 8C115 62 130 128 142 180C153 193 179 220 204 241C231 170 259 106 288 54C317 0 336 -12 358 -12C381 -12 423 2 477 80L460 100C434 74 408 54 398 54C385 54 374 65 351 107C326 154 282 241 263 299C296 332 351 377 403 377C424 377 436 372 445 368C449 366 456 368 462 375C472 386 480 402 480 416Z"/></g></svg>-Nearest Neighbors,</span></span><span class="list-item"><span class="list-label">(iii)</span><span class="list-content">neural networks,</span></span><span class="list-item"><span class="list-label">(iv)</span><span class="list-content">support vector machine,</span></span><span class="list-item"><span class="list-label">(v)</span><span class="list-content">smallest M-vertex polygon.</span></span></span></p><p>Concrete solutions based on collection of fingerprints are described by Bahl and Padmanabhan [<a href="#B4">8</a>] or Azizyan et al. [<a href="#B3">9</a>]
+ who collect other features during the measurement, such as sound 
+intensity, acceleration, light intensity, or color of the light. Wu et 
+al. [<a href="#B23">10</a>] bring an interesting approach which assumes 
+similarity between the so-called virtual and physical model of the 
+interior. It automates the initial phase of learning based on clustering
+ of the fingerprints. Then, the virtual rooms are mapped to the physical
+ rooms.</p><p>Localization accuracy can be increased if the movement of 
+localized objects is considered. Such methods utilise the history of 
+previous measurements and estimate the position based on the known 
+previous trajectory of the object. Other solutions use dead reckoning 
+method based on collection of data from movement and orientation sensors
+ of a mobile device (like accelerometer, gyroscope, and magnetometer). 
+This way, the direction of movement and the distance traveled could be 
+determined and combined with other measurements and/or estimations. 
+Particle filters are often incorporated in the process of gathering such
+ estimations. Particular examples of these methods were published in [<a href="#B24">11</a>, <a href="#B9">12</a>].</p><p>Another approach is presented by the Ubicarse project [<a href="#B13">13</a>]
+ where the emulation of a large antenna array is used for localization 
+purposes on a tablet device with two MIMO antennas. Note that there is 
+no public API that could read RSSI from multiple MIMO chains in high 
+speed at the Android platform.</p><h5 id="sec2.3">2.3. Bluetooth-Based Localization</h5><p>Bluetooth-based indoor localization is not a novel idea [<a href="#B7">14</a>, <a href="#B18">15</a>]. Due to the limitation of the original Bluetooth specification (now called<i> Bluetooth Classic</i>),
+ this approach has not been widely used. The time required for obtaining
+ a sufficient number of nearby Bluetooth devices was not satisfactory 
+due to the lengthy process of discovery. Likewise, energy and economic 
+demands of Bluetooth infrastructure were high compared to WiFi-based 
+infrastructure, which also served other purposes.</p><p>The situation 
+changed with the advent of Bluetooth 4.0 (including BLE/Bluetooth Smart)
+ in 2010. Due to low energy consumption and configuration options 
+(regarding the advertising interval and the transmitter output power), 
+the utilisation of this technology is much more promising, not only in 
+comparison with previous versions of Bluetooth, but also in comparison 
+with today’s widespread WiFi-positioning. In [<a href="#B14">16</a>], the authors focus on proximity estimation based on signal strength. Furthermore, [<a href="#B25">17</a>]
+ directly compares the BLE-based localization to the WiFi-localization 
+by deploying BLE beacons at the same spots where WiFi access points were
+ originally placed. The results show that BLE is more accurate at 
+identical places than WiFi.</p><p>In this paper, we focus on an 
+appropriate combination of both technologies rather than on their direct
+ comparison. We deploy additional BLE beacons in order to improve the 
+localization accuracy while utilising both technologies at the same 
+time.</p><h4 id="sec3">3. iBeacon Technology</h4><p>iBeacon is Apple’s 
+brand name of the technology based on the microlocalization and the 
+interaction of a mobile device in the physical world. This technology 
+can be considered to be the next development stage of the QR code 
+technology or, alternatively, the NFC technology. iBeacon uses the 
+Bluetooth Low Energy standard which is a part of a new version of 
+Bluetooth 4.0. Sometimes, the terms Bluetooth Smart, Bluetooth LE, BTLE,
+ and just BLE are used. It is a technology developed by Nokia 
+(originally, the technology was named Wibree; in 2010 BLE was 
+standardized) and in contrast to the previous versions of Bluetooth, 
+dramatically lower consumption is typical for BLE [<a href="#B22">18</a>, <a href="#B5">19</a>].
+ Also the way how the (peripheral) device announces its existence to the
+ other devices is the opposite from how it is in the original Bluetooth 
+Classic. BLE enables a peripheral device to transmit an<i> advertisement packet</i> without being<i> paged</i>
+ by the master (central) device. Thanks to this communication model, it 
+is possible to construct energy-efficient transmitters—BLE beacons or 
+iBeacons according to Apple.</p><p>iBeacon is a small device which 
+transmits particular information in a defined radius and in regular 
+intervals. As soon as a mobile device (a smartphone) gets within this 
+radius, it can receive such information and, based on this, it can 
+perform an action. Considering low consumption of BLE, such a device can
+ be powered by a coin battery for up to two years. Of course, the 
+battery life depends on the transmitter output power (TX power) and 
+advertising interval settings.</p><p>The iBeacon technology is going to 
+be adopted by shop marketers. A visitor with a BLE-enabled smartphone 
+may be notified of special offers, discounts, information, and so forth 
+based on his/her position or proximity to a beacon. It finds similar use
+ in museums and exhibition halls.</p><h5 id="sec3.1">3.1. Hardware Solution</h5><p>BLE beacons are devices made by Estimote, Kontakt, Gimbal, and other manufacturers [<a href="#B2">20</a>].
+ A beacon consists of a Bluetooth chipset (including its firmware), a 
+battery providing power supply, and an antenna. Texas Instruments, 
+Nordic Semiconductor, Bluegiga, and Qualcomm are the main current 
+producers of the BLE chips.</p><p>We have used beacons made by Estimote 
+in our project. Estimote beacons can be attached to any location or 
+object. They broadcast BLE radio signals which can be received and 
+interpreted by a smartphone, unlocking microlocation and contextual 
+awareness. To be able to listen to these beacons, it is necessary to 
+have a device that supports Bluetooth 4.0 or higher. The Estimote beacon
+ contains an nRF51822 chip, a powerful, highly flexible multiprotocol 
+System-on-a-Chip (SoC). The nRF51822 is built around a 32-bit ARM® 
+Cortex<i>™</i> M0 CPU with 256 kB/128 kB flash + 32 kB/16 kB RAM [<a href="#B19">21</a>].
+ The whole SoC is highly optimized to be energy-efficient. Thus the 
+stable TX power of the beacon is ensured while the battery voltage may 
+drop. When the voltage finally drops from 3 V to 1.7 V, a brown-out 
+reset is generated and the device stops broadcasting [<a href="#B19">21</a>].
+ In its basic mode, a beacon simply transmits Bluetooth packets with 
+identification data—so-called advertisements—in regular intervals. It 
+does not communicate with the surrounding devices by any other 
+sophisticated way. Advertisements contain the following data:<span class="list"><span class="list-item"><span class="list-label">(i)</span><span class="list-content">MAC address.</span></span><span class="list-item"><span class="list-label">(ii)</span><span class="list-content">Universally unique identifier (UUID)—common for a single deployment at a venue.</span></span><span class="list-item"><span class="list-label">(iii)</span><span class="list-content">Major number—designated for dividing the beacon sets into smaller segments.</span></span><span class="list-item"><span class="list-label">(iv)</span><span class="list-content">Minor number—designated for dividing the segments into smaller subsegments.</span></span></span></p><p>In
+ the configuration mode, beacon’s broadcasting parameters (which include
+ the above stated data transmitted in a packet and other parameters such
+ as the TX power or the advertising interval) can be configured. In the 
+configuration mode, beacons use advanced bidirectional communication 
+with a master device (e.g., a smartphone) with the aid of which they are
+ configured.</p><p>At a physical layer, BLE transmits in the 2.4 GHz 
+industrial, scientific, and medical (ISM) band with 40 channels each 
+2.0 MHz wide. 37 channels are used to exchange the data among paired 
+devices and 3 channels are designated for broadcasting advertisements. 
+These 3 channels are thus primarily used by beacons and are chosen 
+deliberately so that they collide with the WiFi channels as little as 
+possible. The beacon broadcasts its advertisement packet repetitively 
+based on the selected advertising interval while hopping over the 3 
+designated channels [<a href="#B22">18</a>].</p><h5 id="sec3.2">3.2. Android Support for BLE</h5><p>Android platform was chosen for testing the whole solution because it is the most widely used operating system for smartphones.</p><p>Android
+ offers BLE support from version 4.3 (API level 18). From version 5.0 
+(API level 21) the BLE-related API had been revised and extracted to a 
+separate <span class="monospace">android.bluetooth.le</span> package. The applications have to be granted both <span class="monospace">BLUETOOTH</span> and <span class="monospace">BLUETOOTH_ADMIN</span>
+ system permissions to use BLE API. API level 18 supports communication 
+with BLE peripheral devices only—that is, scanning devices, enumerating 
+device’s services, and sending or receiving the data to or from such 
+devices. API level 21 further opens the possibility for a smartphone or a
+ tablet (depending on hardware support) to act as a Bluetooth Low Energy
+ peripheral device, that is, to advertise itself as a BLE device and to 
+offer services to other devices.</p><p>The most important function for 
+BLE indoor localization is scanning of the available BLE devices in the 
+neighborhood. For this purpose, API level 18 offers <span class="monospace">startLeScan()</span> and <span class="monospace">stopLeScan()</span> methods of the <span class="monospace">BluetoothManager</span> class. The scanning process is asynchronous and every device found is reported to an instance of the <span class="monospace">LeScanCallback</span> callback class. The scanned device is represented by the <span class="monospace">BluetoothDevice</span>
+ class which includes its MAC address, byte-array scan record 
+(containing UUID, etc.), and RSSI. API level 21 moves the process of low
+ energy scanning into the separate <span class="monospace">BluetoothLeScanner</span> class. Its instance is obtained by calling the <span class="monospace">getBluetoothLeScanner()</span> method of the <span class="monospace">BluetoothAdapter</span>
+ class. In contrast to API level 18, it is possible to specify even more
+ detailed parameters of scanning. Unfortunately, implementation of the 
+above mentioned classes and underlying system libraries can vary across 
+different vendors. The most common issue is that BLE devices are not 
+reported repeatedly during the scanning process which is a condition 
+necessary for localization. For this reason it is necessary to implement
+ a mechanism which starts and stops scanning repeatedly in a given time 
+interval. It is also possible to use available libraries, for example, 
+Android Beacon Library (<a target="_blank" href="https://github.com/AltBeacon/android-beacon-library/">https://github.com/AltBeacon/android-beacon-library/</a>), which provides <span class="monospace">CycledLeScanner</span> class that encapsulates this mechanism.</p><h4 id="sec4">4. Utilising BLE in Indoor Localization</h4><p>WiFi
+ networks are commonly being used for localization inside buildings. A 
+building is usually a complicated system regarding WiFi signal 
+propagation due to the materials used. That is why areas with no WiFi 
+signal may appear in the buildings despite high concentration of 
+efficient WiFi access points. In such areas it is not possible to 
+collect fingerprints because they would contain no signals measured from
+ the surrounding WiFi networks. These areas can additionally be covered 
+by other transmitters. For this purpose, BLE beacons can be used. They 
+transmit a Bluetooth signal instead of a WiFi signal. While powered by 
+batteries, they can be placed in less accessible places where there are 
+no power sockets or other forms of supply, such as ethernet cables, 
+allowing to use power-over-ethernet. When placing the beacons it is 
+necessary to care about the radiation pattern of a given device and also
+ about possible attenuation elements in the environment. Reference [<a href="#B8">22</a>] deals with this topic in detail.</p><p>Due
+ to the low price of beacons, their small size, and independence of an 
+external power supply (no additional cables required), they seem to be 
+suitable supplements to an existing WiFi network in a building. Areas 
+covered with weak WiFi signal or with a small number of WiFi 
+transmitters contained in one fingerprint can thus be enriched by new 
+BLE transmitters. Then, the fingerprint can also contain the measured 
+RSSIs of these BLE devices in addition to the RSSIs of WiFi signals.</p><p>Beacons
+ have another advantage: thanks to support by mobile operating systems, 
+they can be used for energy-efficient geofencing enabling a mobile 
+application to be activated based on approaching an iBeacon by a 
+smartphone. The whole process at the iOS platform does not require the 
+application to be active and thanks to this it is possible to optimize 
+it so the energy consumption of the mobile device is minimized and the 
+endurance of the battery is maximized. Estimote has also established a 
+new term in this field—<i>nearables</i>—for their BLE beacons equipped with additional sensors.</p><h4 id="sec5">5. Methods and Architecture</h4><p>Our
+ goal is to evaluate an improvement in the localization using BLE 
+beacons. In this paper, we are going to compare WiFi-based stationary 
+localization with a stationary localization using combination of BLE and
+ WiFi. We suggested and performed an experiment where the original WiFi 
+access points and additionally deployed BLE beacons were used for 
+localization of a stationary device. As a suitable localization method, 
+we used a method based on collecting fingerprints composed of measured 
+signals of WiFi access points and BLE transmitters.</p><h5 id="sec5.1">5.1. Learning Data Acquisition</h5><p>Smartphones
+ were used to acquire the learning data and the state of their sensors 
+(accelerometer, compass, and gyroscope) was also recorded for future 
+processing. Volunteers used their smartphones with a digitized map of a 
+building to acquire the learning dataset. A smartphone scans signals of 
+all available networks and beacons around and the user creates the 
+fingerprint of the given place with the aid of our application. The 
+application records strengths of individual signals in a given place for
+ 10 seconds (which should be a sufficient time [<a href="#B12">23</a>]). A fingerprint created in this way is recorded into the fingerprint database. The rest of the system is described in Section <a href="#sec5.3">5.3</a>.</p><h5 id="sec5.2">5.2. Positioning Method</h5><p>The
+ localization inside a building is done using collection of more 
+fingerprints but these are not necessarily recorded in a database. The 
+user who wishes to be localized measures a fingerprint of a place where 
+he/she is using an application in his/her smartphone. This fingerprint 
+is then compared with all fingerprints in the database and one or more 
+fingerprints with<i> the highest similarity</i> are searched. The 
+fingerprints in the database are tagged with corresponding positions 
+inside the building. The accuracy of the localization depends on factors
+ such as the quality of fingerprints saved in the database (especially 
+radio interference and the accuracy of the determination of the place 
+where the tagged fingerprint was acquired) and the algorithms used for 
+calculation of a similarity of the tagged fingerprint in the database 
+with the measured untagged fingerprint.</p><p>To compare the measured fingerprint with the database, the <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M2" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>-Nearest Neighbors (<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M3" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>-NN) in Signal Space method was used. This method tries to find <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M4" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg> of the nearest fingerprints from the database by means of, for example, Euclidean distance. In this way we get <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M5" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>
+ locations and by their combinations we estimate the position of the 
+device to be localized. The Euclidean distance of the measured vector of
+ the fingerprint <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.29107pt" id="M6" height="12.5794pt" version="1.1" viewBox="-0.0498162 -9.28833 111.032 12.5794" width="111.032pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-110" d="M766 88L752 113C719 83 690 64 681 64C674 64 672 74 679 103L724 292C758 436 724 448 701 448C680 448 666 442 639 429C594 407 514 350 441 252H439L447 289C476 423 450 448 419 448C398 448 379 441 355 427C307 400 234 344 162 249H160L180 324C203 409 197 448 170 448C144 448 82 413 23 349L35 321C57 343 96 374 108 374C115 374 117 371 111 341C87 227 57 112 24 -6L32 -12C53 -4 81 4 108 6C119 68 134 128 149 171C177 229 309 383 364 383C387 383 388 355 373 282C354 190 330 92 303 -6L309 -12C332 -4 356 3 386 6C396 63 411 122 424 171C458 236 590 383 642 383C658 383 664 369 652 315L603 91C587 20 593 -12 619 -12C642 -12 708 23 766 88Z"/></g><g transform="matrix(.013,0,0,-0.013,13.889,0)"><path id="g117-34" d="M535 323V373H52V323H535ZM535 138V188H52V138H535Z"/></g><g transform="matrix(.013,0,0,-0.013,25.152,0)"><path id="g113-41" d="M300 -147C201 -63 143 98 143 270S200 602 300 686L282 710C136 610 70 450 70 271V270C70 89 136 -72 282 -170L300 -147Z"/></g><g transform="matrix(.013,0,0,-0.013,29.65,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,39.842,3.132)"><path id="g50-50" d="M389 0V32C297 38 291 46 291 118V635C234 613 175 595 109 583V556L161 554C203 552 207 547 207 497V118C207 46 201 38 110 32V0H389Z"/></g><g transform="matrix(.013,0,0,-0.013,44.788,0)"><path id="g113-45" d="M95 130C70 130 46 113 46 88C46 72 54 64 59 64C93 55 121 33 121 -3C121 -41 93 -68 44 -88L55 -117C117 -98 186 -56 186 22C186 91 131 130 95 130Z"/></g><g transform="matrix(.013,0,0,-0.013,49.932,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,60.124,3.132)"><path id="g50-51" d="M414 144C384 79 371 75 317 75H135L276 221C367 316 408 376 408 465C408 570 327 635 237 635C179 635 131 609 100 575L42 494L67 471C94 510 138 565 205 565C277 565 321 517 321 435C321 348 258 270 195 195C146 137 88 81 33 26V0H411C423 44 433 88 446 135L414 144Z"/></g><g transform="matrix(.013,0,0,-0.013,65.07,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,70.213,0)"><path id="g113-47" d="M113 -12C146 -12 170 11 170 46C170 78 146 103 114 103S58 78 58 46C58 11 82 -12 113 -12Z"/></g><g transform="matrix(.013,0,0,-0.013,75.356,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,80.499,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,85.676,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,90.819,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,101.011,3.132)"><path id="g50-111" d="M504 89L488 119C453 85 428 69 416 69C408 69 405 75 412 102L462 304C492 438 460 451 436 451S388 441 356 423C311 397 229 336 170 256H168L189 340C208 418 200 451 177 451C144 451 82 413 24 352L40 322C65 345 98 369 108 369C114 369 119 363 112 335L28 -3L36 -12C54 -3 83 4 112 10C125 73 138 122 153 174C205 258 328 382 376 382C395 382 399 369 384 305L330 93C312 25 323 -12 351 -12C378 -12 439 21 504 89Z"/></g><g transform="matrix(.013,0,0,-0.013,106.186,0)"><path id="g113-42" d="M275 270C275 450 212 609 64 710L45 686C145 604 203 442 203 270S147 -63 45 -147L64 -170C213 -68 275 89 275 270Z"/></g></svg> from the <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2064009pt" id="M7" height="8.8423pt" version="1.1" viewBox="-0.0498162 -8.6359 3.66193 8.8423" width="3.66193pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-106" d="M244 607C244 633 228 655 200 655C166 655 146 618 146 594C146 564 166 546 191 546C221 546 244 574 244 607ZM222 91L209 114C184 94 148 66 133 66C127 66 124 73 130 96L201 370C213 416 211 448 191 448C162 448 88 407 29 352L42 328C73 354 104 371 114 371C120 371 119 365 115 345L53 92C32 5 45 -12 68 -12C103 -12 186 50 222 91Z"/></g></svg>th fingerprint <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.29107pt" id="M8" height="12.5794pt" version="1.1" viewBox="-0.0498162 -9.28833 101.352 12.5794" width="101.352pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-84" d="M449 634C442 637 425 643 405 650C376 660 341 666 307 666C181 666 98 590 98 485C98 400 170 343 215 310L246 288C307 243 343 204 343 147C343 67 291 18 219 18C104 18 61 124 51 202L23 199C28 124 27 71 27 47C47 22 122 -16 204 -16C324 -16 428 60 428 174C428 256 379 309 307 360L276 382C223 419 179 455 179 516C179 576 221 632 293 632C379 632 410 564 418 487L448 490C446 536 446 592 449 634Z"/></g><g transform="matrix(.0091,0,0,-0.0091,6.071,3.132)"><path id="g50-106" d="M250 606C250 634 233 656 203 656C168 656 146 618 146 593C146 564 169 545 192 545C227 545 250 573 250 606ZM227 95L212 119C187 98 152 71 135 71C129 71 128 78 134 102L207 373C219 418 217 451 194 451C165 451 92 411 30 351L44 326C77 353 106 371 114 371C124 371 121 357 117 341L55 97C32 5 46 -12 70 -12C108 -12 191 51 227 95Z"/></g><g transform="matrix(.013,0,0,-0.013,12.758,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,24.021,0)"><use xlink:href="#g113-41"/></g><g transform="matrix(.013,0,0,-0.013,28.519,0)"><path id="g113-116" d="M352 391C352 416 319 448 267 448C236 448 173 423 147 400C107 364 96 332 96 304C96 248 143 210 193 181C241 153 258 124 258 100C258 72 232 38 184 38C151 38 107 66 81 108C77 114 64 116 55 111C34 99 23 84 23 65C23 29 81 -12 134 -12C220 -12 325 61 325 141C325 184 297 215 234 256C194 282 161 309 161 346C161 380 188 401 217 401C255 401 279 380 301 353C308 344 313 341 325 347C341 355 352 371 352 391Z"/></g><g transform="matrix(.0091,0,0,-0.0091,33.329,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,35.878,3.132)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,40.833,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,45.976,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,50.786,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,53.335,3.132)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,58.29,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,63.434,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,68.577,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,73.72,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,78.896,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,84.039,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,88.849,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,91.398,3.132)"><use xlink:href="#g50-111"/></g><g transform="matrix(.013,0,0,-0.013,96.582,0)"><use xlink:href="#g113-42"/></g></svg> in the database can be expressed by the following formula:<span id="EEq1" class="equation_break"><span class="left_break" id="L9"></span><span class="middle_break"><span class="center_break" id="M9"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M9-1" height="45.4571pt" version="1.1" width="113.514pt" viewBox="0 0 113.514 45.4571"><g id="B9-1"><g transform="matrix(.013,0,0,-0.013,0,26.794)"><path id="g113-69" d="M743 375C743 570 607 650 407 650H136L130 622C214 612 220 606 204 526L125 122C110 43 105 36 24 27L17 0H250C382 0 482 23 571 76C680 141 743 248 743 375ZM644 379C644 188 520 36 305 36C277 36 249 38 229 46C205 55 202 71 212 126L293 553C300 588 306 600 317 606C330 613 356 617 390 617C547 617 644 537 644 379Z"/></g><g transform="matrix(.0091,0,0,-0.0091,9.89,29.926)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,16.58,26.794)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,27.84,26.382)"><path id="g119-125" d="M767 1968H717L614 -968H612L327 324L133 268L144 227L265 262L644 -1458H646L767 1968Z"/></g><rect x="38.63" height="0.65243" width="71.9148" y=".702"/><g transform="matrix(.0091,0,0,-0.0091,41.72,12.029)"><path id="g50-79" d="M870 650H622L613 619C694 615 708 606 708 559C708 531 702 477 686 396L636 136H633L281 650H127L120 619C180 616 198 611 212 592C227 572 232 558 220 503L166 254C148 169 139 131 126 89C112 43 85 35 33 32L24 0H280L286 32C208 37 189 44 189 93C189 124 198 179 212 250L267 526H271L622 -8H655L732 396C747 477 762 532 770 556C785 600 798 616 862 619L870 650Z"/></g><g transform="matrix(.013,0,0,-0.013,39.03,26.8)"><path id="g119-73" d="M956 -188L922 -180C881 -295 847 -317 759 -317H196L640 311L259 873H678C777 873 812 865 833 838C853 816 869 781 885 721L918 727L902 932H77V907L514 253L53 -396V-421H902L956 -188Z"/></g><g transform="matrix(.0091,0,0,-0.0091,38.63,40.443)"><path id="g50-107" d="M400 606C400 634 383 656 353 656C316 656 294 620 294 593C294 564 317 545 343 545C375 545 400 573 400 606ZM366 351C379 413 381 451 356 451C323 451 251 408 183 341L199 313C223 335 267 365 277 365C285 365 284 354 277 312C245 132 222 27 193 -100C182 -148 160 -188 131 -188C113 -188 90 -178 75 -170C64 -164 55 -168 48 -175C38 -185 24 -203 24 -222S48 -257 71 -257C89 -257 131 -241 186 -192C243 -141 286 -46 310 74L366 351Z"/></g><g transform="matrix(.0091,0,0,-0.0091,42.55,40.443)"><path id="g54-34" d="M556 331V384H55V331H556ZM556 140V193H55V140H556Z"/></g><g transform="matrix(.0091,0,0,-0.0091,48.11,40.443)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,54.77,26.794)"><path id="g119-133" d="M378 -385C239 -253 158 0 158 271S238 795 378 927L356 953C165 798 79 550 79 272V271C79 -10 165 -259 356 -411L378 -385Z"/></g><g transform="matrix(.013,0,0,-0.013,60.55,26.794)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,70.74,29.926)"><use xlink:href="#g50-107"/></g><g transform="matrix(.013,0,0,-0.013,78.07,26.794)"><path id="g117-33" d="M535 230V280H52V230H535Z"/></g><g transform="matrix(.013,0,0,-0.013,88.61,26.794)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,93.42,29.926)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,95.3,29.926)"><use xlink:href="#g50-107"/></g><g transform="matrix(.013,0,0,-0.013,99.73,26.794)"><path id="g119-134" d="M364 271V272C364 550 278 798 87 953L65 927C205 795 285 542 285 271S204 -253 65 -385L87 -411C278 -259 364 -10 364 271Z"/></g><g transform="matrix(.0091,0,0,-0.0091,105.6,17.601)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,110.55,26.794)"><use xlink:href="#g113-45"/></g></g></svg></span></span><span class="right_break" id="R9"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M9-2" class="label" height="11.44pt" version="1.1" width="13.398pt" viewBox="0 0 13.398 11.44"><g id="B9-2"><g transform="matrix(.013,0,0,-0.013,0,9.26)"><path id="g190-41" d="M300 -147C201 -63 143 98 143 270S200 602 300 686L282 710C136 611 70 451 70 272V271C70 90 136 -71 282 -169L300 -147Z"/></g><g transform="matrix(.013,0,0,-0.013,4.5,9.26)"><path id="g190-213" d="M311 0V25C221 32 216 41 216 113V635C162 613 103 594 39 583V559L88 556C131 552 135 546 135 500V113C135 41 131 32 40 25V0H311Z"/></g><g transform="matrix(.013,0,0,-0.013,8.9,9.26)"><path id="g190-42" d="M275 271C275 451 212 609 64 710L45 686C145 604 203 442 203 270S147 -63 45 -147L64 -170C213 -68 275 89 275 269V271Z"/></g></g></svg></span></span>where <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2064009pt" id="M10" height="8.8423pt" version="1.1" viewBox="-0.0498162 -8.6359 11.0475 8.8423" width="11.0475pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-79" d="M822 650H589L583 622C660 617 677 607 674 561C672 534 664 481 647 390L600 137H596L273 650H126L120 622C176 620 194 615 207 594C221 571 225 557 214 504L161 257C141 166 129 112 121 85C108 42 83 30 29 28L23 0H260L266 28C193 33 173 42 176 89C178 122 186 172 202 255L256 527H259L583 -8H612L690 390C708 481 720 535 728 558C744 603 756 619 816 622L822 650Z"/></g></svg> is a number of unique transmitters in the measurement.</p><p>After sorting the tagged fingerprints according to the distances <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.291101pt" id="M11" height="11.927pt" version="1.1" viewBox="-0.0498162 -8.6359 13.0854 11.927" width="13.0854pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-69"/></g><g transform="matrix(.0091,0,0,-0.0091,9.893,3.132)"><use xlink:href="#g50-106"/></g></svg> from the measured fingerprint, the first <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M12" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg> fingerprints are chosen. From their known positions <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.42947pt" id="M13" height="12.7178pt" version="1.1" viewBox="-0.0498162 -9.28833 44.3025 12.7178" width="44.3025pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-81" d="M600 480C600 590 528 650 384 650H143L137 622C222 614 225 607 210 531L130 127C113 41 106 36 23 28L17 0H294L300 28C204 36 195 42 212 127L243 284L314 263C327 263 339 263 352 264C465 271 600 337 600 480ZM508 481C508 351 402 304 329 304C289 304 265 311 250 317L295 559C302 594 310 606 323 611C335 616 350 619 367 619C455 619 508 573 508 481Z"/></g><g transform="matrix(.0091,0,0,-0.0091,6.656,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,9.712,0)"><path id="g113-92" d="M290 -163V-135C183 -126 181 -122 181 -44V583C181 662 184 666 290 675V703H120V-163H290Z"/></g><g transform="matrix(.013,0,0,-0.013,14.197,0)"><path id="g113-121" d="M536 404C536 423 520 448 491 448C445 448 398 404 308 283L286 338C255 416 242 448 217 448C182 448 138 402 92 341L111 321C149 368 169 378 178 378C188 378 198 363 214 320L254 212C185 117 138 65 107 65C98 65 85 69 82 75C79 82 73 86 65 86C44 86 23 60 23 39C23 7 44 -12 71 -12C119 -12 168 33 265 177L306 61C321 17 347 -12 373 -12C413 -12 465 33 507 96L491 119C459 84 432 60 413 60C395 60 378 92 358 148L321 250C341 279 369 310 389 332C417 363 439 382 456 382C466 382 475 376 481 368C486 361 492 358 496 358C513 358 536 381 536 404Z"/></g><g transform="matrix(.0091,0,0,-0.0091,21.399,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,24.454,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,29.598,0)"><path id="g113-122" d="M556 393C556 426 537 448 514 448C496 448 478 435 471 420C468 414 462 401 466 394C473 382 480 368 480 346C480 268 392 143 338 67H336C329 163 319 253 309 330S286 448 254 448C215 448 160 383 127 337L143 311C167 344 200 373 208 373S222 365 229 320C246 214 264 66 268 -20C219 -83 131 -171 17 -239L25 -261L137 -235C248 -110 273 -79 335 8C384 77 481 215 520 287C544 332 556 363 556 393Z"/></g><g transform="matrix(.0091,0,0,-0.0091,36.54,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,39.595,0)"><path id="g113-94" d="M226 -163V703H56V676C162 667 165 662 165 584V-43C165 -122 162 -126 56 -136V-163H226Z"/></g></svg> the weighted estimate of a position <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.0498209pt" id="M14" height="8.68572pt" version="1.1" viewBox="-0.0498162 -8.6359 8.15071 8.68572" width="8.15071pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-81"/></g></svg> of the measured fingerprint is calculated according to the following formula:<span id="EEq2" class="equation_break"><span class="left_break" id="L15"></span><span class="middle_break"><span class="center_break" id="M15"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M15-1" height="38.1758pt" version="1.1" width="75.474pt" viewBox="0 0 75.474 38.1758"><g id="B15-1"><g transform="matrix(.013,0,0,-0.013,0,22.415)"><use xlink:href="#g113-81"/></g><g transform="matrix(.013,0,0,-0.013,11.66,22.415)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,24.12,12.917)"><path id="g119-65" d="M697 -46L668 -39C637 -126 611 -142 545 -142H163L474 298L206 694H483C558 694 584 688 600 668C615 651 627 625 639 580L667 585L655 739H70V714L378 254L53 -203V-228H655L697 -46Z"/></g><g transform="matrix(.0091,0,0,-0.0091,33.91,6.517)"><path id="g50-108" d="M485 418C485 434 469 451 441 451C389 451 312 387 255 335C221 304 194 278 159 242H157L259 678C264 698 264 710 255 710C242 710 183 681 96 673L90 643L128 642C165 641 171 640 162 602L24 -5L31 -12C51 -4 81 4 110 9L145 181C154 195 180 220 205 242C233 170 263 106 291 53C318 1 335 -12 360 -12C383 -12 425 0 483 82L463 105C437 79 411 57 400 57C388 57 378 68 355 110C329 156 288 244 268 298C299 333 355 376 405 376C426 376 440 373 448 368C453 365 465 368 468 373C477 386 485 405 485 418Z"/></g><g transform="matrix(.0091,0,0,-0.0091,33.91,16.695)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,36.45,16.695)"><use xlink:href="#g54-34"/></g><g transform="matrix(.0091,0,0,-0.0091,42.02,16.695)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,49.17,12.911)"><use xlink:href="#g113-81"/></g><g transform="matrix(.0091,0,0,-0.0091,55.83,16.042)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,58.88,12.911)"><path id="g113-82" d="M699 368C699 549 574 666 407 666C186 666 23 488 23 277C23 113 129 -3 288 -13L307 -26C431 -111 501 -139 533 -147C559 -154 613 -163 658 -164L666 -141C597 -111 507 -66 430 -11L416 -1C580 42 699 190 699 368ZM601 371C601 227 518 54 381 22L354 40L278 24C175 47 120 145 120 269C120 451 235 631 398 631C540 631 601 521 601 371Z"/></g><g transform="matrix(.0091,0,0,-0.0091,68.2,16.042)"><use xlink:href="#g50-106"/></g><rect x="24.12" height="0.65243" width="47.1988" y="18.762"/><g transform="matrix(.013,0,0,-0.013,28.99,34.239)"><use xlink:href="#g119-65"/></g><g transform="matrix(.0091,0,0,-0.0091,38.78,27.838)"><use xlink:href="#g50-108"/></g><g transform="matrix(.0091,0,0,-0.0091,38.78,38.016)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,41.32,38.016)"><use xlink:href="#g54-34"/></g><g transform="matrix(.0091,0,0,-0.0091,46.88,38.016)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,54.04,34.232)"><use xlink:href="#g113-82"/></g><g transform="matrix(.0091,0,0,-0.0091,63.36,37.364)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,72.51,22.415)"><use xlink:href="#g113-45"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M15-2" height="38.1758pt" version="1.1" width="81.704pt" viewBox="0 0 81.704 38.1758"><g id="B15-2"><g transform="matrix(.013,0,0,-0.013,0,22.415)"><path id="g121-117" d="M696 437H516V411C580 402 587 397 574 345C555 271 527 183 505 114H503C461 222 420 328 383 432H357C315 316 278 214 241 118H239C214 195 189 274 165 350C151 396 156 402 216 411V437H9V411C57 405 65 398 83 346C125 226 162 108 199 -11H227C267 100 308 199 346 300C387 195 428 97 468 -11H497C542 124 587 257 617 337C637 392 646 404 696 411V437Z"/></g><g transform="matrix(.013,0,0,-0.013,9.14,22.415)"><path id="g121-102" d="M513 0V26C455 31 447 37 447 103V278C447 398 390 449 309 449C255 449 202 412 166 376V712C127 700 67 684 19 677V653C85 647 87 643 87 580V103C87 37 79 31 19 26L18 0H231V26C171 32 166 39 166 103V341C194 373 232 392 270 392C337 392 368 351 368 269V103C368 38 360 32 302 26V0H513Z"/></g><g transform="matrix(.013,0,0,-0.013,16.03,22.415)"><path id="g121-99" d="M380 106C343 72 306 56 265 56C195 56 116 112 115 248C235 252 361 262 377 265C396 269 400 277 400 297C400 374 333 449 250 449H249C198 449 144 421 103 376S37 269 37 201C37 88 109 -12 232 -12C263 -12 332 6 395 84L380 106ZM225 412C281 412 315 364 314 312C314 297 308 292 290 292C232 290 176 289 120 289C135 370 180 412 225 412Z"/></g><g transform="matrix(.013,0,0,-0.013,21.55,22.415)"><path id="g121-112" d="M181 342V451C133 431 89 419 40 411V388C98 381 102 377 102 311V104C102 38 95 32 33 26V0H263V26C186 32 181 38 181 104V287C203 343 235 372 261 372C277 372 289 366 304 352C310 346 318 345 330 350C349 359 362 379 362 399C362 422 338 449 304 449C256 449 213 393 183 342H181Z"/></g><g transform="matrix(.013,0,0,-0.013,26.21,22.415)"><use xlink:href="#g121-99"/></g><g transform="matrix(.013,0,0,-0.013,36.09,22.415)"><use xlink:href="#g113-82"/></g><g transform="matrix(.0091,0,0,-0.0091,45.41,25.547)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,52.1,22.415)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,67.92,13.907)"><path id="g113-50" d="M384 0V27C293 34 287 42 287 114V635C232 613 172 594 109 583V559L157 557C201 555 205 550 205 499V114C205 42 199 34 109 27V0H384Z"/></g><rect x="64.56" height="0.65243" width="12.9858" y="18.762"/><g transform="matrix(.013,0,0,-0.013,64.56,31.641)"><use xlink:href="#g113-69"/></g><g transform="matrix(.0091,0,0,-0.0091,74.45,34.772)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,78.74,22.415)"><use xlink:href="#g113-47"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="I15" class="alt_equation" height="38.1758pt" version="1.1" width="167.15pt" viewBox="0 0 167.15 38.1758"><use xlink:href="#B15-1" transform="matrix(1 0 0 1 0 0)"/><use xlink:href="#B15-2" transform="matrix(1 0 0 1 85.45 0)"/></svg></span></span><span class="right_break" id="R15"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M15-3" class="label" height="11.44pt" version="1.1" width="15.038pt" viewBox="0 0 15.038 11.44"><g id="B15-3"><g transform="matrix(.013,0,0,-0.013,0,9.25)"><use xlink:href="#g190-41"/></g><g transform="matrix(.013,0,0,-0.013,4.5,9.25)"><path id="g190-243" d="M411 139C381 76 368 73 314 73H129L267 224C351 317 400 380 400 469C400 574 322 635 233 635C176 635 128 610 98 576L40 495L63 476C89 515 130 568 198 568C274 568 316 519 316 436C316 347 251 264 191 192C142 134 85 76 30 21V0H403C415 45 425 89 438 131L411 139Z"/></g><g transform="matrix(.013,0,0,-0.013,10.54,9.25)"><use xlink:href="#g190-42"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="IL15" class="alt_label" height="38.1758pt" version="1.1" width="15.09pt" viewBox="0 0 15.09 38.1758"><use xlink:href="#B15-3" transform="matrix(1 0 0 1 0 13.16)"/></svg></span></span></p><p>The Weighted <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M16" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>-Nearest Neighbors (W<i>k</i>NN)
+ in Signal Space method was chosen especially because of its easy 
+implementation and the fact that its results are not difficult to 
+interpret. If unexpected results occur, they are easy to analyze.</p><p>The
+ measurement itself takes several seconds. During the measurement, the 
+measuring device can receive the signal of the same WiFi access points 
+or BLE beacon several times with different signal strength. This set of 
+signals from one transmitter (identified by an ID Tx, e.g., a unique MAC
+ address) within one measurement will be marked <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.1815pt" id="M17" height="11.8174pt" version="1.1" viewBox="-0.0498162 -8.6359 20.6537 11.8174" width="20.6537pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-89" d="M748 650H522L515 622L546 617C580 611 587 604 565 575C518 513 469 451 419 393C376 474 349 534 330 580C318 609 325 612 361 618L383 622L392 650H151L144 622C214 616 224 612 257 543L360 327C270 218 187 124 159 95C106 40 92 34 26 28L17 0H252L259 28L236 31C189 37 188 47 209 78C249 136 308 210 377 294L478 79C494 44 487 37 449 32L418 28L409 0H673L680 28C596 34 591 39 554 116L436 361C526 469 574 521 604 553C659 612 669 614 739 622L748 650Z"/></g><g transform="matrix(.0091,0,0,-0.0091,9.88,3.132)"><path id="g58-82" d="M601 496C596 555 591 627 591 675H567C551 656 544 650 516 650H120C91 650 79 651 64 675H41C38 619 34 555 29 492H63C75 537 83 566 96 582C110 604 128 612 207 612H272V126C272 46 264 38 170 33V0H464V33C368 38 359 48 359 126V612H430C502 612 520 605 535 582C547 566 556 541 567 492L601 496Z"/></g><g transform="matrix(.0091,0,0,-0.0091,15.595,3.132)"><path id="g58-118" d="M482 0V30C420 38 407 48 370 103L273 248C308 299 331 332 352 357C387 397 401 404 463 409V439H277V409C318 405 324 400 307 369C290 337 270 307 251 279L194 367C175 396 180 402 220 409V439H18V409C74 401 87 395 117 349L204 213C173 168 147 130 119 95C78 46 67 38 5 30V0H195V30C144 38 143 47 162 79C181 112 202 149 225 181L297 70C314 43 307 35 264 30V0H482Z"/></g></svg>; see the following definition:<span id="EEq3" class="equation_break"><span class="left_break" id="L18"></span><span class="middle_break"><span class="center_break" id="M18"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M18-1" height="14.5707pt" version="1.1" width="153.064pt" viewBox="0 0 153.064 14.5707"><g id="B18-1"><g transform="matrix(.013,0,0,-0.013,0,10.593)"><use xlink:href="#g113-89"/></g><g transform="matrix(.0091,0,0,-0.0091,9.88,13.725)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,15.6,13.725)"><use xlink:href="#g58-118"/></g><g transform="matrix(.013,0,0,-0.013,24.15,10.593)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,35.42,10.593)"><path id="g119-7" d="M321 -265V-236C237 -225 227 -181 227 -132C227 -64 244 49 244 143C244 202 220 254 159 269V273C221 287 244 339 244 397C244 489 227 585 227 676C227 723 237 765 321 776V805C259 805 168 790 168 663C168 574 176 471 176 380C176 342 173 292 73 286V255C173 249 176 199 176 162C176 74 168 -28 168 -127C168 -252 259 -265 321 -265Z"/></g><g transform="matrix(.013,0,0,-0.013,40.41,10.593)"><use xlink:href="#g113-121"/></g><g transform="matrix(.0091,0,0,-0.0091,47.62,13.725)"><use xlink:href="#g50-50"/></g><g transform="matrix(.0091,0,0,-0.0091,52.05,13.725)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,57.76,13.725)"><use xlink:href="#g58-118"/></g><g transform="matrix(.013,0,0,-0.013,62.7,10.593)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,67.84,10.593)"><use xlink:href="#g113-121"/></g><g transform="matrix(.0091,0,0,-0.0091,75.05,13.725)"><use xlink:href="#g50-51"/></g><g transform="matrix(.0091,0,0,-0.0091,79.48,13.725)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,85.19,13.725)"><use xlink:href="#g58-118"/></g><g transform="matrix(.013,0,0,-0.013,90.13,10.593)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,95.27,10.593)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,100.42,10.593)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,105.56,10.593)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,110.74,10.593)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,115.88,10.593)"><use xlink:href="#g113-121"/></g><g transform="matrix(.0091,0,0,-0.0091,123.08,13.725)"><path id="g50-78" d="M1006 650H829L492 147L357 650H174L166 618C270 609 275 601 247 502L194 315C158 189 136 127 122 96C104 56 80 37 18 32L12 0H256L263 32C181 40 176 51 183 98C188 132 197 179 226 281L299 541H301L433 6H458L809 551H811L753 141C739 41 734 39 650 32L642 0H917L923 32C836 39 827 41 839 142L887 535C896 610 901 612 997 618L1006 650Z"/></g><g transform="matrix(.0091,0,0,-0.0091,132.14,13.725)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,137.85,13.725)"><use xlink:href="#g58-118"/></g><g transform="matrix(.013,0,0,-0.013,142.81,10.593)"><path id="g119-8" d="M310 255V286C210 292 207 342 207 380C207 471 215 574 215 663C215 790 124 805 62 805V776C146 765 156 723 156 676C156 585 139 489 139 397C139 339 162 287 224 273V269C163 254 139 202 139 143C139 49 156 -64 156 -132C156 -181 146 -225 62 -236V-265C124 -265 215 -252 215 -127C215 -28 207 74 207 162C207 199 210 249 310 255Z"/></g><g transform="matrix(.013,0,0,-0.013,150.1,10.593)"><use xlink:href="#g113-47"/></g></g></svg></span></span><span class="right_break" id="R18"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M18-2" class="label" height="11.44pt" version="1.1" width="14.868pt" viewBox="0 0 14.868 11.44"><g id="B18-2"><g transform="matrix(.013,0,0,-0.013,0,9.26)"><use xlink:href="#g190-41"/></g><g transform="matrix(.013,0,0,-0.013,4.5,9.26)"><path id="g190-232" d="M269 381C298 400 325 421 340 436C360 455 370 476 370 504C370 579 313 635 223 635H222C170 635 123 610 95 579L52 516L72 497C95 533 136 577 193 577C245 577 286 546 286 482C286 408 218 369 127 339L133 314C149 319 174 325 197 325C254 325 324 285 324 192C325 83 266 39 201 39C143 39 103 68 78 91C70 98 62 97 54 91C45 84 33 71 32 58C30 46 34 35 48 22C61 10 102 -12 148 -12C216 -12 410 57 410 225C410 298 357 362 269 379V381Z"/></g><g transform="matrix(.013,0,0,-0.013,10.37,9.26)"><use xlink:href="#g190-42"/></g></g></svg></span></span></p><p>For further processing only one value is chosen from this set of different values—the median value <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.18149pt" id="M19" height="12.4307pt" version="1.1" viewBox="-0.0498162 -9.24921 20.387 12.4307" width="20.387pt"><g transform="matrix(.013,0,0,-0.013,.855,-.222)"><path id="g119-113" d="M658 624L641 649C599 612 554 595 493 595C444 595 402 603 342 615C268 634 232 641 184 641C129 641 57 621 0 557L17 532C67 566 113 586 176 586C230 586 265 577 316 565C380 550 430 540 482 540C540 540 611 558 658 624Z"/></g><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,10.296,3.132)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,16.01,3.132)"><use xlink:href="#g58-118"/></g></svg> which is further marked as <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063904pt" id="M20" height="6.1673pt" version="1.1" viewBox="-0.0498162 -5.96091 4.9929 6.1673" width="4.9929pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-116"/></g></svg> or <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063904pt" id="M21" height="6.1673pt" version="1.1" viewBox="-0.0498162 -5.96091 10.3951 6.1673" width="10.3951pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-110"/></g></svg> values according to its meaning in formula (<a href="#EEq1">1</a>).</p><h5 id="sec5.3">5.3. System Architecture</h5><p>The
+ system for acquisition of the data obtained during the measurements on 
+mobile devices is based on the Couchbase database. It is a NoSQL 
+database which has no fixed schema and enables saving of records 
+constituted by objects in a JSON format under unique keys. Then, it 
+supports searching primarily according to the keys and secondarily with 
+the aid of the so-called views (they correspond to indexes in relational
+ databases) which can be based on any data from the records.</p><p>One 
+of the advantages of schemaless databases is a high flexibility when 
+addition of more attributes in newly acquired records does not require 
+any modifications of the schema or a major restructuring of the 
+database. This flexibility is especially useful in research projects 
+when a detailed analysis of all requirements at the very beginning of 
+the project cannot be expected.</p><p>Support of replication across 
+several servers is another advantage of Couchbase. Besides the server 
+environment, this database can be operated on mobile devices using the 
+Couchbase Lite edition. Couchbase Sync Gateway allows the database to be
+ replicated among the server and mobile devices including selective 
+replication of selected records only. This feature was used for 
+replication of the measured data from mobile devices to the server where
+ they were further processed and the evaluation described below was 
+performed.</p><p>Direct access to Couchbase or Couchbase Sync Gateway from the Internet is not recommended due to security reasons [<a href="#B10">24</a>].
+ That is why the Apache reverse proxy is put in front of the Sync 
+Gateway. The Apache reverse proxy mediates communication among clients 
+(mobile devices) and server components. The whole system at the server 
+is described in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig1/">1</a>.
+ The small JavaScript application deployed to the NodeJS server provides
+ external authentication of users for Couchbase Sync Gateway using 
+Google accounts. It facilitates the authentication based on user’s 
+Google account when using his/her smartphone or tablet with the Android 
+operating system. A session token is the result of the authentication 
+process.</p><div class="fig" id="fig1"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig1/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_008.svg" name="fig1"></object></span></a></div><div class="groupcaption"><b>Figure 1: </b>System architecture (based on [<a href="#B17">25</a>]).</div></div><h4 id="sec6">6. Test Site: The Campus Building</h4><p>As
+ a test site, one floor of the building of the Faculty of Informatics 
+and Management, University of Hradec Kralove (FIM UHK), was chosen. The 
+main walk-through corridors are in a rectangular arrangement. Classrooms
+ and offices are situated inwards and outwards in relation to the 
+corridors. There is a roofed atrium in the center of the building. 
+Experiments have been conducted in a 52 m × 43 m area.</p><p>Several WiFi transmitters of the<i> eduroam</i> network made by Cisco are permanently deployed on every floor. Their locations are marked with letters <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-1.38075pt" id="M22" height="10.643pt" version="1.1" viewBox="-0.0498162 -9.26225 11.9218 10.643" width="11.9218pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path d="M864 305C864 530 680 712 453 712S42 530 42 305S226 -102 453 -102S864 80 864 305ZM812 305C812 105 651 -58 453 -58S94 105 94 305S255 668 453 668S812 505 812 305ZM737 472V492H597V472L617 469C645 465 647 460 641 433C630 386 599 297 579 242H577L476 482H455L361 239H359C360 239 293 436 293 436C284 462 288 464 314 469L331 472V492H171V472C208 469 218 463 233 419L328 145H349L447 384H449L549 145H572L673 424C686 461 695 467 737 472Z"/></g></svg> in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig2/">2</a>.</p><div class="fig" id="fig2"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig2/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_009.svg" name="fig2"></object></span></a></div><div class="groupcaption"><b>Figure 2: </b>Floor plan with WiFi access points and BLE beacons.</div></div><p>In
+ every place marked there are more radio units, typically at least two 
+of them—one in a 2.4 GHz and the other one in a 5 GHz band. Their TX 
+power is automatically adjusted by the central radio resource management
+ unit to help mitigate cochannel interference and signal coverage 
+problems.</p><p>Then, 17 new Bluetooth Low Energy beacons made by 
+Estimote were evenly placed in the corridors and classrooms on the 
+floor. Beacons were originally put behind the dropped ceiling (see 
+Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig3/">3</a>)
+ in a similar way as WiFi access points but the performance was not 
+sufficient. Later on, we moved them from behind the ceiling and attached
+ them to the bottom side of the mineral fiber ceiling tile. It improved 
+the performance and enabled the line-of-sight propagation. Beacon 
+broadcasting parameters were set to the advertising interval of 100 ms 
+and the TX power of 0 dBm. Locations of beacons are marked with numbers ①
+ to <i>⑰</i> in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig2/">2</a>. Individual beacons in the corridor are about 10 m apart.</p><div class="fig" id="fig3"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig3/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_003.svg" name="fig3"></object></span></a></div><div class="groupcaption"><b>Figure 3: </b>Physical deployment of the BLE beacon.</div></div><h4 id="sec7">7. Evaluation</h4><p>The
+ dataset of calibrated points was acquired by volunteers during several 
+weeks. In total, 680 measurements were performed consisting of 115,511 
+individual RSSI samples (signal strength + transmitter-id pairs). The 
+exact position on the floor was known for every measurement. Two devices
+ were used for measurement: Sony Xperia Z3 Compact and Motorola Nexus 6.
+ Each measurement took 10 seconds.</p><p>A chart in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig4/">4</a>
+ shows numbers of different (unique) transmitters received within one 
+fingerprint for both technologies—WiFi and BLE. To be complete, we also 
+show the sum of both technologies because in the following evaluation we
+ will consider combination of signals from both types of transmitters. 
+The median of the number of unique transmitters is 5 for WiFi and 4 for 
+BLE.</p><div class="fig" id="fig4"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig4/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_004.svg" name="fig4"></object></span></a></div><div class="groupcaption"><b>Figure 4: </b>Number of unique transmitters in a single measurement.</div></div><p>To
+ evaluate the localization using WiFi, BLE, and a combination of both 
+technologies, the leave-one-out cross-validation technique was applied. 
+From the set of 680 calibrated points, one of them was chosen in each 
+iteration and its position was estimated based on the other calibrated 
+points. This procedure was then repeated for all points. The accuracy 
+(estimated position compared to the real position) was then calculated 
+for every estimation of the position.</p><p>A Weighted <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M23" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>-Nearest Neighbors in Signal Space algorithm was used for estimation of the position. We tested <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-2.26807pt" id="M24" height="11.5564pt" version="1.1" viewBox="-0.0498162 -9.28833 79.5879 11.5564" width="79.5879pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g><g transform="matrix(.013,0,0,-0.013,10.171,0)"><path id="g117-173" d="M448 1V51H364C248 51 153 129 140 230H448V280H140C153 381 248 459 364 459H448V509H365C208 509 80 395 80 255S208 1 365 1H448Z"/></g><g transform="matrix(.013,0,0,-0.013,20.667,0)"><path id="g113-124" d="M293 -169V-141C218 -131 209 -90 209 -44C209 19 222 85 222 152C222 207 198 255 139 269V273C199 286 222 334 222 388C222 454 209 523 209 588C209 632 218 671 293 681V709C234 709 148 695 148 577C147 513 155 438 155 372C155 337 152 291 64 285V256C152 250 155 204 155 169C156 105 148 31 148 -41C148 -157 234 -169 293 -169Z"/></g><g transform="matrix(.013,0,0,-0.013,25.178,0)"><use xlink:href="#g113-50"/></g><g transform="matrix(.013,0,0,-0.013,31.418,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,36.561,0)"><path id="g113-51" d="M412 140C382 77 369 73 315 73H129L270 222C362 320 402 379 402 466C402 571 322 635 234 635C177 635 130 609 99 576L42 495L64 475C90 514 133 568 201 568C274 568 318 519 318 435C318 349 255 267 193 193C144 135 87 78 32 23V0H405C417 45 427 89 440 131L412 140Z"/></g><g transform="matrix(.013,0,0,-0.013,42.859,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,48.002,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,53.145,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,58.288,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,63.465,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,68.608,0)"><path id="g113-54" d="M153 550H386L412 615L406 623H120L82 318C104 327 142 338 184 338C294 338 347 275 347 187C347 112 305 39 221 39C160 39 119 71 97 89C88 97 80 96 71 90C59 80 50 67 49 57C48 45 52 36 66 23C80 9 123 -12 169 -12C221 -11 288 15 342 59C403 109 431 165 431 225C431 308 366 395 238 395C212 395 165 379 127 364L153 550Z"/></g><g transform="matrix(.013,0,0,-0.013,74.848,0)"><path id="g113-126" d="M283 255V284C195 290 192 337 192 375C192 436 200 508 200 580C200 696 116 709 54 709V681C127 671 139 634 139 588C138 524 125 452 125 387C125 333 149 286 209 272V268C148 253 125 206 125 151C126 87 139 16 139 -47C139 -92 127 -131 54 -141V-169C115 -169 200 -152 200 -41C200 32 192 104 192 164C192 202 195 249 283 255Z"/></g></svg>. Several authors recommend <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M25" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg> to be chosen as 3 or 4 [<a href="#B12">23</a>]. Our results of <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-2.26807pt" id="M26" height="11.5564pt" version="1.1" viewBox="-0.0498162 -9.28833 58.971 11.5564" width="58.971pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g><g transform="matrix(.013,0,0,-0.013,10.171,0)"><use xlink:href="#g117-173"/></g><g transform="matrix(.013,0,0,-0.013,20.667,0)"><use xlink:href="#g113-124"/></g><g transform="matrix(.013,0,0,-0.013,25.178,0)"><use xlink:href="#g113-51"/></g><g transform="matrix(.013,0,0,-0.013,31.418,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,36.561,0)"><path id="g113-52" d="M285 378C315 398 338 416 353 432C373 451 384 474 384 503C384 579 325 635 236 635H235C182 635 136 610 108 579L65 516L85 496C110 533 150 575 205 575C258 575 300 543 300 481C300 407 232 369 141 339L147 310C163 315 188 321 211 321C268 321 338 284 338 192C338 94 288 40 217 40C160 40 119 68 93 91C85 98 77 97 69 91C60 84 47 71 46 58C44 46 48 35 62 22C75 10 116 -12 162 -12C234 -12 424 62 424 224C424 297 373 359 285 376V378Z"/></g><g transform="matrix(.013,0,0,-0.013,42.859,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,48.002,0)"><path id="g113-53" d="M456 178V225H360V632H320C217 496 115 347 20 206V178H280V106C280 40 276 34 189 27V0H445V27C364 34 360 39 360 106V178H456ZM280 225H82C149 335 214 431 278 520H280V225Z"/></g><g transform="matrix(.013,0,0,-0.013,54.242,0)"><use xlink:href="#g113-126"/></g></svg> were similar but we achieved the highest accuracy using <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M27" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 27.8499 9.49473" width="27.8499pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g><g transform="matrix(.013,0,0,-0.013,10.171,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,21.434,0)"><use xlink:href="#g113-51"/></g></svg>. This value is used in our experiments.</p><p>Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig5/">5</a> shows the results of the cross-validation—on the <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.42943pt" id="M28" height="9.39034pt" version="1.1" viewBox="-0.0498162 -5.96091 7.65486 9.39034" width="7.65486pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-122"/></g></svg>
+ axis there is an accuracy of the estimation of the position (an error 
+in meters) when using WiFi networks only, BLE transmitters only, and 
+finally both technologies combined together. The median accuracy 
+improved from 1 m when using WiFi to 0.77 m when combining both 
+technologies. However, the elimination of the accuracy variance and the 
+reduction of outliers is more interesting. The maximum error of the 
+localization (excluding outliers) in a given sample was lowered from 
+4.27 m when using WiFi to 2.82 m in a combined method.</p><div class="fig" id="fig5"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig5/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_006.svg" name="fig5"></object></span></a></div><div class="groupcaption"><b>Figure 5: </b>Comparison of localization accuracy.</div></div><p>We
+ analyzed estimations with the highest errors in detail to be able to 
+discuss the possible causes. Most of the incorrectly localized points 
+were situated at the dead ends of the corridors where there was no 
+beacon at the very end of the corridor. Localization algorithm obviously
+ estimates the position better when it can approximate the position 
+between two beacons. Longer corridors also allow good propagation of the
+ signal causing less significant differences among signals, especially 
+at the dead ends.</p><h5 id="sec7.1">7.1. Weight of BLE Signals versus WiFi Signals</h5><p>Several
+ tests verifying a suitable way to combine signals of WiFi and BLE 
+transmitters in Signal Space have been performed. Both WiFi and BLE 
+signals were put into common Signal Space. The strengths of BLE signals 
+in individual tests were multiplied by different coefficients <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-2.15067pt" id="M29" height="11.439pt" version="1.1" viewBox="-0.0498162 -9.28833 64.7125 11.439" width="64.7125pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><path id="g113-100" d="M383 397C383 424 344 448 299 448C244 448 172 409 132 375C66 319 23 227 23 146C23 42 74 -12 146 -12C208 -12 298 30 359 103L343 124C315 95 248 48 192 48C145 48 111 85 111 163C111 228 129 294 151 330C171 363 201 401 241 401C275 401 302 384 325 356C332 347 339 344 348 348C373 360 383 381 383 397Z"/></g><g transform="matrix(.013,0,0,-0.013,8.914,0)"><use xlink:href="#g117-173"/></g><g transform="matrix(.013,0,0,-0.013,19.41,0)"><use xlink:href="#g113-92"/></g><g transform="matrix(.013,0,0,-0.013,23.895,0)"><path id="g113-49" d="M241 635C89 635 35 457 35 312C35 153 89 -12 240 -12C390 -12 443 166 443 312C443 466 390 635 241 635ZM238 602C329 602 354 454 354 312C354 172 330 22 240 22C152 22 124 173 124 313S148 602 238 602Z"/></g><g transform="matrix(.013,0,0,-0.013,30.135,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,33.099,0)"><use xlink:href="#g113-51"/></g><g transform="matrix(.013,0,0,-0.013,39.339,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,44.482,0)"><use xlink:href="#g113-50"/></g><g transform="matrix(.013,0,0,-0.013,50.722,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,53.686,0)"><path id="g113-57" d="M249 635C141 635 70 555 70 471C70 401 114 353 179 316C143 294 106 267 90 252C68 231 45 202 45 157C45 50 130 -12 237 -12C322 -12 435 52 435 169C435 256 372 304 303 343C349 374 375 398 383 407C401 429 411 458 411 487C411 569 344 635 249 635ZM238 603C285 603 337 567 337 482C337 422 310 385 276 358C205 393 145 426 145 500C145 552 179 603 238 603ZM248 20C183 20 125 70 125 163C125 218 158 268 206 300C284 261 355 217 355 143C355 66 308 20 248 20Z"/></g><g transform="matrix(.013,0,0,-0.013,60.053,0)"><use xlink:href="#g113-94"/></g></svg>. The total distance in Signal Space containing both WiFi and BLE signals was then calculated according to the formula<span id="EEq4" class="equation_break"><span class="left_break" id="L30"></span><span class="middle_break"><span class="center_break" id="M30"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M30-1" height="53.0254pt" version="1.1" width="12.448pt" viewBox="0 0 12.448 53.0254"><g id="B30-1"><g transform="matrix(.013,0,0,-0.013,0,30.578)"><use xlink:href="#g113-69"/></g><g transform="matrix(.0091,0,0,-0.0091,9.9,33.71)"><use xlink:href="#g50-106"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M30-2" height="53.0254pt" version="1.1" width="204.894pt" viewBox="0 0 204.894 53.0254"><g id="B30-2"><g transform="matrix(.013,0,0,-0.013,0,30.578)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,11.26,30.166)"><path id="g119-126" d="M766 2258H714L646 -1168H644L338 324L133 268L144 225L272 260L683 -1748H685L766 2258Z"/></g><rect x="22.23" height="0.65243" width="179.696" y=".702"/><g transform="matrix(.0091,0,0,-0.0091,25.32,15.813)"><use xlink:href="#g50-79"/></g><g transform="matrix(.013,0,0,-0.013,22.63,30.585)"><use xlink:href="#g119-73"/></g><g transform="matrix(.0091,0,0,-0.0091,22.23,44.227)"><use xlink:href="#g50-107"/></g><g transform="matrix(.0091,0,0,-0.0091,26.15,44.227)"><use xlink:href="#g54-34"/></g><g transform="matrix(.0091,0,0,-0.0091,31.71,44.227)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,38.37,30.578)"><use xlink:href="#g119-133"/></g><g transform="matrix(.013,0,0,-0.013,44.15,30.578)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,54.34,33.71)"><use xlink:href="#g50-107"/></g><g transform="matrix(.013,0,0,-0.013,61.67,30.578)"><use xlink:href="#g117-33"/></g><g transform="matrix(.013,0,0,-0.013,72.21,30.578)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,77.02,33.71)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,78.9,33.71)"><use xlink:href="#g50-107"/></g><g transform="matrix(.013,0,0,-0.013,83.34,30.578)"><use xlink:href="#g119-134"/></g><g transform="matrix(.0091,0,0,-0.0091,89.2,21.385)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,97.05,30.578)"><path id="g117-36" d="M535 230V280H323V490H265V280H52V230H265V-3H323V230H535Z"/></g><g transform="matrix(.0091,0,0,-0.0091,110.68,15.813)"><use xlink:href="#g50-79"/></g><g transform="matrix(.0065,0,0,-0.0065,118.43,12.616)"><path id="g176-31" d="M323 549L316 585C302 600 218 636 190 624L84 81L142 54L323 549Z"/></g><g transform="matrix(.013,0,0,-0.013,109.48,30.585)"><use xlink:href="#g119-73"/></g><g transform="matrix(.0091,0,0,-0.0091,107.59,45.545)"><use xlink:href="#g50-107"/></g><g transform="matrix(.0065,0,0,-0.0065,111.5,42.348)"><use xlink:href="#g176-31"/></g><g transform="matrix(.0091,0,0,-0.0091,114.49,45.545)"><use xlink:href="#g54-34"/></g><g transform="matrix(.0091,0,0,-0.0091,120.05,45.545)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,124.53,30.578)"><use xlink:href="#g113-100"/></g><g transform="matrix(.013,0,0,-0.013,132.72,30.578)"><path id="g113-46" d="M170 255C170 288 146 313 114 313S58 288 58 255C58 221 82 198 114 198S170 221 170 255Z"/></g><g transform="matrix(.013,0,0,-0.013,138.59,30.578)"><path id="g119-141" d="M426 -529C264 -368 168 -59 168 271C168 602 262 909 426 1071L402 1098C184 910 85 609 85 272V271C85 -69 184 -372 402 -556L426 -529Z"/></g><g transform="matrix(.013,0,0,-0.013,145.14,30.578)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,155.39,26.027)"><path id="g50-31" d="M300 541L304 571C290 586 211 619 185 610L80 76L131 52L310 541Z"/></g><g transform="matrix(.0091,0,0,-0.0091,155.33,35.937)"><use xlink:href="#g50-107"/></g><g transform="matrix(.0065,0,0,-0.0065,159.24,32.74)"><use xlink:href="#g176-31"/></g><g transform="matrix(.013,0,0,-0.013,165.64,30.578)"><use xlink:href="#g117-33"/></g><g transform="matrix(.013,0,0,-0.013,176.18,30.578)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,181.06,26.027)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,180.99,35.937)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,182.87,35.937)"><use xlink:href="#g50-107"/></g><g transform="matrix(.0065,0,0,-0.0065,186.79,32.74)"><use xlink:href="#g176-31"/></g><g transform="matrix(.013,0,0,-0.013,190.29,30.578)"><path id="g119-142" d="M417 271V272C417 609 318 910 100 1098L76 1071C240 909 334 602 334 271C334 -59 238 -368 76 -529L100 -556C318 -372 417 -69 417 271Z"/></g><g transform="matrix(.0091,0,0,-0.0091,196.93,19.493)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,201.93,30.578)"><use xlink:href="#g113-45"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="I30" class="alt_equation" height="75.0405pt" version="1.1" width="211.59pt" viewBox="0 0 211.59 75.0405"><use xlink:href="#B30-1" transform="matrix(1 0 0 1 0 -21.39)"/><use xlink:href="#B30-2" transform="matrix(1 0 0 1 6.65 22.02)"/></svg></span></span><span class="right_break" id="R30"><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="M30-3" class="label" height="11.44pt" version="1.1" width="15.458pt" viewBox="0 0 15.458 11.44"><g id="B30-3"><g transform="matrix(.013,0,0,-0.013,0,9.26)"><use xlink:href="#g190-41"/></g><g transform="matrix(.013,0,0,-0.013,4.5,9.26)"><path id="g190-166" d="M465 179V225H369V632H330C227 497 124 346 29 205V179H289V107C289 37 284 33 198 26V0H454V26C374 33 369 37 369 107V179H465ZM289 225H92C156 335 222 430 287 520H289V225Z"/></g><g transform="matrix(.013,0,0,-0.013,10.96,9.26)"><use xlink:href="#g190-42"/></g></g></svg><svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" id="IL30" class="alt_label" height="75.0405pt" version="1.1" width="15.52pt" viewBox="0 0 15.52 75.0405"><use xlink:href="#B30-3" transform="matrix(1 0 0 1 0 31.59)"/></svg></span></span>where <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.29107pt" id="M31" height="12.5794pt" version="1.1" viewBox="-0.0498162 -9.28833 114.137 12.5794" width="114.137pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.013,0,0,-0.013,13.889,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,25.152,0)"><use xlink:href="#g113-41"/></g><g transform="matrix(.013,0,0,-0.013,29.65,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,39.842,3.132)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,44.788,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,49.932,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,60.124,3.132)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,65.07,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,70.213,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,75.356,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,80.499,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,85.676,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,90.819,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,101.011,3.132)"><use xlink:href="#g50-79"/></g><g transform="matrix(.013,0,0,-0.013,109.291,0)"><use xlink:href="#g113-42"/></g></svg> is the measured vector of the fingerprint of WiFi signals and <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.29107pt" id="M32" height="12.5794pt" version="1.1" viewBox="-0.0498162 -9.28833 104.457 12.5794" width="104.457pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-84"/></g><g transform="matrix(.0091,0,0,-0.0091,6.071,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,12.758,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,24.021,0)"><use xlink:href="#g113-41"/></g><g transform="matrix(.013,0,0,-0.013,28.519,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,33.329,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,35.878,3.132)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,40.833,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,45.976,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,50.786,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,53.335,3.132)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,58.29,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,63.434,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,68.577,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,73.72,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,78.896,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,84.039,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,88.849,3.132)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,91.398,3.132)"><use xlink:href="#g50-79"/></g><g transform="matrix(.013,0,0,-0.013,99.687,0)"><use xlink:href="#g113-42"/></g></svg> is the calibrated vector of the fingerprint of WiFi signals from the database. Analogously, <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-4.3285pt" id="M33" height="15.7646pt" version="1.1" viewBox="-0.0498162 -11.4361 120.917 15.7646" width="120.917pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,10.257,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.013,0,0,-0.013,17.685,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,28.948,0)"><use xlink:href="#g113-41"/></g><g transform="matrix(.013,0,0,-0.013,33.446,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,43.703,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,43.638,3.784)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,48.584,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,53.727,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,63.984,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,63.919,3.784)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,68.866,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,74.009,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,79.152,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,84.295,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,89.471,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,94.614,0)"><use xlink:href="#g113-110"/></g><g transform="matrix(.0091,0,0,-0.0091,104.872,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,104.806,4.169)"><use xlink:href="#g50-79"/></g><g transform="matrix(.0065,0,0,-0.0065,112.562,.972)"><use xlink:href="#g176-31"/></g><g transform="matrix(.013,0,0,-0.013,116.071,0)"><use xlink:href="#g113-42"/></g></svg> is the measured vector of the fingerprint of BLE signals and <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-4.3285pt" id="M34" height="15.7646pt" version="1.1" viewBox="-0.0498162 -11.4361 108.246 15.7646" width="108.246pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-84"/></g><g transform="matrix(.0091,0,0,-0.0091,6.136,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,6.071,3.784)"><use xlink:href="#g50-106"/></g><g transform="matrix(.013,0,0,-0.013,13.564,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,24.826,0)"><use xlink:href="#g113-41"/></g><g transform="matrix(.013,0,0,-0.013,29.324,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,34.2,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,34.134,3.784)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,36.683,3.784)"><use xlink:href="#g50-50"/></g><g transform="matrix(.013,0,0,-0.013,41.638,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,46.782,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,51.657,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,51.592,3.784)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,54.14,3.784)"><use xlink:href="#g50-51"/></g><g transform="matrix(.013,0,0,-0.013,59.096,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,64.239,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,69.382,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,74.525,0)"><use xlink:href="#g113-47"/></g><g transform="matrix(.013,0,0,-0.013,79.701,0)"><use xlink:href="#g113-45"/></g><g transform="matrix(.013,0,0,-0.013,84.844,0)"><use xlink:href="#g113-116"/></g><g transform="matrix(.0091,0,0,-0.0091,89.72,-5.741)"><use xlink:href="#g50-31"/></g><g transform="matrix(.0091,0,0,-0.0091,89.654,4.169)"><use xlink:href="#g50-106"/></g><g transform="matrix(.0091,0,0,-0.0091,92.203,4.169)"><use xlink:href="#g50-79"/></g><g transform="matrix(.0065,0,0,-0.0065,99.958,.972)"><use xlink:href="#g176-31"/></g><g transform="matrix(.013,0,0,-0.013,103.476,0)"><use xlink:href="#g113-42"/></g></svg> is the calibrated vector of the fingerprint of BLE signals from the database. <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2064009pt" id="M35" height="8.8423pt" version="1.1" viewBox="-0.0498162 -8.6359 11.0475 8.8423" width="11.0475pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-79"/></g></svg> is the number of unique WiFi transmitters in a measurement and <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M36" height="11.6425pt" version="1.1" viewBox="-0.0498162 -11.4361 14.8431 11.6425" width="14.8431pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-79"/></g><g transform="matrix(.0091,0,0,-0.0091,10.91,-5.741)"><use xlink:href="#g50-31"/></g></svg> is the number of unique BLE beacons in a measurement.</p><p>These
+ tests revealed that the best results in the given set of measurements 
+were achieved by a ratio of 1 : 1 (thus a coefficient <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063904pt" id="M37" height="8.55521pt" version="1.1" viewBox="-0.0498162 -8.34882 26.5841 8.55521" width="26.5841pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-100"/></g><g transform="matrix(.013,0,0,-0.013,8.914,0)"><use xlink:href="#g117-34"/></g><g transform="matrix(.013,0,0,-0.013,20.177,0)"><use xlink:href="#g113-50"/></g></svg>). There is no reason to give more weight to one technology or the other.</p><h5 id="sec7.2">7.2. Scanning Duration</h5><p>Signal
+ scanning (measuring) duration in a given place is another important 
+parameter. During our experiment, every measurement always took 10 
+seconds. Our goal was to find out how many seconds the measurement 
+should last to provide good results.</p><p>Because all the data acquired
+ about individual measured signals were time-stamped, even shorter 
+scanning duration can be considered. For example, the results of 
+measurement taking 2 seconds can be achieved by ignoring signals 
+measured after a lapse of 2 seconds (thus ignoring the remaining 8 
+seconds from the total scanning interval). Due to the fact that we 
+calculate the median value <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063894pt" id="M38" height="9.4556pt" version="1.1" viewBox="-0.0498162 -9.24921 7.267 9.4556" width="7.267pt"><g transform="matrix(.013,0,0,-0.013,.581,-.222)"><path id="g119-25" d="M470 619L451 641C422 610 391 595 348 595C316 595 288 601 248 612C197 628 172 633 138 633C97 633 43 615 0 555L19 532C54 562 86 578 130 578C166 578 189 571 222 562C267 549 301 540 337 540C381 540 434 557 470 619Z"/></g><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-121"/></g></svg> (<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063904pt" id="M39" height="6.1673pt" version="1.1" viewBox="-0.0498162 -5.96091 10.3951 6.1673" width="10.3951pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-110"/></g></svg> or <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063904pt" id="M40" height="6.1673pt" version="1.1" viewBox="-0.0498162 -5.96091 4.9929 6.1673" width="4.9929pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-116"/></g></svg> values in formula (<a href="#EEq4">4</a>))
+ from several signal strengths acquired from the same transmitter within
+ one measurement, shortening of the considered scanning duration does 
+not have to necessarily mean reduction of the number of <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2064009pt" id="M41" height="8.8423pt" version="1.1" viewBox="-0.0498162 -8.6359 11.0475 8.8423" width="11.0475pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-79"/></g></svg> or <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M42" height="11.6425pt" version="1.1" viewBox="-0.0498162 -11.4361 14.8431 11.6425" width="14.8431pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-79"/></g><g transform="matrix(.0091,0,0,-0.0091,10.91,-5.741)"><use xlink:href="#g50-31"/></g></svg> due to complete “loss” of signals of some transmitters. After longer time of measurement, the <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.0498209pt" id="M43" height="8.68572pt" version="1.1" viewBox="-0.0498162 -8.6359 10.0819 8.68572" width="10.0819pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-89"/></g></svg> sets from which the median values <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-3.181499pt" id="M44" height="15.1057pt" version="1.1" viewBox="-0.0498162 -11.9242 20.074 15.1057" width="20.074pt"><g transform="matrix(.013,0,0,-0.013,.698,-2.897)"><use xlink:href="#g119-113"/></g><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-89"/></g><g transform="matrix(.0091,0,0,-0.0091,9.982,3.132)"><use xlink:href="#g58-82"/></g><g transform="matrix(.0091,0,0,-0.0091,15.697,3.132)"><use xlink:href="#g58-118"/></g></svg> are calculated for each transmitter are rather smaller because of a reduction of the duration.</p><p>We evaluated the localization again with different scanning duration considered from 1 second to 10 seconds. Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig6/">6</a>
+ shows the influence of the scanning duration on the accuracy of the 
+estimation of the position. Only median and maximum (excluding outliers)
+ values are displayed for clarity. Two factors probably affect the 
+accuracy: first, the speed of delivery of the measured signal strengths 
+of transmitters to the Android application and, second, the significance
+ of the particular technology in the localization process. We noticed 
+faster delivery of signal strengths of the BLE transmitters in contrast 
+to WiFi access points. Thus, BLE promises faster initial localization 
+than WiFi does. This effect becomes even stronger in combination with 
+WiFi. For example, in the 2nd second of the scanning, we were unable to 
+localize the mobile device in 168 positions using WiFi, in 36 positions 
+using BLE, and in 20 positions using combination of BLE and WiFi. It is 
+because the Android operating system may delay delivery of the WiFi 
+scanning results until the first scan cycle is done. Our stationary 
+localization may significantly help in the initial phase of other 
+methods based on distance estimation and pedestrian dead reckoning [<a href="#B9">12</a>].</p><div class="fig" id="fig6"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig6/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094.svg" name="fig6"></object></span></a></div><div class="groupcaption"><b>Figure 6: </b>Localization accuracy depending on scanning duration (scanning started at time 0).</div></div><p>We
+ have also investigated a situation when we estimate the location using 
+particular scanning duration while the scanning was started 4 seconds in
+ advance. We have chosen 4 seconds because we observed a “warm-up” 
+period of approximately 4 seconds before the scanning results were 
+continuously delivered to the Android application after the scanning had
+ been initially started. The results have improved enabling the 
+localization algorithm to be applicable to moving object localization 
+while doing continuous scanning that was started at least 4 seconds in 
+advance; see Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig7/">7</a>.</p><div class="fig" id="fig7"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig7/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_005.svg" name="fig7"></object></span></a></div><div class="groupcaption"><b>Figure 7: </b>Localization accuracy depending on scanning duration (scanning started 4 s before time 0).</div></div><h5 id="sec7.3">7.3. BLE Beacons Density</h5><p>Density
+ of BLE beacons will also influence the quality of the localization. Due
+ to the fact that beacons were firmly attached, the experiment verifying
+ the impact of beacons’ density was performed using existing data. Some 
+beacons were not considered when processed by the localization algorithm
+ (i.e., they were ignored) in order to simulate lower density. This 
+experiment was performed twice. For the first time, only 6 beacons in 
+the corridors marked by numbers ①, ③, ⑤, ⑦, ⑨, and ⑪ in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig2/">2</a>
+ were considered—this experiment was marked as an A option. For the 
+second time, only 12 beacons marked ① to ⑫ were considered—this 
+experiment was marked as a B option.</p><p>A boxplot in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig8/">8</a>
+ shows the final accuracy of the estimated position in individual cases A
+ and B. The results of configuration A reveal a substantial 
+deterioration of the accuracy of the localization in the test set when 
+using BLE beacons only. This is understandable due to a reduction in the
+ number of the unique BLE beacons scanned within one measurement to less
+ than 50% (in average from 4.4 to 1.9). The number of nonlocalized 
+points thus increases.</p><div class="fig" id="fig8"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/fig8/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_007.svg" name="fig8"></object></span></a></div><div class="groupcaption"><b>Figure 8: </b>Comparison of localization accuracy among different BLE deployment configurations.</div></div><h4 id="sec8">8. Discussion</h4><p>Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig8/">8</a>
+ also shows the results of the combined localization using WiFi and BLE 
+beacons. In this method in configurations A and B the median accuracy 
+worsened from 0.77 m to 0.99 m (A configuration) and to 0.87 m (B 
+configuration), respectively. Let us remember that the median accuracy 
+of the WiFi-based localization is 1 m in our experiment. These results 
+are also summarized in Table <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/tab1/">1</a>. Improvement in accuracy is relative to the accuracy of the WiFi-based localization in the table.</p><div class="fig" id="tab1"><div class="figgroupcaption"><a target="_blank" class="thumbnail" href="http://www.hindawi.com/journals/misy/2016/2083094/tab1/"><span><object type="image/svg+xml" data="Improving%20Indoor%20Localization%20Using%20Bluetooth%20Low%20Energy%20Beacons_fichiers/2083094_002.svg" name="tab1"></object></span></a></div><div class="groupcaption"><b>Table 1: </b>Localization results summary.</div></div><p>Thanks
+ to addition of 17 BLE beacons, the accuracy of the localization in a 
+given dataset improved by 23%. Besides the median value of the 
+localization error, the maximum error (outliers not considered) also 
+improved from 4.27 m to 2.82 m. The average error improved from 1.81 m 
+to 1.08 m. We assume that the number of BLE beacons scanned in one 
+measurement (which was 4.4 on average) has the main impact on the 
+resulting improvement in the localization accuracy. We also assume that 
+by increasing the number of beacons it will be possible to achieve more 
+substantial improvement considering the observed impact of further 
+reduction of BLE beacons. Increase of the TX power of the BLE beacons 
+should also increase the number of beacons detected during measurement 
+thanks to the extended coverage and overlap of areas covered by 
+individual beacons. But this option is less efficient for two reasons. 
+First, the higher TX power will result in substantially faster discharge
+ of batteries in the beacons. Second, a denser network of less 
+performing beacons will increase significant differences among 
+individual places compared to a sparser network of more performing 
+beacons.</p><p>Several experiments were also performed with different 
+ways of beacons’ placement. Despite the fact that placement of beacons 
+behind a dropped ceiling is the technically easiest solution, its 
+disadvantage is the fact that the beacons are completely covered by the 
+ceiling tiles. We have also put some BLE beacons inside teachers’ tables
+ in computer laboratories (marked by ⑬ to <i>⑰</i> in Figure <a target="_blank" href="http://www.hindawi.com/journals/misy/2016/2083094/fig2/">2</a>).
+ These tables are situated in the front part of the laboratory and they 
+are wooden with metal sides. Compared to the beacons with the same 
+settings in the dropped ceilings, these beacons in the tables covered a 
+wider area while also completely hidden inside the table. But our 
+original expectation was the opposite because the ceilings were composed
+ of mineral fiber tiles which promised lower attenuation than metal 
+sides of the tables. It was expected that these metal components of the 
+tables would be a substantial obstacle for BLE signal propagation. Based
+ on this observation, we moved beacons from behind the ceiling and 
+attached them to the bottom side of the mineral fiber ceiling tile, 
+which improved their performance. In the future we plan to conduct more 
+experiments with placement of individual beacons and to verify the 
+results of the subsequent localization.</p><p>Note that, besides the 
+improvement in the accuracy, BLE beacons bring another 
+advantage—energy-efficient geofencing. Thanks to BLE it is possible to 
+develop applications which react to approach of a mobile phone towards a
+ beacon and which can bring new user’s experience. In contrast to the 
+Android operating system, the iOS operating system by Apple is more 
+advanced in this field; it has direct support of detection of<i> beacon regions</i> while the device is in a standby mode.</p><h4 id="sec9">9. Conclusion</h4><p>In
+ this paper, we have introduced a way to improve the accuracy of the 
+radio-based indoor stationary localization originally based on WiFi 
+signals. We have designed and implemented a distributed system for 
+acquisition of radio fingerprints. The system consists of server(s) and 
+mobile devices with the Android operating system which support Bluetooth
+ Low Energy. The system is designed to enable volunteers to create a 
+radio-map and update it continuously. Evaluation of the solution was 
+based on the Weighted <svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" style="vertical-align:-0.2063999pt" id="M45" height="9.49473pt" version="1.1" viewBox="-0.0498162 -9.28833 6.66314 9.49473" width="6.66314pt"><g transform="matrix(.013,0,0,-0.013,0,0)"><use xlink:href="#g113-108"/></g></svg>-Nearest
+ Neighbors in Signal Space algorithm. New Bluetooth Low Energy 
+transmitters by Estimote were installed on the floor of the building 
+where WiFi access points used by the<i> eduroam</i> network had been 
+installed before. Based on the data acquired in this real world 
+scenario, the results of the localization using WiFi, Bluetooth Low 
+Energy, and their combination were evaluated. We have tested several 
+configurations of positions of transmitters or their density. We have 
+also made experiments with how to combine signals from both technologies
+ within one Signal Space. Further, we have tested the influence of the 
+scanning duration on the accuracy of the localization. The resulting 
+data have shown that it is possible to improve the median accuracy by 
+23% and to reduce the variance.</p><p>In the future we will deal with 
+testing the influence of broadcasting parameters of beacons such as the 
+advertising interval and the TX power. It will also be suitable to test 
+even higher density of beacons. We will also focus on testing the 
+influence of other features associated with particular measurements, 
+such as the orientation of the mobile device, and the difference of 
+their impact in both technologies. Further attention will also be paid 
+to the incorporation of device movement aspects (using particle filters,
+ according to [<a href="#B24">11</a>, <a href="#B9">12</a>]) and to their potential use in the fingerprinting approach.</p><h4>Competing Interests</h4><p>The authors declare that they have no competing interests.</p><h4>Acknowledgments</h4><p>The
+ authors of this paper would like to thank Dominik Matoulek and Matej 
+Danicek, students of Applied Informatics at the University of Hradec 
+Kralove, for implementation of the mobile application’s prototype. They 
+would also like to thank Tereza Krizova and James Buchanan White for 
+proofreading. This work was supported by the SPEV project, financed from
+ the Faculty of Informatics and Management, University of Hradec 
+Kralove.</p></div></div><div class="xml-content"><h4>References</h4>
+    <ol>
+
+<li id="B6">P. Brida, F. Gaborik, J. Duha, and J. Machaj, “Indoor positioning system designed for user adaptive systems,” in <i>New Challenges for Intelligent Information and Database Systems</i>, N. T. Nguyen, B. Trawiński, and J. J. Jung, Eds., vol. 351 of <i>Studies in Computational Intelligence</i>, pp. 237–245, Springer, Berlin, Germany, 2011.<span class="reflinks"> <a href="http://dx.doi.org/10.1007/978-3-642-19953-0_24" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Indoor+positioning+system+designed+for+user+adaptive+systems&amp;author=P.+Brida&amp;author=F.+Gaborik&amp;author=J.+Duha&amp;author=J.+Machaj&amp;publication_year=2011" target="blank">View at Google Scholar</a></span></li><li id="B16">H. Liu, H. Darabi, P. Banerjee, and J. Liu, “Survey of wireless indoor positioning techniques and systems,” <i>IEEE Transactions on Systems, Man and Cybernetics Part C</i>, vol. 37, no. 6, pp. 1067–1080, 2007.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/tsmcc.2007.905750" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Survey+of+wireless+indoor+positioning+techniques+and+systems&amp;author=H.+Liu&amp;author=H.+Darabi&amp;author=P.+Banerjee&amp;author=J.+Liu&amp;publication_year=2007" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-36248934122&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=fd2b6355f618f914bda4739af8bd08f2" target="blank">View at Scopus</a></span></li><li id="B11">Q. Dong and W. Dargie, “Evaluation of the reliability of RSSI for indoor localization,” in <i>Proceedings of the International Conference on Wireless Communications in Unusual and Confined Areas (ICWCUCA '12 )</i>, pp. 1–6, Clermont-Ferrand, France, August 2012.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/ICWCUCA.2012.6402492" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/ICWCUCA.2012.6402492" target="blank">View at Google Scholar</a></span></li><li id="B20">N.
+ Patwari, J. N. Ash, S. Kyperountas, A. O. Hero III, R. L. Moses, and N.
+ S. Correal, “Locating the nodes: cooperative localization in wireless 
+sensor networks,” <i>IEEE Signal Processing Magazine</i>, vol. 22, no. 4, pp. 54–69, 2005.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/msp.2005.1458287" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Locating+the+nodes%3a+cooperative+localization+in+wireless+sensor+networks&amp;author=N.+Patwari&amp;author=J.+N.+Ash&amp;author=S.+Kyperountas&amp;author=A.+O.+Hero+III&amp;author=R.+L.+Moses&amp;author=N.+S.+Correal&amp;publication_year=2005" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-22544472158&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=f3b563b8c1800eaeeb1f91f8d7cd7886" target="blank">View at Scopus</a></span></li><li id="B15">X.
+ Li, K. Pahlavan, M. Latva-aho, and M. Ylianttila, “Comparison of indoor
+ geolocation methods in DSSS and OFDM wireless LAN systems,” in <i>Proceedings of the 52nd Vehicular Technology Conference (IEEE-VTS Fall VTC '00)</i>, vol. 6, pp. 3015–3020, Boston, Mass, USA, September 2000.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/VETECF.2000.886867" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/VETECF.2000.886867" target="blank">View at Google Scholar</a></span></li><li id="B21">R. Peng and M. L. Sichitiu, “Angle of arrival localization for wireless sensor networks,” in <i>Proceedings of the 3rd Annual IEEE Communications Society on Sensor and Ad Hoc Communications and Networks (Secon '06)</i>, vol. 1, pp. 374–382, Reston, Va, USA, September 2006.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/sahcn.2006.288442" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/sahcn.2006.288442" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-43849113591&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=f53d8f56bf5bf5db3d1fbd94fdef559a" target="blank">View at Scopus</a></span></li><li id="B1">A. Zhang, Y. Yuan, Q. Wu, S. Zhu, and J. Deng, “Wireless localization based on RSSI fingerprint feature vector,” <i>International Journal of Distributed Sensor Networks</i>, vol. 2015, Article ID 528747, 7 pages, 2015.<span class="reflinks"> <a href="http://dx.doi.org/10.1155/2015/528747" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Wireless+localization+based+on+RSSI+fingerprint+feature+vector&amp;author=A.+Zhang&amp;author=Y.+Yuan&amp;author=Q.+Wu&amp;author=S.+Zhu&amp;author=J.+Deng&amp;publication_year=2015" target="blank">View at Google Scholar</a></span></li><li id="B4">P. Bahl and V. N. Padmanabhan, “RADAR: an in-building rf-based user location and tracking system,” in <i>Proceedings of the INFOCOM</i>, pp. 775–784, 2000.<span class="reflinks"> </span></li><li id="B3">M. Azizyan, I. Constandache, and R. R. Choudhury, “Surroundsense: mobile phone localization via ambience fingerprinting,” in <i>Proceedings of the 15th Annual International Conference on Mobile Computing and Networking (MobiCom '09)</i>, pp. 261–272, ACM, New York, NY, USA, 2009.<span class="reflinks"> </span></li><li id="B23">C. Wu, Z. Yang, Y. Liu, and W. Xi, “WILL: wireless indoor localization without site survey,” <i>IEEE Transactions on Parallel and Distributed Systems</i>, vol. 24, no. 4, pp. 839–848, 2013.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/tpds.2012.179" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=WILL%3a+wireless+indoor+localization+without+site+survey&amp;author=C.+Wu&amp;author=Z.+Yang&amp;author=Y.+Liu&amp;author=W.+Xi&amp;publication_year=2013" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-84874980752&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=78e57b4fb2abd45db29b9e156db9888a" target="blank">View at Scopus</a></span></li><li id="B24">F. Zafari and I. Papapanagiotou, “Enhancing ibeacon based micro-location with particle filtering,” in <i>Proceedings of the IEEE Global Communications Conference (GLOBECOM '15)</i>, pp. 1–7, IEEE, San Diego, Calif, USA, December 2015.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/glocom.2015.7417504" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/glocom.2015.7417504" target="blank">View at Google Scholar</a></span></li><li id="B9">Z. Chen, Q. Zhu, H. Jiang, and Y. C. Soh, “Indoor localization using smartphone sensors and ibeacons,” in <i>Proceedings of the IEEE 10th Conference on Industrial Electronics and Applications (ICIEA '15)</i>, pp. 1723–1728, IEEE, Auckland, New Zealand, June 2015.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/ICIEA.2015.7334389" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/ICIEA.2015.7334389" target="blank">View at Google Scholar</a></span></li><li id="B13">S. Kumar, S. Gil, D. Katabi, and D. Rus, “Accurate indoor localization with zero start-up cost,” in <i>Proceedings of the 20th ACM Annual International Conference on Mobile Computing and Networking (MobiCom '2014)</i>, pp. 483–494, ACM, Maui, Hawaii, USA, September 2014.<span class="reflinks"> <a href="http://dx.doi.org/10.1145/2639108.2639142" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1145/2639108.2639142" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-84907817119&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=06b039a283686f1385d816cf33b6a785" target="blank">View at Scopus</a></span></li><li id="B7">R. Bruno and F. Delmastro, “Design and analysis of a bluetooth-based indoor localization system,” in <i>Personal Wireless Communications</i>, vol. 2775 of <i>Lecture Notes in Computer Science</i>, pp. 711–725, Springer, Berlin, Germany, 2003.<span class="reflinks"> <a href="http://scholar.google.com/scholar_lookup?title=Design+and+analysis+of+a+bluetooth-based+indoor+localization+system&amp;author=R.+Bruno&amp;author=F.+Delmastro&amp;publication_year=2003" target="blank">View at Google Scholar</a></span></li><li id="B18">M.
+ Muñoz-Organero, P. J. Muñoz-Merino, and C. Delgado Kloos, “Using 
+bluetooth to implement a pervasive indoor positioning system with 
+minimal requirements at the application level,” <i>Mobile Information Systems</i>, vol. 8, no. 1, pp. 73–82, 2012.<span class="reflinks"> <a href="http://dx.doi.org/10.3233/MIS-2012-0132" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Using+bluetooth+to+implement+a+pervasive+indoor+positioning+system+with+minimal+requirements+at+the+application+level&amp;author=M.+Mu%c3%b1oz-Organero&amp;author=P.+J.+Mu%c3%b1oz-Merino&amp;author=C.+Delgado+Kloos&amp;publication_year=2012" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-84857351823&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=7e63e284a344eb27a41b566265f7ca0f" target="blank">View at Scopus</a></span></li><li id="B14">A.
+ Kwiecień, M. Maćkowski, M. Kojder, and M. Manczyk, “Reliability of 
+bluetooth smart technology for indoor localization system,” in <i>Computer Networks</i>, P. Gaj, A. Kwiecień, and P. Stera, Eds., vol. 522 of <i>Communications in Computer and Information Science</i>, pp. 444–454, Springer, Berlin, Germany, 2015.<span class="reflinks"> <a href="http://dx.doi.org/10.1007/978-3-319-19419-6_42" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Reliability+of+bluetooth+smart+technology+for+indoor+localization+system&amp;author=A.+Kwiecie%c5%84&amp;author=M.+Ma%c4%87kowski&amp;author=M.+Kojder&amp;author=M.+Manczyk&amp;publication_year=2015" target="blank">View at Google Scholar</a></span></li><li id="B25">X.
+ Zhao, Z. Xiao, A. Markham, N. Trigoni, and Y. Ren, “Does BTLE measure 
+up against WiFi? A comparison of indoor location performance,” in <i>Proceedings of 20th European Wireless Conference</i>, pp. 1–6, IEEE, Barcelona, Spain, May 2014.<span class="reflinks"> </span></li><li id="B22">E. Vlugt, <i>Bluetooth Low Energy, Beacons and Retail</i>, 2013, <a target="_blank" href="http://global.verifone.com/media/3603729/bluetooth-low-energy-beacons-retail-wp.pdf">http://global.verifone.com/media/3603729/bluetooth-low-energy-beacons-retail-wp.pdf</a>.<span class="reflinks"> </span></li><li id="B5"> Bluetooth SIG. Bluetooth Technology Basics, 2015, <a target="_blank" href="https://www.bluetooth.com/what-is-bluetooth-technology/bluetooth-technology-basics/low-energy">https://www.bluetooth.com/what-is-bluetooth-technology/bluetooth-technology-basics/low-energy</a>.<span class="reflinks"> </span></li><li id="B2"> Aislelabs, “The Hitchhikers Guide to iBeacon Hardware: A Comprehensive Report,” 2015, <a target="_blank" href="http://www.aislelabs.com/reports/beacon-guide/">http://www.aislelabs.com/reports/beacon-guide/</a>.<span class="reflinks"> </span></li><li id="B19"> Nordic Semiconductor, nRF51822 Product Specification v3.1, 2014, <a target="_blank" href="https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF51822">https://www.nordicsemi.com/eng/Products/Bluetooth-Smart-Bluetooth-low-energy/nRF51822</a>.<span class="reflinks"> </span></li><li id="B8">J. Budina, O. Klapka, T. Kozel, and M. Zmitko, “Method of iBeacon optimal distribution for indoor localization,” in <i>Modeling and Using Context</i>, H. Christiansen, I. Stojanovic, and G. A. Papadopoulos, Eds., vol. 9405 of <i>Lecture Notes in Computer Science</i>, pp. 105–117, Springer, Berlin, Germany, 2015.<span class="reflinks"> <a href="http://dx.doi.org/10.1007/978-3-319-25591-0_8" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar_lookup?title=Method+of+iBeacon+optimal+distribution+for+indoor+localization&amp;author=J.+Budina&amp;author=O.+Klapka&amp;author=T.+Kozel&amp;author=M.+Zmitko&amp;publication_year=2015" target="blank">View at Google Scholar</a></span></li><li id="B12">V. Honkavirta, T. Perälä, S. Ali-Löytty, and R. Piché, “A comparative survey of WLAN location fingerprinting methods,” in <i>Proceedings of the 6th Workshop on Positioning, Navigation and Communication (WPNC '09)</i>, pp. 243–251, IEEE, Hannover, Germany, March 2009.<span class="reflinks"> <a href="http://dx.doi.org/10.1109/wpnc.2009.4907834" target="blank">View at Publisher</a><span class="sep"> · </span><a href="http://scholar.google.com/scholar?q=http://dx.doi.org/10.1109/wpnc.2009.4907834" target="blank">View at Google Scholar</a><span class="sep"> · </span><a href="http://www.scopus.com/scopus/inward/record.url?eid=2-s2.0-70349156292&amp;partnerID=K84CvKBR&amp;rel=3.0.0&amp;md5=1fdfed5ed2f9d860b66410ed1948a149" target="blank">View at Scopus</a></span></li><li id="B10"> Couchbase, “Deploying Sync Gateway behind a reverse proxy,” 2015, <a target="_blank" href="http://developer.couchbase.com/documentation/mobile/1.1.0/develop/guides/sync-gateway/nginx/index.html">http://developer.couchbase.com/documentation/mobile/1.1.0/develop/guides/sync-gateway/nginx/index.html</a>.<span class="reflinks"> </span></li><li id="B17">D. Matoulek, <i>Indoor localization. (Supervisor: Pavel Kriz) [Bachelor thesis]</i>, University of Hradec Kralove, 2015.<span class="reflinks"> </span></li></ol></div>
+			</div>
+			<!--End middle content-->
+			<div class="lock">
+			</div>
+		</div>
+		<div class="footer_space">
+		</div>
+	</div>
+	<div id="footer">
+	</div>
+
+
+	
+
+    <script type="text/javascript">
+
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o), m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+        ga('create', 'UA-8578054-2', 'auto');
+        ga('send', 'pageview');
+
+    </script>
+
+</body>
+<iframe allowtransparency="true" frameBorder="0" id="abs-top-frame" style="position: fixed ! important; z-index: 2147483647 ! important; overflow: hidden ! important; top: 0px ! important; left: 0px ! important; right: 0px ! important; width: 138px ! important; height: 13px ! important; max-height: none ! important; min-height: 0px ! important; margin: 0px auto ! important; padding: 0px ! important; border: 0px none ! important; background-color: transparent ! important; display: block ! important;" src="resource://firefox.abs.avira.com/html/top.html?1461067078971#minimized"></iframe></html>
