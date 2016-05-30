@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/Classify.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/BuildMNN.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/repo/core/SimpleIndexText.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/PrepareTraining.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/cassandratest1/SimpleIndexQuery.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/LocateBLE.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/GetDataFromFile.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/repo/core/SimpleIndexQuery.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/TokenCatNative.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/Lexical_Distribution.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/GetCurrentLocation.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/ConsoleBLE.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/test/TestSystemIn.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/CreateIndexForCat.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/ExperimentManual.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/ConfigurationForCat.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/TESTClassify.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/ExperimentManualFile.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/demo/bleloc/SomeConstant.java</file>
+            <file>file:/C:/Users/jacques/Desktop/prog/cassandratest1/src/org/olanto/bleloc/ComputeLocation.java</file>
+        </group>
+    </open-files>
+</project-private>

@@ -1,0 +1,68 @@
+-- Create a new Keyspace
+
+
+CREATE KEYSPACE tutorialspoint
+WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+
+DESCRIBE keyspaces;
+
+USE tutorialspoint;
+
+
+-- create a table in Cassandra
+
+CREATE TABLE emp(
+   emp_id int PRIMARY KEY,
+   emp_name text,
+   emp_city text,
+   emp_sal varint,
+   emp_phone varint
+   );
+
+select * from emp;
+
+
+-- insertion
+
+INSERT INTO emp (emp_id, emp_name, emp_city,emp_phone, emp_sal) VALUES(1,'ram', 'Hyderabad', 9848022338, 50000);
+
+INSERT INTO emp (emp_id, emp_name, emp_city,emp_phone, emp_sal) VALUES(2,'robin', 'Hyderabad', 9848022339, 40000);
+
+INSERT INTO emp (emp_id, emp_name, emp_city,emp_phone, emp_sal) VALUES(3,'rahman', 'Chennai', 9848022330, 45000);
+
+SELECT * FROM emp WHERE emp_id=2;
+
+-- update 
+
+UPDATE emp SET emp_city='Delhi',emp_sal=50000 WHERE emp_id=2;
+
+SELECT * FROM emp WHERE emp_id=2;
+
+
+-- secondary index
+
+CREATE INDEX ON emp(emp_sal);
+
+
+----------------------------------------------------
+drop table emp2;
+
+CREATE TABLE emp2(
+   emp_id int PRIMARY KEY,
+   emp_name text,
+   emp_city text,
+   emp_sal varint,
+   emp_phone varint,
+   cities map<text,text>
+   );
+
+INSERT INTO emp2 (emp_id, emp_name, emp_city,emp_phone, emp_sal,cities) VALUES(4,'jacques', 'guy', 004179, 45000,{'home':'geneva','birthplace':'St brieuc'});
+
+CREATE INDEX ON emp(emp_sal);
+
+SELECT * FROM emp2;
+
+SELECT * FROM emp2 WHERE 'home'='geneva';
+
+
+

@@ -1,0 +1,17 @@
+Bonjour,
+
+Nous avons fait les expériences dans la bibliothèque:
+
+Il y a 4 jeux d'expériences:
+
+- test 1 qui couvre l'ensemble de la bibliothèque
+
+- détail 1 & détail 2 qui couvre la partie sans les étagères
+
+- ligne de Gilles qui est une ligne droite avec un BLE tous les 0.75 cm (pour faire suite à discussion de la cafétéria)
+
+L'analyse est toujours la même, établir la précision pour chaque emplacement testé et avoir la distribution des erreurs.
+
+Merci et bonne journée
+
+Jacques

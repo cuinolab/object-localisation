@@ -1,0 +1,120 @@
+Prerequisite
+
+To complete this tutorial, you will need the following:
+
+    Ubuntu 14.04 Droplet
+    A non-root user with sudo privileges 
+
+
+Step 1 — Installing the Oracle Java Virtual Machine
+---------------------------------------------------
+
+
+sudo add-apt-repository ppa:webupd8team/java
+
+sudo apt-get update
+
+sudo apt-get install oracle-java8-set-default
+
+java -version
+
+Step 2 — Installing Cassandra (replace 34x with last version)
+-----------------------------
+
+echo "deb http://www.apache.org/dist/cassandra/debian 34x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo "deb-src http://www.apache.org/dist/cassandra/debian 34x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+
+gpg --keyserver pgp.mit.edu --recv-keys F758CE318D77295D
+gpg --export --armor F758CE318D77295D | sudo apt-key add -
+
+gpg --keyserver pgp.mit.edu --recv-keys 2B5C1B00
+gpg --export --armor 2B5C1B00 | sudo apt-key add -
+
+gpg --keyserver pgp.mit.edu --recv-keys 0353B12C
+gpg --export --armor 0353B12C | sudo apt-key add -
+
+sudo apt-get update
+sudo apt-get install cassandra
+
+
+Step 3 — Troubleshooting and Starting Cassandra
+-----------------------------------------------
+
+sudo service cassandra status
+
+ * Cassandra is running
+
+
+Step 4 — Connecting to the Cluster
+----------------------------------
+
+sudo nodetool status
+
+Datacenter: datacenter1
+=======================
+Status=Up/Down
+|/ State=Normal/Leaving/Joining/Moving
+--  Address    Load       Tokens       Owns (effective)  Host ID                               Rack
+UN  127.0.0.1  102.46 KB  256          100.0%            250d7932-72d9-4278-8089-90b92fa7d362  rack1
+
+
+interactive command line interface cqlsh.
+
+cqlsh
+
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 2.2.2 | CQL spec 3.3.1 | Native protocol v4]
+Use HELP for help.
+cqlsh>
+
+Type exit to quit:
+
+exit
+
+-----------------------------------------------------------------
+ERROR: An error occurred while trying to make a connection to the 
+database:  
+
+JDBC URL: jdbc:cassandra://192.168.40.131
+
+org.apache.thrift.transport.TTransportException: 
+java.net.ConnectException: Connection refused: connect 
+
+NOTE: RazorSQL requires the Thrift protocol to be enabled to 
+connect to Cassandra. To enable thrift, set start_rpc: true in 
+cassandra.yaml in the Cassandra conf directory. 
+
+sudo gedit '/etc/cassandra/cassandra.yaml' 
+
+set start_rpc: true
+rpc_address: 0.0.0.0
+broadcast_rpc_address: 1.2.3.4
+
+sudo ufw allow 9160
+sudo service cassandra restart
+
+-----------------------------------------------------------------
+
+Connection requirements
+
+
+
+In order to ensure that the driver can connect to the Cassandra or DSE cluster, please check the following requirements.
+•the cluster is running Apache Cassandra 1.2+ or DSE 3.2+
+•you have configured the following in the cassandra.yaml you have :start_native_transport : true 
+rpc_address : IP address or hostname reachable from the client
+
+•machines in the cluster can accept connections on port 9042
+
+Note: The client port can be configured using the native_transport_port in cassandra.yaml.
+
+sudo gedit '/etc/cassandra/cassandra.yaml' 
+
+start_native_transport : true
+
+sudo service cassandra restart
+
+
+
+

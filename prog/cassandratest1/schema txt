@@ -1,0 +1,114 @@
+-- Create a new Keyspace
+
+
+CREATE KEYSPACE tutorialstxt WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 1};
+
+DESCRIBE keyspaces;
+
+USE tutorialstxt;
+
+
+-- create a table in Cassandra
+
+CREATE TABLE word(
+   word_id text,
+   sentence_id int,
+   PRIMARY KEY (word_id,sentence_id)   
+   );
+
+CREATE TABLE sentence(
+   sentence_id int PRIMARY KEY,
+   sentence text);
+
+select * from word;
+select * from sentence;
+
+
+-- insertion
+
+-- 1 "le chat mange une souris"
+-- 2 "cat eats a mouse"
+-- 3 "la souris mange du fromage"
+-- 4 "mouse eats cheese"
+
+INSERT INTO word (word_id, sentence_id) VALUES('le',1);
+INSERT INTO word (word_id, sentence_id) VALUES('chat',1);
+INSERT INTO word (word_id, sentence_id) VALUES('mange',1);
+INSERT INTO word (word_id, sentence_id) VALUES('une',1);
+INSERT INTO word (word_id, sentence_id) VALUES('souris',1);
+
+INSERT INTO word (word_id, sentence_id) VALUES('cat',2);
+INSERT INTO word (word_id, sentence_id) VALUES('eats',2);
+INSERT INTO word (word_id, sentence_id) VALUES('a',2);
+INSERT INTO word (word_id, sentence_id) VALUES('mouse',2);
+
+INSERT INTO word (word_id, sentence_id) VALUES('la',3);
+INSERT INTO word (word_id, sentence_id) VALUES('souris',3);
+INSERT INTO word (word_id, sentence_id) VALUES('mange',3);
+INSERT INTO word (word_id, sentence_id) VALUES('du',3);
+INSERT INTO word (word_id, sentence_id) VALUES('fromage',3);
+
+INSERT INTO word (word_id, sentence_id) VALUES('mouse',4);
+INSERT INTO word (word_id, sentence_id) VALUES('eats',4);
+INSERT INTO word (word_id, sentence_id) VALUES('cheese',4);
+
+
+INSERT INTO sentence (sentence_id, sentence) VALUES(1,'le chat mange une souris');
+INSERT INTO sentence (sentence_id, sentence) VALUES(2,'cat eats a mouse');
+INSERT INTO sentence (sentence_id, sentence) VALUES(3,'la souris mange du fromage');
+INSERT INTO sentence (sentence_id, sentence) VALUES(4,'mouse eats cheese');
+
+
+
+select * from word;
+select * from sentence;
+
+select * from word where word_id='mouse';
+select * from word where word_id='mouse'
+
+
+-- update 
+
+UPDATE emp SET emp_city='Delhi',emp_sal=50000 WHERE emp_id=2;
+
+SELECT * FROM emp WHERE emp_id=2;
+
+
+-- secondary index
+
+CREATE INDEX ON emp(emp_sal);
+
+
+----------------------------------------------
+
+USE simplex2;
+
+select max(sentence_id) from sentence;
+
+select distinct word_id from word order by word_id; 
+
+select count(*) from word;
+
+select count(*) from word where word_id='avait';
+select count(*) from word where word_id='conventions';
+select * from word where word_id='conventions';
+
+
+----------------------------------------------
+
+cqlsh 192.168.40.132
+
+
+USE simplex3;
+
+select max(sentence_id) from sentence;
+
+select count(*) from gram3 where word_id='conventions';
+select * from gram3 where word_id='conventions';
+select * from gram3 where word_id='pommes';
+select * from gram3 where word_id='armes';
+
+select count(*) from gram3 ;
+
+
+
