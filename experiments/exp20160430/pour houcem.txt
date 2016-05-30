@@ -1,0 +1,14 @@
+Bonjour Houcem,
+
+Comme discuté lors de notre dernière entrevue, nous avons fait nos premières mesures. Je t'envoie le fichier qui correspond à 10 minutes de mesures sur 11 beacons (de diverses qualités)
+
+Dans le fichier excel, tu trouveras le schéma du dispositif. les beacons n'ont pas été bougés pendant la période de mesure.
+
+Ce qui est attendu de toi c'est que tu utilises ces données pour évaluer la précision du placement en utilisant par exemple les 80 % du fichiers pour calibrer le système et que les derniers 20 % tu les utilises pour dire où se trouve les beacon tous les 10 secondes par exemple.
+
+Merci de nous dire si cela suffit pour commencer le travail et l'évaluation des différentes méthodes.
+
+Bonne journée
+
+Jacques
+
