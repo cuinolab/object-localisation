@@ -1,0 +1,156 @@
+-- Create a new Keyspace
+
+
+CREATE KEYSPACE repoble WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+DESCRIBE keyspaces;
+
+
+-- create a table in Cassandra
+
+drop table repoble.rawinfo;
+CREATE TABLE repoble.rawinfo(
+   period text,
+   mode text,
+   ts10  bigint,
+   ts  bigint,
+   raspid  text,
+   mac text,
+   shortname text,
+   locx int,
+   locy int,
+   rssi1 int,
+   a int,
+  PRIMARY KEY ((period,mode,ts10,shortname),raspid,ts,a)   
+   );
+
+drop table repoble.raw2process;
+CREATE TABLE repoble.raw2process(
+   period text,
+   mode text,
+   ts10  bigint,
+   raspid  text,
+   shortname text,
+   processed boolean,
+  PRIMARY KEY ((processed,period,mode),ts10,shortname)   
+   );
+
+select * from repoble.raw2process;
+
+-- 1462606137133,cb:d1:5a:06:b3:d7,00000000000000000000000000000017,1,1,-58,-46
+
+truncate table repoble.raw2process;
+truncate table repoble.rawinfo;
+
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137133,
+        '100','cb:d1:5a:06:b3:d7','A234',0,10,
+        -58,-85
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137134,
+        '100','cb:d1:5a:06:b3:d7','A234',0,10,
+        -58,-65
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606140,1462606147134,
+        '100','cb:d1:5a:06:b3:d7','A234',0,10,
+        -58,-67
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137133,
+        '101','cb:d1:5a:06:b3:d7','A234',0,10,
+        -58,-33
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137134,
+        '101','cb:d1:5a:06:b3:d7','A234',0,10,
+        -58,-35
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137133,
+        '100','cb:d1:5a:06:b3:d8','A238',0,20,
+        -58,-15
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137134,
+        '100','cb:d1:5a:06:b3:d8','A238',0,20,
+        -58,-35
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606140,1462606147134,
+        '100','cb:d1:5a:06:b3:d8','A238',0,20,
+        -58,-27
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137133,
+        '101','cb:d1:5a:06:b3:d8','A238',0,20,
+        -58,-13
+);
+insert into repoble.rawinfo(period, mode, ts10, ts, raspid, mac, shortname, locx, locy, rssi1, a)
+VALUES ('TEST','TRAINING',1462606130,1462606137134,
+        '101','cb:d1:5a:06:b3:d8','A238',0,20,
+        -58,-15
+);
+
+select * from repoble.rawinfo;
+
+select avg(a) from repoble.rawinfo;
+select avg(a) from repoble.rawinfo where period='TEST' and mode='TRAINING';
+
+SELECT ts10 FROM repoble.rawinfo 
+      WHERE period = 'TEST' and mode='TRAINING' and raspid='100' and shortname='A238'
+        ;
+
+select * from repoble.raw2process where period = 'TEST' and mode='T' and processed=false order by ts10;
+
+select count(*) from repoble.raw2process where period = 'TEST' and mode='T' and processed=false;
+
+select * from repoble.raw2process where period = 'TEST' and mode='T' and processed=false;
+
+select count(*) FROM repoble.rawinfo WHERE period = 'TEST' and mode='T' and shortname='X4' and ts10=1462617600;
+
+
+select * from repoble.rawinfo WHERE period = 'TEST' and mode='T' and shortname='X4' and ts10=1462617600;
+
+select raspid, avg(a) from repoble.rawinfo WHERE period = 'TEST' and mode='T' and shortname='X4' and ts10=1462617600 and raspid='100';
+
+select raspid, avg(a) from repoble.rawinfo WHERE period = 'TEST' and mode='T' and shortname='X4' and ts10=1462617600 and raspid='101';
+
+drop table repoble.rawsearch;
+CREATE TABLE repoble.rawsearch(
+   ts10  bigint,
+   ts  bigint,
+   raspid  text,
+   shortname text,
+   rssi1 int,
+   a int,
+  PRIMARY KEY ((ts10,shortname),raspid,ts,a)   
+   );
+
+drop table repoble.raw2search;
+CREATE TABLE repoble.raw2search(
+   ts10  bigint,
+   shortname text,
+   processed boolean,
+  PRIMARY KEY ((processed),ts10,shortname)   
+   );
+
+select * from repoble.rawsearch;
+select * from repoble.raw2search;
+
+truncate table repoble.raw2search;
+truncate table repoble.rawsearch;
+
+drop table repoble.currentxy;
+CREATE TABLE repoble.currentxy(
+   shortname text,
+   x double,
+   y double,
+  PRIMARY KEY (shortname)   
+   );
+
+
+
+
+
