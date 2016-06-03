@@ -73,7 +73,7 @@ public class GetCurrentLocation {
             String shortname = row.getString("shortname");
             double x = row.getDouble("x");
             double y = row.getDouble("y");
-            result += shortname+"\t"+df.format(x)+"\t"+df.format(x)+"\n";
+            result += shortname+"\t"+df.format(x)+"\t"+df.format(y)+"\n";
         }
         //System.out.println(ts10+","+shortname+","+raspid+" avg="+ts10+","+ts10+","+ts10+","+result);
         return result;

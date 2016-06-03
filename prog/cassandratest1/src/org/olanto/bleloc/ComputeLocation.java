@@ -15,10 +15,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.util.Vector;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import static org.olanto.bleloc.GetDataFromFile.macId;
 import org.olanto.demo.bleloc.Classify;
 import static org.olanto.util.Messages.msg;
 
@@ -29,7 +28,7 @@ public class ComputeLocation {
     
     static String expName = "";
     static long start, stop;
-    static Vector<String> shortName = new Vector<>();
+    static ArrayList<String> shortName = new ArrayList<>();
     
     static BufferedWriter outdata = null;
     private PreparedStatement stat_insert2currentxy;
@@ -211,7 +210,7 @@ public class ComputeLocation {
         // client.connect("192.168.40.143");
 
         String exp = "searchedBLE.txt";
-        String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\expbiblio\\experiment\\";
+        String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\object-localisation\\Experiments\\expbiblio\\experiment\\";
         client.getShortName(root + exp);
         
         client.howMany2Process();
