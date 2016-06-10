@@ -1,4 +1,4 @@
-package org.olanto.bleloc;
+package org.olanto.bleloc.tri;
 
 import com.datastax.driver.core.BoundStatement;
 import com.datastax.driver.core.Cluster;
@@ -18,10 +18,11 @@ import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.olanto.bleloc.GetDataFromFile;
 import org.olanto.demo.bleloc.Classify;
 import static org.olanto.util.Messages.msg;
 
-public class ComputeLocation {
+public class ComputeLocationTri_ts10_moy {
     
     private Cluster cluster;
     private Session session;
@@ -33,6 +34,21 @@ public class ComputeLocation {
     static BufferedWriter outdata = null;
     private PreparedStatement stat_insert2currentxy;
     private BoundStatement bound_insert2currentxy;
+    
+    static double[][] raspiPosition = new double[][]{ // raspi position
+        {18.0, 0.0}, // 100
+        {12.0, 0.0}, // 101
+        {6.0, 0.0}, // 102
+        {0.0, 0.0}, // 103
+        {15.0, 5.0}, // 104
+        {9.0, 5.0}, // 105
+        {3.0, 5.0}, // 106
+        {18.0, 10.0}, // 107
+        {12.0, 10.0}, // 108
+        {6.0, 10.0}, // 109
+        {0.0, 10.0} // 110
+    };
+
     
     public Session getSession() {
         return this.session;
@@ -60,7 +76,7 @@ public class ComputeLocation {
     public void insert2currentxy(String shortName, double x, double y) {
         if (bound_insert2currentxy == null) {
             stat_insert2currentxy = session.prepare(
-                    "insert into repoble.currentxy(shortname, x, y)"
+                    "insert into repoble.currentxyTRI(shortname, x, y)"
                     + " VALUES (?,?,?);");
             bound_insert2currentxy = new BoundStatement(stat_insert2currentxy);
         }
@@ -110,22 +126,29 @@ public class ComputeLocation {
     }
     
     public float[] getPosXY(int[] raspival) {
-        boolean verbose = false;
+        boolean verbose = true;
         float[] resxy = new float[2];
-        if (verbose) {
+        double[] val=new double[raspival.length];
+       
+         for (int i = 0; i < raspival.length; i++) {
+                val[i]=raspival[i]-100;
+            } 
+         if (verbose) {
             for (int i = 0; i < raspival.length; i++) {
-                System.out.print(raspival[i] + ", ");
+                System.out.print(val[i] + ", ");
             }
             System.out.println();
         }
-        String prediction = Classify.advise7(crossValue(raspival));
-        String[] part = prediction.split("-");
+//        String prediction = Classify.advise7(crossValue(raspival));
+//        String[] part = prediction.split("-");
         
-        resxy[0] = ((float) Integer.parseInt(part[0])) / 10;
-        resxy[1] = ((float) Integer.parseInt(part[1])) / 10;
+        double[] resdouble=Trilateration.getPosXY(val, raspiPosition, "X999");
+        
+        resxy[0] = ((float) resdouble[0]);
+        resxy[1] = ((float) resdouble[1]);
         
         if (verbose) {
-            System.out.println(prediction + " - " + resxy[0] + ", " + resxy[1]);
+            System.out.println("trilateration: " + resxy[0] + ", " + resxy[1]);
         }
         return resxy;
     }
@@ -150,7 +173,7 @@ public class ComputeLocation {
         }
     }
     
-    public static void Locate(ComputeLocation client) {
+    public static void Locate(ComputeLocationTri_ts10_moy client) {
         
         long current = client.last2Process() - 10;  // on prend l'avant-dernier tic ...
         System.out.println("process at time :" + current);
@@ -161,12 +184,11 @@ public class ComputeLocation {
             tsSerie[i] = current - i * step;
         }
         for (int i = 0; i < shortName.size(); i++) {
-            LocateBLE ble = new LocateBLE(client, tsSerie, shortName.get(i));
+            LocateBLETri_ts10_moy ble = new LocateBLETri_ts10_moy(client, tsSerie, shortName.get(i));
             System.out.println("process:" + ble.getBleName());
             ble.getMeasures();  // get value from DB
             ble.estimatePosition(); // get x,y from ....
             ble.finishEstimation(); // avg of x,y
-            ble.ComputeAvgPeriod(); // avg of x,y
             System.out.println(ble.getBleName() + " XY:" + ble.getX() + "," + ble.getY());
             client.insert2currentxy(ble.getBleName(), ble.getX(), ble.getY());
         }
@@ -206,7 +228,7 @@ public class ComputeLocation {
     
     public static void main(String[] args) {
         Classify.init();
-        ComputeLocation client = new ComputeLocation();
+        ComputeLocationTri_ts10_moy client = new ComputeLocationTri_ts10_moy();
         client.connect("192.168.0.246");
         // client.connect("192.168.40.143");
 
@@ -221,7 +243,7 @@ public class ComputeLocation {
             try {
                 Thread.sleep(30000);
             } catch (InterruptedException ex) {
-                Logger.getLogger(ComputeLocation.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(ComputeLocationTri_ts10_moy.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 

@@ -3,26 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.olanto.bleloc;
+package org.olanto.bleloc.tri;
 
 /**
  *
  * @author jacques
  */
-public class LocateBLE {
+public class LocateBLETri_ts10_moy {
 
     static final int NBRASPI = 11;
     private long[] tsSerie;
     private String bleName;
-    private ComputeLocation client;
+    private ComputeLocationTri_ts10_moy client;
     private int nbperiod;
     private int[][] avgsignal;
     private float[][] estimatePosition;
     private float x;
     private float y;
-     private int[] avgperiod=new int[NBRASPI];
 
-    public LocateBLE(ComputeLocation client, long[] tsSerie, String bleName) {
+    public LocateBLETri_ts10_moy(ComputeLocationTri_ts10_moy client, long[] tsSerie, String bleName) {
         this.client = client;
         this.tsSerie = tsSerie;
         this.bleName = bleName;
@@ -57,21 +56,6 @@ public class LocateBLE {
         y=sumy/nbperiod;
     }
 
-   public void ComputeAvgPeriod() {
-
-        for (int j = 0; j < NBRASPI; j++) {
-            for (int i = 0; i < nbperiod; i++) {
-                avgperiod[j] += avgsignal[i][j];
-            }
-            avgperiod[j] /= nbperiod;
-        }
-        System.out.print("Health raspi: ");
-        for (int j = 0; j < NBRASPI; j++) {
-            System.out.print(avgperiod[j]+ ", "); 
-        }
-        System.out.println();
-    }
-   
     /**
      * @return the bleName
      */

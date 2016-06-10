@@ -35,6 +35,21 @@ public class ComputeLocationTri {
     private PreparedStatement stat_insert2currentxy;
     private BoundStatement bound_insert2currentxy;
     
+    static double[][] raspiPosition = new double[][]{ // raspi position
+        {18.0, 0.0}, // 100
+        {12.0, 0.0}, // 101
+        {6.0, 0.0}, // 102
+        {0.0, 0.0}, // 103
+        {15.0, 5.0}, // 104
+        {9.0, 5.0}, // 105
+        {3.0, 5.0}, // 106
+        {18.0, 10.0}, // 107
+        {12.0, 10.0}, // 108
+        {6.0, 10.0}, // 109
+        {0.0, 10.0} // 110
+    };
+
+    
     public Session getSession() {
         return this.session;
     }
@@ -113,20 +128,27 @@ public class ComputeLocationTri {
     public float[] getPosXY(int[] raspival) {
         boolean verbose = true;
         float[] resxy = new float[2];
-        if (verbose) {
+        double[] val=new double[raspival.length];
+       
+         for (int i = 0; i < raspival.length; i++) {
+                val[i]=raspival[i]-100;
+            } 
+         if (verbose) {
             for (int i = 0; i < raspival.length; i++) {
-                System.out.print(raspival[i] + ", ");
+                System.out.print(val[i] + ", ");
             }
             System.out.println();
         }
-        String prediction = Classify.advise7(crossValue(raspival));
-        String[] part = prediction.split("-");
+//        String prediction = Classify.advise7(crossValue(raspival));
+//        String[] part = prediction.split("-");
         
-        resxy[0] = ((float) Integer.parseInt(part[0])) / 10;
-        resxy[1] = ((float) Integer.parseInt(part[1])) / 10;
+        double[] resdouble=Trilateration.getPosXY(val, raspiPosition, "X999");
+        
+        resxy[0] = ((float) resdouble[0]);
+        resxy[1] = ((float) resdouble[1]);
         
         if (verbose) {
-            System.out.println(prediction + " - " + resxy[0] + ", " + resxy[1]);
+            System.out.println("trilateration: " + resxy[0] + ", " + resxy[1]);
         }
         return resxy;
     }
@@ -165,8 +187,9 @@ public class ComputeLocationTri {
             LocateBLETri ble = new LocateBLETri(client, tsSerie, shortName.get(i));
             System.out.println("process:" + ble.getBleName());
             ble.getMeasures();  // get value from DB
-            ble.estimatePosition(); // get x,y from ....
-            ble.finishEstimation(); // avg of x,y
+            ble.ComputeAvgPeriod();  // avg on all periods
+            ble.estimatePositionOnAvgPeriod(); // get x,y from ....
+            //ble.finishEstimation(); // avg of x,y
             System.out.println(ble.getBleName() + " XY:" + ble.getX() + "," + ble.getY());
             client.insert2currentxy(ble.getBleName(), ble.getX(), ble.getY());
         }

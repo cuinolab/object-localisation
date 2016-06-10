@@ -32,6 +32,8 @@ public class PrepareTraining {
     static HashMap<String, String> macId = new HashMap<>();
 
     static BufferedWriter outdata = null;
+     static final int LAST_RASPI=108;
+    
     
     public Session getSession() {
         return this.session;
@@ -78,7 +80,7 @@ public class PrepareTraining {
                 try {
                     System.out.print(shortname + "\t"+ res + "\t" + ts10);
                     outdata.append(shortname + "\t"+ res + "\t" + ts10);
-                    for (int raspid = 100; raspid <= 110; raspid++) {
+                    for (int raspid = 100; raspid <= LAST_RASPI; raspid++) {
                         String avg="\t" + getRaspiAvg(period, mode, ts10, shortname, "" + raspid);
                         System.out.print(avg);
                         outdata.append(avg);
@@ -140,11 +142,11 @@ public class PrepareTraining {
     public static void main(String[] args) {
         try {
             PrepareTraining client = new PrepareTraining();
-            String exp = "testlignegilles.txt";
-            String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\expbiblio\\experiment\\";
+            String exp = "parcours.txt";
+            String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\exp20160507\\experiment\\";
             client.getParameters(root + exp);
             //    client.connect("192.168.0.246");
-            client.connect("192.168.40.143");
+            client.connect("192.168.40.131");
             
             String period = "TEST";
             String mode = "T";

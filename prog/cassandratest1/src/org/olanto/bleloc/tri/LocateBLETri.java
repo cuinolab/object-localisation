@@ -17,7 +17,9 @@ public class LocateBLETri {
     private ComputeLocationTri client;
     private int nbperiod;
     private int[][] avgsignal;
+    private int[] avgperiod=new int[NBRASPI];
     private float[][] estimatePosition;
+    private float[] estimatePositionOnAvgPeriod=new float[2];
     private float x;
     private float y;
 
@@ -31,12 +33,28 @@ public class LocateBLETri {
     }
 
     public void getMeasures() {
-         for (int i = 0; i < nbperiod; i++) {
+        for (int i = 0; i < nbperiod; i++) {
             for (int j = 0; j < NBRASPI; j++) {
-         //System.out.println("getMeasures"+tsSerie[i]+", "+bleName+", "+ "" +( 100 + j));
-              avgsignal[i][j] = client.getRaspiAvg(tsSerie[i], bleName, "" + (100 + j));
+                //System.out.println("getMeasures"+tsSerie[i]+", "+bleName+", "+ "" +( 100 + j));
+                avgsignal[i][j] = client.getRaspiAvg(tsSerie[i], bleName, "" + (100 + j));
             }
         }
+    }
+
+    public void ComputeAvgPeriod() {
+
+        for (int j = 0; j < NBRASPI; j++) {
+            for (int i = 0; i < nbperiod; i++) {
+                avgperiod[j] += avgsignal[i][j];
+            }
+            avgperiod[j] /= nbperiod;
+        }
+    }
+
+    public void estimatePositionOnAvgPeriod() {
+        estimatePositionOnAvgPeriod = client.getPosXY(avgperiod);
+        x = estimatePositionOnAvgPeriod[0];
+        y = estimatePositionOnAvgPeriod[1];
     }
 
     public void estimatePosition() {
@@ -45,15 +63,16 @@ public class LocateBLETri {
         }
     }
 
-   public void finishEstimation() {
-       float sumx=0;      float sumy=0;
+    public void finishEstimation() {
+        float sumx = 0;
+        float sumy = 0;
         for (int i = 0; i < nbperiod; i++) {
-            sumx+=estimatePosition[i][0];
-            sumy+=estimatePosition[i][1];
+            sumx += estimatePosition[i][0];
+            sumy += estimatePosition[i][1];
         }
-        System.out.println("sumxy "+sumx+", "+sumy);
-        x=sumx/nbperiod;
-        y=sumy/nbperiod;
+        System.out.println("sumxy " + sumx + ", " + sumy);
+        x = sumx / nbperiod;
+        y = sumy / nbperiod;
     }
 
     /**

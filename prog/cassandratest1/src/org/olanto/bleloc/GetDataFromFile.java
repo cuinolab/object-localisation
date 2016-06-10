@@ -27,16 +27,18 @@ public class GetDataFromFile {
     static long start, stop;
     static HashMap<String, String> macId = new HashMap<>();
     static BufferedWriter outdata = null;
-
+    static final int LAST_RASPI=108;
+    
     public static void main(String[] args) {
         try {
-            String exp = "testlignegilles.txt";
-            String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\expbiblio\\experiment\\";
+            String exp = "parcours.txt";
+         //   String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\expbiblio\\experiment\\";
+           String root = "C:\\Users\\jacques\\Desktop\\CLIENTS\\CUINOLAB\\Experiments\\exp20160507\\experiment\\";
             getParameters(root + exp);
             System.out.println(expName + " from: " + start + " to: " + stop);
             outdata = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(root + expName + ".data"), "UTF-8"));
 
-            for (int i = 100; i <= 110; i++) {
+            for (int i = 100; i <= LAST_RASPI; i++) {
                 convert(root + i + "/log.txt", i);
             }
             outdata.close();
@@ -93,7 +95,11 @@ public class GetDataFromFile {
                     if (ts >= start && ts <= stop) {
 
                         //System.out.println(part[0] + "|" + part[1] + "|" + part[2] + "|" + part[3] + "|"+ part[4] + "|"+ part[5] + "|"+ part[6] +  "|");
-                        long tic10 = ts / 10 * 10;
+                        long tic10 = ts / 10 * 10; // 10 secondes
+                       
+                        // long tic10 = ts ; // 1 seconde !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                         
+                         
                         int reverse = Math.max(100 + Integer.parseInt(part[6]), 0);
                         String res = macId.get(part[1]);
                         if (res != null) {
