@@ -5,25 +5,27 @@
  */
 package org.olanto.bleloc.tri;
 
+import static org.olanto.bleloc.tri.LocateBLETri.NBRASPI;
+
 /**
  *
  * @author jacques
  */
-public class LocateBLETri {
+public class LocateBLETri_AvgQuarter {
 
     static final int NBRASPI = 11;
     private long[] tsSerie;
     private String bleName;
-    private ComputeLocationTri client;
+    private ComputeLocationTri_AvgQuarter client;
     private int nbperiod;
     private int[][] avgsignal;
+    private int[] avgQuarterperiod = new int[NBRASPI];
     private int[] avgperiod = new int[NBRASPI];
     private float[][] estimatePosition;
-    private float[] estimatePositionOnAvgPeriod = new float[2];
     private float x;
     private float y;
 
-    public LocateBLETri(ComputeLocationTri client, long[] tsSerie, String bleName) {
+    public LocateBLETri_AvgQuarter(ComputeLocationTri_AvgQuarter client, long[] tsSerie, String bleName) {
         this.client = client;
         this.tsSerie = tsSerie;
         this.bleName = bleName;
@@ -41,25 +43,22 @@ public class LocateBLETri {
         }
     }
 
-    
-    public void ComputeAvgPeriod() {
-
+    public void ComputeQuarterAvgPeriod(int start, int end) {
         for (int j = 0; j < NBRASPI; j++) {
-            for (int i = 0; i < nbperiod; i++) {
-                avgperiod[j] += avgsignal[i][j];
+            for (int i = start; i < end; i++) {
+                avgQuarterperiod[j] += avgsignal[i][j];
             }
-            avgperiod[j] /= nbperiod;
+            avgQuarterperiod[j] /= nbperiod / 4;
         }
     }
 
-    public void estimatePositionOnAvgPeriod() {
-        estimatePositionOnAvgPeriod = client.getPosXY(avgperiod);
-        x = estimatePositionOnAvgPeriod[0];
-        y = estimatePositionOnAvgPeriod[1];
+    public void estimateQuarterPosition(int i) {
+        estimatePosition[i] = client.getPosXY(avgQuarterperiod);
+
     }
 
     public void estimatePosition() {
-        for (int i = 0; i < nbperiod; i++) {
+        for (int i = 0; i < estimatePosition.length; i++) {
             estimatePosition[i] = client.getPosXY(avgsignal[i]);
         }
     }
@@ -67,7 +66,7 @@ public class LocateBLETri {
     public void finishEstimation() {
         float sumx = 0;
         float sumy = 0;
-        for (int i = 0; i < nbperiod; i++) {
+        for (int i = 0; i < estimatePosition.length; i++) {
             sumx += estimatePosition[i][0];
             sumy += estimatePosition[i][1];
         }
