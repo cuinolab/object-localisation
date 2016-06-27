@@ -158,6 +158,28 @@ CREATE TABLE repoble.currentxyTRI(
   PRIMARY KEY (shortname)   
    );
 
+drop table repoble.histoxy;
+CREATE TABLE repoble.histoxy(
+   ts10 bigint,
+   shortname text,
+   x double,
+   y double,
+  PRIMARY KEY ((shortname,ts10),x,y)   
+   );
 
+truncate table repoble.histoxy;
+select * from repoble.histoxy;
+
+drop table repoble.histoxyTRI;
+CREATE TABLE repoble.histoxyTRI(
+   ts10 bigint,
+   shortname text,
+   x double,
+   y double,
+  PRIMARY KEY ((shortname,ts10),x,y)   
+   );
+
+truncate table repoble.histoxyTRI;
+select * from repoble.histoxyTRI;
 
 
