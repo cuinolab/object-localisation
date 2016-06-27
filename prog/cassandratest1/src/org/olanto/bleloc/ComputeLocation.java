@@ -33,6 +33,8 @@ public class ComputeLocation {
     static BufferedWriter outdata = null;
     private PreparedStatement stat_insert2currentxy;
     private BoundStatement bound_insert2currentxy;
+   private PreparedStatement stat_insert2histoxy;
+    private BoundStatement bound_insert2histoxy;
     
     public Session getSession() {
         return this.session;
@@ -65,6 +67,17 @@ public class ComputeLocation {
             bound_insert2currentxy = new BoundStatement(stat_insert2currentxy);
         }
         session.execute(bound_insert2currentxy.bind(shortName, x, y));
+
+        // client.insert2raw2process("TTT","TRAINING",1462606130L,"100","A234",false);
+    }
+    public void insert2histoxy(long ts10,String shortName, double x, double y) {
+        if (bound_insert2histoxy == null) {
+            stat_insert2histoxy = session.prepare(
+                    "insert into repoble.histoxy(ts10, shortname, x, y)"
+                    + " VALUES (?,?,?,?);");
+            bound_insert2histoxy = new BoundStatement(stat_insert2histoxy);
+        }
+        session.execute(bound_insert2histoxy.bind(ts10, shortName, x, y));
 
         // client.insert2raw2process("TTT","TRAINING",1462606130L,"100","A234",false);
     }
@@ -169,6 +182,7 @@ public class ComputeLocation {
             ble.ComputeAvgPeriod(); // avg of x,y
             System.out.println(ble.getBleName() + " XY:" + ble.getX() + "," + ble.getY());
             client.insert2currentxy(ble.getBleName(), ble.getX(), ble.getY());
+            client.insert2histoxy(current,ble.getBleName(), ble.getX(), ble.getY());
         }
     }
     

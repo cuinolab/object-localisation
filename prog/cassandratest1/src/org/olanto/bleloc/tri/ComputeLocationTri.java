@@ -34,7 +34,9 @@ public class ComputeLocationTri {
     static BufferedWriter outdata = null;
     private PreparedStatement stat_insert2currentxy;
     private BoundStatement bound_insert2currentxy;
-    
+      private PreparedStatement stat_insert2histoxyTRI;
+    private BoundStatement bound_insert2histoxyTRI;
+ 
     static double[][] raspiPosition = new double[][]{ // raspi position
         {18.0, 0.0}, // 100
         {12.0, 0.0}, // 101
@@ -84,7 +86,18 @@ public class ComputeLocationTri {
 
         // client.insert2raw2process("TTT","TRAINING",1462606130L,"100","A234",false);
     }
-    
+       public void insert2histoxyTRI(long ts10,String shortName, double x, double y) {
+        if (bound_insert2histoxyTRI == null) {
+            stat_insert2histoxyTRI = session.prepare(
+                    "insert into repoble.histoxyTRI(ts10, shortname, x, y)"
+                    + " VALUES (?,?,?,?);");
+            bound_insert2histoxyTRI = new BoundStatement(stat_insert2histoxyTRI);
+        }
+        session.execute(bound_insert2histoxyTRI.bind(ts10, shortName, x, y));
+
+        // client.insert2raw2process("TTT","TRAINING",1462606130L,"100","A234",false);
+    }
+
     public void howMany2Process() {
         // select count(*) nb2proc from repoble.raw2process where period = 'TEST' and mode='T' and processed=false;
         ResultSet results = session.execute("SELECT count(*) as count  FROM repoble.raw2search "
@@ -192,6 +205,7 @@ public class ComputeLocationTri {
             //ble.finishEstimation(); // avg of x,y
             System.out.println(ble.getBleName() + " XY:" + ble.getX() + "," + ble.getY());
             client.insert2currentxy(ble.getBleName(), ble.getX(), ble.getY());
+            client.insert2histoxyTRI(current,ble.getBleName(), ble.getX(), ble.getY());
         }
     }
     

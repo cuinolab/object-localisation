@@ -31,6 +31,8 @@ public class Trilateration {
 	 *            beacon's name
 	 * @return double[]: position x,y
 	 */
+    
+        final static int NBRASPI=5;
 	public static double[] getPosXY(double[] raspiVal, double[][] raspiPosition, String beaconName) {
 		if (raspiVal.length == raspiPosition.length) {
 			Map<double[], Double> map = new LinkedHashMap<>();
@@ -44,8 +46,8 @@ public class Trilateration {
 				}
 
 			}
-			double[] distances = new double[4];
-			double[][] positions = new double[4][2];
+			double[] distances = new double[NBRASPI];
+			double[][] positions = new double[NBRASPI][2];
 			map = sortByValue(map);
 			
 			int i = 0;
@@ -53,9 +55,12 @@ public class Trilateration {
 				positions[i] = entry.getKey();
 				distances[i] = entry.getValue();
 				i++;
-				if (i == 4)
+				if (i == NBRASPI)
 					break;
 			}
+                        if (distances[0]<0.5){
+                            return positions[0];
+                        }
 			TrilaterationFunction trilaterationFunction = new TrilaterationFunction(positions, distances);
 			LinearLeastSquaresSolver lSolver = new LinearLeastSquaresSolver(trilaterationFunction);
 			NonLinearLeastSquaresSolver nlSolver = new NonLinearLeastSquaresSolver(trilaterationFunction,
@@ -66,9 +71,10 @@ public class Trilateration {
 			// non linear
 			double[] calculatedPosition = optimum.getPoint().toArray();
 			// linear
-			double[] linearCalculatedPosition = x.toArray();
-
-			return linearCalculatedPosition;
+			double[] linc = x.toArray();
+                        linc[0]=Math.max(Math.min(18,linc[0]),0);
+                       linc[1]=Math.max(Math.min(10,linc[1]),0);
+			return linc;
 			//return calculatedPosition;
 		} else
 			return null;
